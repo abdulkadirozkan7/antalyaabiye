@@ -369,69 +369,69 @@
       "kategori": "yeni",
       "gorsel": "",
       "gorselMobil": "",
-      "model": "prenses",
-      "renk": "pembe",
-      "palet": "pembe",
       "tr": {
         "ust": "Yeni Sezon",
         "baslik": "Nişan, Kına Ve Mezuniyet İçin Yeni Abiyeler",
-        "buton": "Yeni Gelenleri Gör"
+        "buton": "Yeni Gelenleri Gör",
+        "alt": "Tesettür, prenses ve büyük beden modeller."
       },
       "en": {
         "ust": "New Season",
         "baslik": "New Evening Dresses For Engagements, Henna Nights And Proms",
-        "buton": "See New Arrivals"
+        "buton": "See New Arrivals",
+        "alt": "Hijab, princess and plus size styles."
       },
       "ru": {
         "ust": "Новый Сезон",
         "baslik": "Новые Вечерние Платья На Помолвку, Ночь Хны И Выпускной",
-        "buton": "Смотреть Новинки"
+        "buton": "Смотреть Новинки",
+        "alt": "Закрытые модели, платья принцессы и большие размеры."
       }
     },
     {
       "kategori": "firsat",
       "gorsel": "",
       "gorselMobil": "",
-      "model": "firsat",
-      "renk": "altin",
-      "palet": "murdum",
       "tr": {
         "ust": "Fırsat Abiyeler",
         "baslik": "Seçili Modellerde Fırsat Fiyatları",
-        "buton": "Fırsatları İncele"
+        "buton": "Fırsatları İncele",
+        "alt": "Fırsat modellerini WhatsApp'tan sor."
       },
       "en": {
         "ust": "Special Offers",
         "baslik": "Offer Prices On Selected Styles",
-        "buton": "See The Offers"
+        "buton": "See The Offers",
+        "alt": "Ask about the offer styles on WhatsApp."
       },
       "ru": {
         "ust": "Выгодные Предложения",
         "baslik": "Специальные Цены На Избранные Модели",
-        "buton": "Смотреть Предложения"
+        "buton": "Смотреть Предложения",
+        "alt": "Спросите о моделях со скидкой в WhatsApp."
       }
     },
     {
       "kategori": "tesettur",
       "gorsel": "",
       "gorselMobil": "",
-      "model": "tesettur",
-      "renk": "zumrut",
-      "palet": "lila",
       "tr": {
         "ust": "Tesettür Koleksiyonu",
         "baslik": "Şık Ve Kapalı Tesettür Abiye Modelleri",
-        "buton": "Tesettür Abiyeleri Gör"
+        "buton": "Tesettür Abiyeleri Gör",
+        "alt": "Kapalı, şık ve rahat modeller."
       },
       "en": {
         "ust": "Hijab Collection",
         "baslik": "Elegant Hijab Evening Dresses",
-        "buton": "See Hijab Dresses"
+        "buton": "See Hijab Dresses",
+        "alt": "Modest, elegant and comfortable styles."
       },
       "ru": {
         "ust": "Закрытые Модели",
         "baslik": "Элегантные Закрытые Вечерние Платья",
-        "buton": "Смотреть Модели"
+        "buton": "Смотреть Модели",
+        "alt": "Закрытые, элегантные и удобные модели."
       }
     }
   ]

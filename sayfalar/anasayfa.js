@@ -146,6 +146,25 @@ const KATEGORI = [
   ['firsat', 'firsat', 'altin']
 ];
 
+function isilti(t) {
+  let s = (t + 3) * 7919;
+  const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  const renk = ['#f6c3dd', '#fdba74', '#c9b0f5', '#ffffff'];
+  let o = '';
+  for (let i = 0; i < 230; i++) {
+    const kenar = r() < 0.5;
+    const x = kenar ? Math.pow(r(), 1.6) * 520 : 1440 - Math.pow(r(), 1.6) * 520;
+    const y = r() * 520;
+    o += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(0.7 + r() * 1.9).toFixed(1)}" fill="${renk[i % 4]}" opacity="${(0.2 + r() * 0.65).toFixed(2)}"/>`;
+  }
+  for (let i = 0; i < 90; i++) {
+    const x = 500 + r() * 440;
+    const y = r() < 0.5 ? r() * 150 : 380 + r() * 140;
+    o += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(0.6 + r() * 1.6).toFixed(1)}" fill="${renk[i % 4]}" opacity="${(0.2 + r() * 0.6).toFixed(2)}"/>`;
+  }
+  return o;
+}
+
 function takipciYaz(n, dil) {
   const bin = (Math.floor(n / 100) / 10).toLocaleString(dil === 'en' ? 'en-US' : dil === 'ru' ? 'ru-RU' : 'tr-TR');
   return dil === 'en' ? bin + 'K+' : dil === 'ru' ? bin + ' тыс.+' : bin + ' bin+';
@@ -180,9 +199,9 @@ module.exports = function (ctx, dil) {
     const B = bn[dil];
     const gorsel = bn.gorsel
       ? `<picture class="as-b-foto">${bn.gorselMobil ? `<source media="(max-width:700px)" srcset="${esc(bn.gorselMobil)}">` : ''}<img src="${esc(bn.gorsel)}" alt="${esc(B.baslik)}"${i ? ' loading="lazy"' : ''}></picture>`
-      : '';
+      : `<svg class="as-b-isilti" viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${isilti(i)}</svg>`;
     const Hb = i === 0 ? 'h1' : 'h2';
-    return `<a class="as-b-slayt as-b-${esc(bn.palet || 'pembe')}${bn.gorsel ? ' as-b-gorselli' : ''}" href="${link}" aria-label="${esc(B.baslik)}">${gorsel}<span class="as-b-yazi"><small>${esc(B.ust)}</small><${Hb}>${esc(B.baslik)}</${Hb}><span class="as-btn">${esc(B.buton)}${ok}</span></span></a>`;
+    return `<a class="as-b-slayt${bn.gorsel ? ' as-b-gorselli' : ''}" href="${link}" aria-label="${esc(B.baslik)}">${gorsel}<span class="as-b-cerceve" aria-hidden="true"></span><span class="as-b-yazi"><small>${esc(B.ust)}</small><${Hb}>${esc(B.baslik)}</${Hb}><i class="as-b-cizgi" aria-hidden="true"></i>${B.alt ? `<span class="as-b-alt">${esc(B.alt)}</span>` : ''}<span class="as-b-btn">${esc(B.buton)}${ok}</span></span></a>`;
   }).join('')}</div>
   <button type="button" class="as-b-ok as-b-geri" aria-label="‹"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
   <button type="button" class="as-b-ok as-b-ileri" aria-label="›"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
