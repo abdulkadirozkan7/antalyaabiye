@@ -543,7 +543,8 @@
         "",
         ""
       ],
-      "stok": true
+      "stok": true,
+      "cokSatan": true
     },
     {
       "kod": "AA-T02",
@@ -645,7 +646,8 @@
         "",
         ""
       ],
-      "stok": true
+      "stok": true,
+      "cokSatan": true
     },
     {
       "kod": "AA-T04",
@@ -953,7 +955,8 @@
         "",
         ""
       ],
-      "stok": true
+      "stok": true,
+      "cokSatan": true
     },
     {
       "kod": "AA-P02",
@@ -1053,7 +1056,8 @@
         "",
         ""
       ],
-      "stok": true
+      "stok": true,
+      "cokSatan": true
     },
     {
       "kod": "AA-P04",
@@ -1354,7 +1358,8 @@
         "",
         ""
       ],
-      "stok": true
+      "stok": true,
+      "cokSatan": true
     },
     {
       "kod": "AA-N02",
@@ -1457,7 +1462,8 @@
         "",
         ""
       ],
-      "stok": true
+      "stok": true,
+      "cokSatan": true
     },
     {
       "kod": "AA-N04",
@@ -1706,7 +1712,8 @@
         "",
         ""
       ],
-      "stok": true
+      "stok": true,
+      "cokSatan": true
     },
     {
       "kod": "AA-K02",
@@ -2058,7 +2065,8 @@
         "",
         ""
       ],
-      "stok": true
+      "stok": true,
+      "cokSatan": true
     },
     {
       "kod": "AA-M02",
@@ -2411,7 +2419,8 @@
         "",
         ""
       ],
-      "stok": true
+      "stok": true,
+      "cokSatan": true
     },
     {
       "kod": "AA-B02",
@@ -2882,7 +2891,8 @@
         "",
         ""
       ],
-      "stok": true
+      "stok": true,
+      "cokSatan": true
     },
     {
       "kod": "AA-S02",

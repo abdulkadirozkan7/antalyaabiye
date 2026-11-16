@@ -40,6 +40,7 @@ const IK = {
   izgara: '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>',
   gg: '<svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285f4" d="M21.6 12.23c0-.71-.06-1.39-.18-2.05H12v3.87h5.38a4.6 4.6 0 0 1-2 3.02v2.5h3.23c1.9-1.74 2.99-4.3 2.99-7.34z"/><path fill="#34a853" d="M12 22c2.7 0 4.96-.9 6.62-2.43l-3.23-2.5c-.9.6-2.04.96-3.39.96-2.6 0-4.81-1.76-5.6-4.12H3.06v2.58A10 10 0 0 0 12 22z"/><path fill="#fbbc05" d="M6.4 13.91a6 6 0 0 1 0-3.82V7.51H3.06a10 10 0 0 0 0 8.98l3.34-2.58z"/><path fill="#ea4335" d="M12 5.97c1.47 0 2.79.5 3.83 1.5l2.86-2.87A9.97 9.97 0 0 0 12 2a10 10 0 0 0-8.94 5.51l3.34 2.58C7.19 7.73 9.4 5.97 12 5.97z"/></svg>',
   fbDolu: '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M13.6 21v-7.9h2.65l.4-3.1H13.6V8.05c0-.9.25-1.5 1.53-1.5h1.64V3.78a22 22 0 0 0-2.39-.12c-2.36 0-3.98 1.44-3.98 4.09V10H7.73v3.1h2.67V21z"/></svg>',
+  canta: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 8h13l-1 12.5h-11z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg>',
   saat: '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round"><circle cx="12" cy="12" r="8.500"/><path d="M12 7.500V12l3 2"/></svg>'
 };
 
@@ -96,7 +97,7 @@ function header(dil, slugs) {
   const yeni = anaMenu.find(k => k.id === 'yeni');
   const digerleri = anaMenu.filter(k => k.id !== 'yeni');
   const link = (k, cls) => `<a href="${href(dil, k[dil].slug)}"${cls ? ` class="${cls}"` : ''}>${esc(k[dil].ad)}</a>`;
-  const acilir = site.kategoriler.filter(k => k.id !== 'yeni' && !k.vurgu).map(k => `<li>${link(k)}</li>`).join('');
+  const acilir = site.kategoriler.filter(k => k.id !== 'yeni' && !k.vurgu && !k.ozel).map(k => `<li>${link(k)}</li>`).join('');
   const nav = [
     yeni ? `<li>${link(yeni)}</li>` : '',
     `<li class="aa-var"><button type="button" class="aa-acilir-btn" aria-expanded="false" aria-controls="aa-acilir">${esc(t.modeller)}${IK.ok}</button><div class="aa-acilir" id="aa-acilir"><ul>${acilir}</ul><a class="aa-tumu" href="${href(dil, yeni ? yeni[dil].slug : '')}">${esc(t.tumu)}</a></div></li>`,
@@ -126,6 +127,7 @@ function header(dil, slugs) {
     <div class="aa-sag">
       ${dilAcilir(dil, slugs)}
       <a class="aa-ikon aa-fav" href="${href(dil, S.favoriler[dil].slug)}" aria-label="${esc(S.favoriler[dil].ad)}">${IK.kalp}<b class="aa-fav-say" hidden>0</b></a>
+      <button type="button" class="aa-ikon aa-sepet-ac" aria-label="${esc(t.sepet.ad)}" aria-controls="sp">${IK.canta}<b class="aa-sepet-say" hidden>0</b></button>
       <a class="aa-wp-btn" href="${wa(t.wpMesaj)}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="header">${IK.wp}<span>${esc(t.wpSiparis)}</span></a>
     </div>
   </div>
@@ -189,7 +191,8 @@ function footer(dil, slugs) {
     `<a href="${telHref(tel)}" aria-label="${esc(t.ara2)}" data-olay="telefon_tikla" data-konum="sabit">${IK.tel}</a>`,
     igLink ? `<a href="${igLink}" target="_blank" rel="noopener" aria-label="Instagram">${IK.ig}</a>` : ''
   ].join('');
-  return `${avantajlar(dil)}
+  const anaSayfa = DILLER.every(d => !slugs[d]);
+  return `${anaSayfa ? '' : avantajlar(dil)}
 <footer class="aa-footer">
   <div class="aa-f-ic">
     <div class="aa-f-marka">
@@ -214,6 +217,34 @@ function footer(dil, slugs) {
   ${igLink ? `<a href="${igLink}" target="_blank" rel="noopener" data-olay="instagram_tikla" data-konum="alt_bar">${IK.ig.replace('width="19" height="19"', 'width="21" height="21"')}<span>Instagram</span></a>` : `<a class="aa-fav" href="${href(dil, S.favoriler[dil].slug)}">${IK.kalp}<b class="aa-fav-say" hidden>0</b><span>${esc(t.favori)}</span></a>`}
   <a href="${telHref(tel)}" data-olay="telefon_tikla" data-konum="alt_bar">${IK.tel}<span>${esc(t.telefon)}</span></a>
 </nav>`;
+}
+
+function sepetHtml(dil) {
+  const t = i18n[dil].sepet;
+  const veri = { wa: A.whatsapp, t };
+  return `<div class="sp-perde" id="sp-perde" hidden></div>
+<aside class="sp" id="sp" aria-label="${esc(t.ad)}" aria-hidden="true">
+  <div class="sp-bas"><p class="sp-baslik">${esc(t.ad)} <span id="sp-sayi"></span></p><button type="button" class="aa-ikon sp-kapat" aria-label="${esc(i18n[dil].kapat)}">${IK.x}</button></div>
+  <ul class="sp-liste" id="sp-liste"></ul>
+  <div class="sp-bos" id="sp-bos"><span class="sp-bos-ikon">${IK.canta.replace('width="20" height="20"', 'width="40" height="40"')}</span><p>${esc(t.bos)}</p><button type="button" class="as-btn sp-devam">${esc(t.devam)}</button></div>
+  <div class="sp-alt" id="sp-alt" hidden>
+    <p class="sp-not">${esc(t.not)}</p>
+    <a class="aa-wp-btn aa-genis sp-tamamla" id="sp-tamamla" href="#" target="_blank" rel="noopener" data-olay="whatsapp_siparis" data-konum="sepet">${IK.wp}<span>${esc(t.tamamla)}</span></a>
+    <button type="button" class="sp-devam sp-devam-link">${esc(t.devam)}</button>
+  </div>
+</aside>
+<div class="sh" id="sh" role="dialog" aria-modal="true" aria-labelledby="sh-ad" hidden>
+  <form class="sh-kutu" id="sh-form">
+    <button type="button" class="aa-ikon sh-kapat" aria-label="${esc(i18n[dil].kapat)}">${IK.x}</button>
+    <p class="sh-ust">${esc(t.sec)}</p>
+    <p class="sh-ad" id="sh-ad"></p>
+    <p class="sh-kod" id="sh-kod"></p>
+    <fieldset><legend>${esc(t.renk)}: <b id="sh-renk-ad"></b></legend><div class="ur-renkler" id="sh-renkler"></div></fieldset>
+    <fieldset id="sh-beden-alan"><legend>${esc(t.beden)}</legend><div class="ur-bedenler" id="sh-bedenler"></div><p class="sh-uyari" hidden>${esc(t.bedenUyari)}</p></fieldset>
+    <button type="submit" class="as-btn aa-genis sh-ekle">${IK.canta}<span>${esc(t.ekle)}</span></button>
+  </form>
+</div>
+<script type="application/json" id="sp-veri">${JSON.stringify(veri).replace(/</g, '\\u003c')}</script>`;
 }
 
 function carkHtml(dil) {
@@ -320,8 +351,10 @@ ${gtmNs}
 ${header(dil, slugs)}
 <main id="icerik">${govde}</main>
 ${footer(dil, slugs)}
+${sepetHtml(dil)}
 ${carkHtml(dil).split('{{KOK}}').join(kok(dil))}
-<script src="${kok(dil)}assets/js/site.js?v=${SURUM}" defer></script>${site.cark && site.cark.aktif ? `\n<script src="${kok(dil)}assets/js/cark.js?v=${SURUM}" defer></script>` : ''}${js.map(f => `\n<script src="${kok(dil)}assets/js/${f}?v=${SURUM}" defer></script>`).join('')}
+<script src="${kok(dil)}assets/js/site.js?v=${SURUM}" defer></script>
+<script src="${kok(dil)}assets/js/sepet.js?v=${SURUM}" defer></script>${site.cark && site.cark.aktif ? `\n<script src="${kok(dil)}assets/js/cark.js?v=${SURUM}" defer></script>` : ''}${js.map(f => `\n<script src="${kok(dil)}assets/js/${f}?v=${SURUM}" defer></script>`).join('')}
 </body>
 </html>
 `;
@@ -352,7 +385,7 @@ kopyala(path.join(ROOT, 'assets'), path.join(OUT, 'assets'));
 kopyala(path.join(ROOT, 'data'), path.join(OUT, 'data'));
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
-const ctx = { esc, wa, href, kok, IK, A, site, i18n, telGoster, telHref, saatOzet, GUN, GUNK, DILLER, ROOT };
+const ctx = { avantajlar, esc, wa, href, kok, IK, A, site, i18n, telGoster, telHref, saatOzet, GUN, GUNK, DILLER, ROOT };
 const URUNLER = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/urunler.json'), 'utf8')).urunler;
 ctx.URUNLER = URUNLER;
 ctx.BLOG = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/blog.json'), 'utf8')).yazilar;

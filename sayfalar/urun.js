@@ -1,4 +1,4 @@
-const { SOZ, ETIKET, fotoYer, kart } = require('./katalog.js');
+const { SOZ, ETIKET, fotoYer, kart, sepetVeri } = require('./katalog.js');
 
 const T = {
   tr: {
@@ -6,8 +6,8 @@ const T = {
     renkSec: 'Renk',
     bedenSec: 'Beden',
     bedenTablo: 'Beden Tablosu',
-    wpBtn: 'WhatsApp\'tan Sipariş Ver',
-    wpAlt: 'Ürün kodu, renk ve beden mesajına otomatik eklenir.',
+    wpBtn: 'WhatsApp\'tan Sor',
+    wpAlt: 'Birden fazla ürünü sepete ekleyip tek mesajla sipariş verebilirsin.',
     favEkle: 'Favorilere Ekle',
     favli: 'Favorilerde',
     detay: 'Ürün Detayları',
@@ -27,8 +27,8 @@ const T = {
     renkSec: 'Colour',
     bedenSec: 'Size',
     bedenTablo: 'Size Guide',
-    wpBtn: 'Order On WhatsApp',
-    wpAlt: 'The product code, colour and size are added to your message.',
+    wpBtn: 'Ask On WhatsApp',
+    wpAlt: 'Add several dresses to your bag and order them in one message.',
     favEkle: 'Add To Favourites',
     favli: 'In Favourites',
     detay: 'Product Details',
@@ -48,8 +48,8 @@ const T = {
     renkSec: 'Цвет',
     bedenSec: 'Размер',
     bedenTablo: 'Таблица Размеров',
-    wpBtn: 'Заказать В WhatsApp',
-    wpAlt: 'Код товара, цвет и размер добавятся в сообщение.',
+    wpBtn: 'Спросить В WhatsApp',
+    wpAlt: 'Добавьте несколько платьев в корзину и закажите их одним сообщением.',
     favEkle: 'В Избранное',
     favli: 'В Избранном',
     detay: 'Детали Модели',
@@ -67,7 +67,7 @@ const T = {
 };
 
 module.exports = function (ctx, dil, u, urunler) {
-  const { esc, href, IK, A, site, wa } = ctx;
+  const { esc, href, IK, A, site, wa, i18n } = ctx;
   const t = T[dil];
   const E = ETIKET[dil];
   const ad = u[dil].ad;
@@ -117,7 +117,8 @@ module.exports = function (ctx, dil, u, urunler) {
       <form class="ur-form" id="ur-form" data-ad="${esc(ad)}" data-kod="${esc(u.kod)}" data-wa="${esc(A.whatsapp)}" data-mesaj="${esc(t.mesaj)}" data-secilmedi="${esc(t.secilmedi)}">
         <fieldset><legend>${esc(t.renkSec)}: <b id="ur-renk-ad">${esc(SOZ.renk[u.renkler[0]][dil])}</b></legend><div class="ur-renkler">${renkler}</div></fieldset>
         <fieldset id="ur-beden-alan" data-uyari="${esc(t.bedenUyari)}"><legend>${esc(t.bedenSec)}<a href="${href(dil, site.sayfalar.beden[dil].slug)}">${esc(t.bedenTablo)}</a></legend><div class="ur-bedenler">${bedenler}</div></fieldset>
-        <a class="aa-wp-btn aa-genis ur-wp" id="ur-wp" href="${wa(t.mesaj.replace('{ad}', ad).replace('{kod}', u.kod).replace('{renk}', SOZ.renk[u.renkler[0]][dil]).replace('{beden}', t.secilmedi))}" target="_blank" rel="noopener" data-olay="whatsapp_siparis" data-konum="urun" data-urun="${esc(u.kod)}">${IK.wp}<span>${esc(t.wpBtn)}</span></a>
+        <button type="button" class="as-btn aa-genis ur-sepet" id="ur-sepet" data-sepet="${esc(sepetVeri(dil, u, href))}">${IK.canta}<span>${esc(i18n[dil].sepet.ekle)}</span></button>
+        <a class="aa-wp-btn aa-genis ur-wp ur-wp-ikinci" id="ur-wp" href="${wa(t.mesaj.replace('{ad}', ad).replace('{kod}', u.kod).replace('{renk}', SOZ.renk[u.renkler[0]][dil]).replace('{beden}', t.secilmedi))}" target="_blank" rel="noopener" data-olay="whatsapp_siparis" data-konum="urun" data-urun="${esc(u.kod)}">${IK.wp}<span>${esc(t.wpBtn)}</span></a>
         <p class="ur-wp-alt">${esc(t.wpAlt)}</p>
         <button type="button" class="ur-fav kt-fav" data-fav="${esc(u.kod)}" aria-pressed="false" data-ekle="${esc(t.favEkle)}" data-favli="${esc(t.favli)}"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 20.2s-7.4-4.4-7.4-10.1A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.4 2.5c0 5.7-7.4 10.1-7.4 10.1z"/></svg><span>${esc(t.favEkle)}</span></button>
       </form>
@@ -129,7 +130,7 @@ module.exports = function (ctx, dil, u, urunler) {
     </div>
   </div>
 </section>
-<div class="ur-sabit" id="ur-sabit"><div><b>${esc(u.kod)}</b><span id="ur-sabit-secim">${esc(SOZ.renk[u.renkler[0]][dil])}</span></div><a class="aa-wp-btn ur-sabit-btn" href="#" data-olay="whatsapp_siparis" data-konum="urun_sabit" data-urun="${esc(u.kod)}" target="_blank" rel="noopener">${IK.wp}<span>${esc(t.wpBtn)}</span></a></div>
+<div class="ur-sabit" id="ur-sabit"><div><b>${esc(u.kod)}</b><span id="ur-sabit-secim">${esc(SOZ.renk[u.renkler[0]][dil])}</span></div><button type="button" class="as-btn ur-sabit-btn">${IK.canta}<span>${esc(i18n[dil].sepet.ekle)}</span></button></div>
 ${benzer.length ? `<section class="as-bolum ur-benzer"><div class="as-baslik"><div><h2>${esc(t.benzer)}</h2></div></div><ul class="kt-liste kt-liste-4">${benzer.map((x, i) => kart(ctx, dil, x, i)).join('')}</ul></section>` : ''}`;
   return {
     baslik: t.baslik.replace('{ad}', ad).replace('{kod}', u.kod),

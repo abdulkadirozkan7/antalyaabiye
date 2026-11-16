@@ -82,6 +82,36 @@
       "tl": "TL",
       "kullanildi": "Bu telefon numarasıyla çark daha önce çevrildi. Her numara çarkı bir kez çevirebilir.",
       "kontrol": "Kontrol ediliyor..."
+    },
+    "sepet": {
+      "ad": "Sepetim",
+      "ekle": "Sepete Ekle",
+      "eklendi": "Sepete Eklendi",
+      "bos": "Sepetin boş. Beğendiğin modelleri sepete ekleyip tek mesajla sipariş verebilirsin.",
+      "devam": "Alışverişe Devam Et",
+      "tamamla": "WhatsApp'tan Siparişi Tamamla",
+      "not": "Fiyat, stok ve teslimat bilgisini WhatsApp'tan iletiyoruz.",
+      "kaldir": "Kaldır",
+      "adet": "Adet",
+      "renk": "Renk",
+      "beden": "Beden",
+      "sec": "Renk ve beden seç",
+      "bedenUyari": "Lütfen beden seç ya da \"Bilmiyorum\" de.",
+      "bilmiyorum": "Bilmiyorum",
+      "kod": "İndirim kodum: {kod}",
+      "mesaj": "Merhaba, sepetimdeki ürünleri sipariş etmek istiyorum:",
+      "satir": "{n}) {ad}\nKod: {kod} · Renk: {renk} · Beden: {beden} · Adet: {adet}",
+      "son": "Fiyat ve stok bilgisi alabilir miyim?",
+      "urun": "{n} ürün"
+    },
+    "ig": {
+      "etiket": "Instagram'da Antalya Abiye",
+      "takip": "Takip Et",
+      "takipci": "takipçi",
+      "urune": "Ürüne Git",
+      "bos": "Video eklenecek",
+      "sesAc": "Sesi aç",
+      "sesKapat": "Sesi kapat"
     }
   },
   "en": {
@@ -167,6 +197,36 @@
       "tl": "TL",
       "kullanildi": "This phone number has already been used to spin the wheel. Each number can spin once.",
       "kontrol": "Checking..."
+    },
+    "sepet": {
+      "ad": "My Bag",
+      "ekle": "Add To Bag",
+      "eklendi": "Added To Bag",
+      "bos": "Your bag is empty. Add the dresses you like and order them all in one message.",
+      "devam": "Continue Shopping",
+      "tamamla": "Complete Order On WhatsApp",
+      "not": "We share price, stock and delivery details on WhatsApp.",
+      "kaldir": "Remove",
+      "adet": "Qty",
+      "renk": "Colour",
+      "beden": "Size",
+      "sec": "Choose colour and size",
+      "bedenUyari": "Please pick a size or choose \"Not sure\".",
+      "bilmiyorum": "Not sure",
+      "kod": "My discount code: {kod}",
+      "mesaj": "Hello, I would like to order the items in my bag:",
+      "satir": "{n}) {ad}\nCode: {kod} · Colour: {renk} · Size: {beden} · Qty: {adet}",
+      "son": "Could you share price and stock details?",
+      "urun": "{n} items"
+    },
+    "ig": {
+      "etiket": "Antalya Abiye On Instagram",
+      "takip": "Follow",
+      "takipci": "followers",
+      "urune": "View Dress",
+      "bos": "Video coming soon",
+      "sesAc": "Unmute",
+      "sesKapat": "Mute"
     }
   },
   "ru": {
@@ -252,6 +312,36 @@
       "tl": "TL",
       "kullanildi": "С этого номера колесо уже крутили. Каждый номер может крутить колесо один раз.",
       "kontrol": "Проверяем..."
+    },
+    "sepet": {
+      "ad": "Корзина",
+      "ekle": "В Корзину",
+      "eklendi": "Добавлено В Корзину",
+      "bos": "Корзина пуста. Добавьте понравившиеся платья и закажите их одним сообщением.",
+      "devam": "Продолжить Покупки",
+      "tamamla": "Оформить Заказ В WhatsApp",
+      "not": "Цену, наличие и доставку мы сообщаем в WhatsApp.",
+      "kaldir": "Удалить",
+      "adet": "Кол-во",
+      "renk": "Цвет",
+      "beden": "Размер",
+      "sec": "Выберите цвет и размер",
+      "bedenUyari": "Выберите размер или отметьте «Не знаю».",
+      "bilmiyorum": "Не знаю",
+      "kod": "Мой код скидки: {kod}",
+      "mesaj": "Здравствуйте, я хочу заказать товары из корзины:",
+      "satir": "{n}) {ad}\nКод: {kod} · Цвет: {renk} · Размер: {beden} · Кол-во: {adet}",
+      "son": "Подскажите, пожалуйста, цену и наличие.",
+      "urun": "{n} шт."
+    },
+    "ig": {
+      "etiket": "Antalya Abiye В Instagram",
+      "takip": "Подписаться",
+      "takipci": "подписчиков",
+      "urune": "К Платью",
+      "bos": "Видео скоро появится",
+      "sesAc": "Включить звук",
+      "sesKapat": "Выключить звук"
     }
   }
 }

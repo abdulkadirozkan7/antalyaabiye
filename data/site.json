@@ -71,6 +71,23 @@
       }
     },
     {
+      "id": "cok-satanlar",
+      "ozel": true,
+      "menu": false,
+      "tr": {
+        "ad": "Çok Satanlar",
+        "slug": "cok-satan-abiyeler"
+      },
+      "en": {
+        "ad": "Bestsellers",
+        "slug": "bestseller-evening-dresses"
+      },
+      "ru": {
+        "ad": "Хиты Продаж",
+        "slug": "hity-prodazh"
+      }
+    },
+    {
       "id": "tesettur",
       "menu": true,
       "tr": {
@@ -484,5 +501,63 @@
         "olasilik": 5
       }
     ]
-  }
+  },
+  "instagramVideolar": [
+    {
+      "video": "",
+      "kapak": "",
+      "urun": "",
+      "tr": {
+        "baslik": ""
+      },
+      "en": {
+        "baslik": ""
+      },
+      "ru": {
+        "baslik": ""
+      }
+    },
+    {
+      "video": "",
+      "kapak": "",
+      "urun": "",
+      "tr": {
+        "baslik": ""
+      },
+      "en": {
+        "baslik": ""
+      },
+      "ru": {
+        "baslik": ""
+      }
+    },
+    {
+      "video": "",
+      "kapak": "",
+      "urun": "",
+      "tr": {
+        "baslik": ""
+      },
+      "en": {
+        "baslik": ""
+      },
+      "ru": {
+        "baslik": ""
+      }
+    },
+    {
+      "video": "",
+      "kapak": "",
+      "urun": "",
+      "tr": {
+        "baslik": ""
+      },
+      "en": {
+        "baslik": ""
+      },
+      "ru": {
+        "baslik": ""
+      }
+    }
+  ]
 }

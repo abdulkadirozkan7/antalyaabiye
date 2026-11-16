@@ -12,6 +12,8 @@ const T = {
     google: 'Google\'da {n} yorum',
     magaza: 'Güllük Caddesi\'nde mağaza',
     takipci: 'Instagram\'da {n} takipçi',
+    cokBaslik: 'Çok Satanlar',
+    cokAlt: 'En çok tercih edilen abiye modelleri',
     sekmeYeni: 'Yeni Gelenler',
     sekmeFirsat: 'Fırsat Abiyeler',
     kesfet: 'Keşfet',
@@ -59,6 +61,8 @@ const T = {
     google: '{n} reviews on Google',
     magaza: 'Store on Güllük Street',
     takipci: '{n} followers on Instagram',
+    cokBaslik: 'Bestsellers',
+    cokAlt: 'Our most popular evening dresses',
     sekmeYeni: 'New Arrivals',
     sekmeFirsat: 'Special Offers',
     kesfet: 'Discover',
@@ -106,6 +110,8 @@ const T = {
     google: '{n} отзывов в Google',
     magaza: 'Магазин на улице Гюллюк',
     takipci: '{n} подписчиков в Instagram',
+    cokBaslik: 'Хиты Продаж',
+    cokAlt: 'Самые популярные вечерние платья',
     sekmeYeni: 'Новинки',
     sekmeFirsat: 'Выгодные Предложения',
     kesfet: 'Смотреть',
@@ -180,6 +186,26 @@ module.exports = function (ctx, dil) {
   const URUN = ctx.URUNLER || [];
   const yeniUrunler = URUN.filter(u => !u.kategoriler.includes('firsat')).slice().reverse().slice(0, 10);
   const firsatUrunler = URUN.filter(u => u.kategoriler.includes('firsat')).slice(0, 10);
+  const cokUrunler = URUN.filter(u => u.cokSatan).slice(0, 12);
+  const cokKat = kat('cok-satanlar');
+  const okSol = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>';
+  const okSag = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
+  const it = i18n[dil].ig;
+  const igUrl = A.instagram ? `https://www.instagram.com/${esc(A.instagram)}/` : '';
+  const sesKapali = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>';
+  const oynat = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M10 8.8v6.4l5.2-3.2z" fill="currentColor"/></svg>';
+  const igKartlar = (site.instagramVideolar || []).map((v, i) => {
+    const u = v.urun ? URUN.find(x => x.kod === v.urun) : null;
+    const baslik = (v[dil] && v[dil].baslik) || (u ? u[dil].ad : '');
+    const medya = v.video
+      ? `<video class="ig-video" src="${esc(v.video)}"${v.kapak ? ` poster="${esc(v.kapak)}"` : ''} muted loop playsinline preload="none" aria-label="${esc(baslik || it.etiket)}"></video><button type="button" class="ig-ses" aria-label="${esc(it.sesAc)}" data-ac="${esc(it.sesAc)}" data-kapat="${esc(it.sesKapat)}">${sesKapali}</button>`
+      : `<span class="ig-bos">${oynat}<small>${esc(it.bos)}</small></span>`;
+    return `<li class="ig-kart">
+    ${medya}
+    <span class="ig-tur" aria-hidden="true">${oynat}</span>
+    <div class="ig-alt">${baslik ? `<p>${esc(baslik)}</p>` : ''}${u ? `<a class="ig-urun" href="${href(dil, u[dil].slug)}">${IK.canta.replace('width="20" height="20"', 'width="16" height="16"')}<span>${esc(it.urune)}</span></a>` : ''}</div>
+  </li>`;
+  }).join('');
   const adimlar = t.adimlar.map((a, i) => `<li><b>${i + 1}</b><h3>${esc(a[0])}</h3><p>${esc(a[1])}</p></li>`).join('');
   const sssMetin = s => s.replace('{adres}', A.adres).replace('{saat}', saatOzet(dil));
   const sss = t.sss.map((q, i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q[0])}${IK.ok}</summary><p>${esc(sssMetin(q[1]))}</p></details>`).join('');
@@ -205,6 +231,8 @@ module.exports = function (ctx, dil) {
   <div class="as-b-alt-bar"><span class="as-b-sayac"><b id="as-b-no">01</b> / ${String((site.bannerlar || []).length).padStart(2, '0')}</span><div class="as-b-noktalar" id="as-b-noktalar">${(site.bannerlar || []).map((x, i) => `<button type="button"${i === 0 ? ' class="on"' : ''} aria-label="${i + 1}"></button>`).join('')}</div></div>
 </section>
 
+${ctx.avantajlar(dil).replace('class="aa-avantaj"', 'class="aa-avantaj as-avantaj"')}
+
 <section class="as-urunler">
   <div class="as-u-ust">
     <div class="as-sekmeler" role="tablist">
@@ -226,6 +254,30 @@ module.exports = function (ctx, dil) {
     if (!k) return '';
     return `<a class="as-v as-v${i}${v.gorsel ? ' as-v-gorselli' : ''}" href="${href(dil, k[dil].slug)}">${v.gorsel ? `<img src="${esc(v.gorsel)}" alt="${esc(k[dil].ad)}" loading="lazy">` : ''}<span><b>${esc(k[dil].ad)}</b><em>${esc(t.kesfet)}${ok}</em></span></a>`;
   }).join('')}</section>
+
+${cokUrunler.length ? `<section class="as-urunler as-cok">
+  <div class="as-u-ust">
+    <div class="as-cok-bas"><span class="as-cok-ikon" aria-hidden="true">${yildiz.replace('width="15" height="15"', 'width="22" height="22"')}</span><div><h2>${esc(t.cokBaslik)}</h2><p>${esc(t.cokAlt)}</p></div></div>
+    ${cokKat ? `<a class="as-link" href="${href(dil, cokKat[dil].slug)}">${esc(t.tumu)}${ok}</a>` : ''}
+  </div>
+  <div class="as-u-kutu">
+    <ul class="kt-liste as-u-ray">${cokUrunler.map((u, i) => kart(ctx, dil, u, i)).join('')}</ul>
+    <button type="button" class="as-u-ok as-u-geri" aria-label="‹">${okSol}</button>
+    <button type="button" class="as-u-ok as-u-ileri" aria-label="›">${okSag}</button>
+  </div>
+</section>` : ''}
+
+${igUrl ? `<section class="ig">
+  <div class="ig-bas">
+    <a class="ig-profil" href="${igUrl}" target="_blank" rel="noopener" data-olay="instagram_tikla" data-konum="ana_ig">
+      <span class="ig-avatar"><img src="${ctx.kok(dil)}assets/img/logo.webp" width="480" height="409" alt="${esc(A.marka)}" loading="lazy"></span>
+      <span class="ig-isim"><b>${esc(A.instagram)}</b><small>${esc(takipciYaz(A.instagramTakipci, dil))} ${esc(it.takipci)}</small></span>
+    </a>
+    <a class="ig-takip" href="${igUrl}" target="_blank" rel="noopener" data-olay="instagram_tikla" data-konum="ana_ig_takip">${IK.ig}<span>${esc(it.takip)}</span></a>
+  </div>
+  <p class="ig-etiket"><span>${esc(it.etiket)}</span></p>
+  <ul class="ig-liste">${igKartlar}</ul>
+</section>` : ''}
 
 <section class="as-bolum as-adim-bolum">
   <h2>${esc(t.adimBaslik)}</h2>

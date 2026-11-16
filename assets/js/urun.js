@@ -30,6 +30,7 @@
   var form = d.getElementById('ur-form');
   if (!form) return;
   var wp = d.getElementById('ur-wp');
+  var sepetBtn = d.getElementById('ur-sepet');
   var sabitBtn = d.querySelector('.ur-sabit-btn');
   var sabitSecim = d.getElementById('ur-sabit-secim');
   var renkAd = d.getElementById('ur-renk-ad');
@@ -47,7 +48,6 @@
       .replace('{beden}', b ? b.value : form.getAttribute('data-secilmedi'));
     var url = 'https://wa.me/' + form.getAttribute('data-wa') + '?text=' + encodeURIComponent(m + '\n' + location.href.split('#')[0]);
     wp.href = url;
-    sabitBtn.href = url;
     if (b && uyari) { uyari.remove(); uyari = null; bedenAlan.classList.remove('ur-eksik'); }
   };
   var kontrol = function (e) {
@@ -65,14 +65,20 @@
     }
     bedenAlan.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
-  wp.addEventListener('click', kontrol, true);
-  sabitBtn.addEventListener('click', kontrol, true);
+  sepetBtn.addEventListener('click', function (e) {
+    kontrol(e);
+    if (e.defaultPrevented) return;
+    var r = form.querySelector('input[name="renk"]:checked');
+    var b = form.querySelector('input[name="beden"]:checked');
+    if (window.aaSepet) window.aaSepet.ekle(JSON.parse(sepetBtn.getAttribute('data-sepet')), r ? r.value : '', b.value);
+  });
+  sabitBtn.addEventListener('click', function () { sepetBtn.click(); });
   form.addEventListener('change', guncelle);
   guncelle();
 
   var sabit = d.getElementById('ur-sabit');
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (g) { sabit.classList.toggle('on', !g[0].isIntersecting); }).observe(wp);
+    new IntersectionObserver(function (g) { sabit.classList.toggle('on', !g[0].isIntersecting); }).observe(sepetBtn);
   } else {
     sabit.classList.add('on');
   }

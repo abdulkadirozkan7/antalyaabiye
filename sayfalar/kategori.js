@@ -66,7 +66,7 @@ module.exports = function (ctx, dil, kat, urunler) {
   const { esc, href, IK, wa, i18n } = ctx;
   const t = T[dil];
   const E = ETIKET[dil];
-  const liste = kat.id === 'yeni' ? urunler.filter(u => !u.kategoriler.includes('firsat')).reverse() : urunler.filter(u => u.kategoriler.includes(kat.id));
+  const liste = kat.id === 'cok-satanlar' ? urunler.filter(u => u.cokSatan) : kat.id === 'yeni' ? urunler.filter(u => !u.kategoriler.includes('firsat')).reverse() : urunler.filter(u => u.kategoriler.includes(kat.id));
   const say = (alan, deger) => liste.filter(u => Array.isArray(u[alan]) ? u[alan].includes(deger) : u[alan] === deger).length;
   const kutu = (alan, deger, ad, ek = '') => `<label><input type="checkbox" name="${alan}" value="${deger}">${ek}<span>${esc(ad)}</span><em>${say(alan, deger)}</em></label>`;
   const varOlan = (alan, sozluk) => Object.keys(sozluk).filter(k => say(alan, k));
