@@ -214,7 +214,7 @@ ${alt}
 <link rel="icon" href="${kok(dil)}assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Tenor+Sans&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${kok(dil)}assets/css/site.css">
 ${ek}
 ${gtm}

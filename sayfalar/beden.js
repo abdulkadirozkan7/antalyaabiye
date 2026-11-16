@@ -7,15 +7,15 @@ const T = {
     aciklama: 'Antalya Abiye beden tablosu: göğüs, bel ve kalça ölçünü gir, sana uygun abiye bedenini hemen gör. Emin olamazsan ölçülerini WhatsApp\'tan gönder.',
     anasayfa: 'Ana Sayfa',
     h1: 'Beden Tablosu',
-    giris: 'Ölçülerini gir, sana uygun bedeni hemen görelim. Emin olamazsan ölçülerini tek tıkla WhatsApp\'tan gönder, birlikte netleştirelim.',
-    figurNot: 'Ölçü aldığın yer figürde işaretlenir.',
+    giris: 'Ölçünü gir, bedenini gör. Emin değilsen ölçülerini WhatsApp\'tan gönder.',
+    figurNot: '',
     hesapBaslik: 'Bedenini Bul',
-    hesapAlt: 'Santimetre olarak yaz, gerisini biz hesaplayalım.',
+    hesapAlt: 'Ölçüleri santimetre olarak yaz.',
     gogus: 'Göğüs', bel: 'Bel', kalca: 'Kalça', boy: 'Boy',
     istege: 'isteğe bağlı',
-    sonucBos: 'Ölçülerini girdiğinde önerimiz burada görünecek.',
-    sonuc: 'Sana önerimiz',
-    bedenEk: 'beden',
+    sonucBos: 'Önerilen beden burada görünecek.',
+    sonuc: 'Önerilen beden',
+    bedenEk: '',
     ustunde: 'Ölçülerin tablomuzun üstünde kalıyor. Büyük beden modellerimiz için WhatsApp\'tan yaz, sana uygun olanları gönderelim.',
     farkli: 'Ölçülerin farklı bedenlere denk geliyor. Kalıp modele göre değişir, en doğrusu WhatsApp\'tan sormak.',
     wpBtn: 'Ölçülerimle WhatsApp\'tan Sor',
@@ -31,7 +31,7 @@ const T = {
     tabloBaslik: 'Kadın Abiye Beden Tablosu',
     tabloBeden: 'Beden',
     tabloNot: 'Tablo genel bir rehberdir, kalıp modele göre değişebilir. İki beden arasında kalırsan büyük olanı seç; daraltmak genişletmekten kolaydır.',
-    ipucuBaslik: 'Küçük İpuçları',
+    ipucuBaslik: 'İpuçları',
     ipuclari: [
       'Ölçüyü üzerinde ince bir kıyafetle al, kalın kazak sonucu şaşırtır.',
       'Mezurayı tenine yapıştırma, bir parmak pay bırak.',
@@ -44,15 +44,15 @@ const T = {
     aciklama: 'Antalya Abiye size guide: enter your bust, waist and hip measurements and see the right evening dress size. Not sure? Send your measurements on WhatsApp.',
     anasayfa: 'Home',
     h1: 'Size Guide',
-    giris: 'Enter your measurements and we will show the size that fits you. Not sure? Send them to us on WhatsApp in one tap and we will check together.',
-    figurNot: 'The figure highlights where each measurement is taken.',
+    giris: 'Enter your measurements to see your size. Not sure? Send them to us on WhatsApp.',
+    figurNot: '',
     hesapBaslik: 'Find Your Size',
-    hesapAlt: 'Type in centimetres, we will do the rest.',
+    hesapAlt: 'Enter your measurements in centimetres.',
     gogus: 'Bust', bel: 'Waist', kalca: 'Hips', boy: 'Height',
     istege: 'optional',
-    sonucBos: 'Your suggested size will appear here once you enter your measurements.',
-    sonuc: 'Our suggestion',
-    bedenEk: 'size',
+    sonucBos: 'Your suggested size will appear here.',
+    sonuc: 'Suggested size',
+    bedenEk: '',
     ustunde: 'Your measurements are above our chart. Message us on WhatsApp and we will send you plus size styles that fit.',
     farkli: 'Your measurements point to different sizes. Fit varies by style, so the best is to ask us on WhatsApp.',
     wpBtn: 'Ask On WhatsApp With My Measurements',
@@ -68,7 +68,7 @@ const T = {
     tabloBaslik: 'Women\'s Evening Dress Size Chart',
     tabloBeden: 'Size (TR)',
     tabloNot: 'This chart is a general guide and fit varies by style. If you are between two sizes, choose the larger one; taking in is easier than letting out.',
-    ipucuBaslik: 'Quick Tips',
+    ipucuBaslik: 'Tips',
     ipuclari: [
       'Measure over thin clothing, a thick jumper will throw the numbers off.',
       'Keep the tape snug but not tight, leave a finger of room.',
@@ -81,15 +81,15 @@ const T = {
     aciklama: 'Таблица размеров Antalya Abiye: введите обхват груди, талии и бёдер и узнайте свой размер вечернего платья. Сомневаетесь? Отправьте мерки в WhatsApp.',
     anasayfa: 'Главная',
     h1: 'Таблица Размеров',
-    giris: 'Введите свои мерки, и мы сразу покажем подходящий размер. Сомневаетесь? Отправьте их нам в WhatsApp одним касанием, уточним вместе.',
-    figurNot: 'На фигуре отмечено, где снимается каждая мерка.',
+    giris: 'Введите мерки и узнайте свой размер. Сомневаетесь? Отправьте их нам в WhatsApp.',
+    figurNot: '',
     hesapBaslik: 'Подберите Размер',
-    hesapAlt: 'Укажите мерки в сантиметрах, остальное посчитаем мы.',
+    hesapAlt: 'Укажите мерки в сантиметрах.',
     gogus: 'Грудь', bel: 'Талия', kalca: 'Бёдра', boy: 'Рост',
     istege: 'по желанию',
-    sonucBos: 'Здесь появится наша рекомендация, когда вы введёте мерки.',
-    sonuc: 'Рекомендуем',
-    bedenEk: 'размер',
+    sonucBos: 'Здесь появится рекомендуемый размер.',
+    sonuc: 'Ваш размер',
+    bedenEk: '',
     ustunde: 'Ваши мерки больше нашей таблицы. Напишите нам в WhatsApp, и мы пришлём подходящие модели больших размеров.',
     farkli: 'Ваши мерки соответствуют разным размерам. Посадка зависит от модели, лучше уточнить в WhatsApp.',
     wpBtn: 'Спросить В WhatsApp С Моими Мерками',
@@ -105,7 +105,7 @@ const T = {
     tabloBaslik: 'Таблица Размеров Женских Вечерних Платьев',
     tabloBeden: 'Размер (TR)',
     tabloNot: 'Таблица носит общий характер, посадка зависит от модели. Если вы между двумя размерами, выбирайте больший: ушить проще, чем расширить.',
-    ipucuBaslik: 'Полезные Советы',
+    ipucuBaslik: 'Советы',
     ipuclari: [
       'Снимайте мерки поверх тонкой одежды, толстый свитер исказит результат.',
       'Не затягивайте ленту, оставьте запас в палец.',
@@ -154,7 +154,7 @@ function halka(id, y, rx, ry, etiket) {
 }
 
 function figur(t) {
-  return `<svg class="bd-svg" viewBox="0 78 340 542" role="img" aria-label="${t.figurNot}">
+  return `<svg class="bd-svg" viewBox="0 78 340 542" role="img" aria-label="${t.gogus}, ${t.bel}, ${t.kalca}">
   <defs>
     <linearGradient id="bd-ten" x1="0" x2="1"><stop offset="0" stop-color="#dcc7d3"/><stop offset=".42" stop-color="#fbf5f8"/><stop offset=".62" stop-color="#f3e7ee"/><stop offset="1" stop-color="#cfb8c6"/></linearGradient>
     <linearGradient id="bd-elbise" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a49c9"/><stop offset=".42" stop-color="#c22d86"/><stop offset=".75" stop-color="#e5506a"/><stop offset="1" stop-color="#fd8c2c"/></linearGradient>
@@ -198,7 +198,7 @@ module.exports = function (ctx, dil) {
         <span>${esc(t[o])}${o === 'boy' ? ` <i>${esc(t.istege)}</i>` : ''}</span>
         <span class="bd-kutu"><input type="number" inputmode="decimal" min="40" max="${o === 'boy' ? 210 : 170}" step="0.5" name="${o}" placeholder="${o === 'boy' ? '165' : o === 'gogus' ? '92' : o === 'bel' ? '74' : '100'}"><b>cm</b></span>
       </label>`).join('');
-  const adimlar = OLCU.map((o, i) => `<li data-olcu="${o}"><b>${String(i + 1).padStart(2, '0')}</b><div><h3>${esc(t[o])}</h3><p>${esc(t.adimlar[o])}</p></div></li>`).join('');
+  const adimlar = OLCU.map((o, i) => `<li data-olcu="${o}"><b>${i + 1}</b><div><h3>${esc(t[o])}</h3><p>${esc(t.adimlar[o])}</p></div></li>`).join('');
   const satirlar = veri.bedenler.map(b => `<tr data-beden="${esc(b.beden)}"><th scope="row">${esc(b.beden)}</th><td>${b.gogus}</td><td>${b.bel}</td><td>${b.kalca}</td></tr>`).join('');
   const js = {
     bedenler: veri.bedenler,
@@ -217,7 +217,6 @@ module.exports = function (ctx, dil) {
   <div class="bd-izgara">
     <figure class="bd-figur">
       <div class="bd-sahne"><div class="bd-kart">${figur(t)}</div></div>
-      <figcaption>${esc(t.figurNot)}</figcaption>
     </figure>
     <div class="bd-sag">
       <form class="bd-hesap" id="bd-hesap" novalidate>

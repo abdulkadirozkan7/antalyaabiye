@@ -73,7 +73,7 @@
     if (ust) {
       html = '<p class="bd-uyari">' + esc(T.ustunde) + '</p>';
     } else {
-      html = '<div class="bd-oneri"><span>' + esc(T.sonuc) + '</span><strong>' + esc(beden) + '</strong><em>' + esc(T.bedenEk) + '</em></div>';
+      html = '<div class="bd-oneri"><span>' + esc(T.sonuc) + '</span><strong>' + esc(beden) + '</strong></div>';
       var row = d.querySelector('.bd-tablo tr[data-beden="' + beden + '"]');
       if (row) row.classList.add('bd-secili');
     }
