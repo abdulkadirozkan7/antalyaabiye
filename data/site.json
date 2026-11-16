@@ -363,5 +363,76 @@
         "slug": "konfidentsialnost"
       }
     }
-  }
+  },
+  "bannerlar": [
+    {
+      "kategori": "yeni",
+      "gorsel": "",
+      "gorselMobil": "",
+      "model": "prenses",
+      "renk": "pembe",
+      "palet": "pembe",
+      "tr": {
+        "ust": "Yeni Sezon",
+        "baslik": "Nişan, Kına Ve Mezuniyet İçin Yeni Abiyeler",
+        "buton": "Yeni Gelenleri Gör"
+      },
+      "en": {
+        "ust": "New Season",
+        "baslik": "New Evening Dresses For Engagements, Henna Nights And Proms",
+        "buton": "See New Arrivals"
+      },
+      "ru": {
+        "ust": "Новый Сезон",
+        "baslik": "Новые Вечерние Платья На Помолвку, Ночь Хны И Выпускной",
+        "buton": "Смотреть Новинки"
+      }
+    },
+    {
+      "kategori": "firsat",
+      "gorsel": "",
+      "gorselMobil": "",
+      "model": "firsat",
+      "renk": "altin",
+      "palet": "murdum",
+      "tr": {
+        "ust": "Fırsat Abiyeler",
+        "baslik": "Seçili Modellerde Fırsat Fiyatları",
+        "buton": "Fırsatları İncele"
+      },
+      "en": {
+        "ust": "Special Offers",
+        "baslik": "Offer Prices On Selected Styles",
+        "buton": "See The Offers"
+      },
+      "ru": {
+        "ust": "Выгодные Предложения",
+        "baslik": "Специальные Цены На Избранные Модели",
+        "buton": "Смотреть Предложения"
+      }
+    },
+    {
+      "kategori": "tesettur",
+      "gorsel": "",
+      "gorselMobil": "",
+      "model": "tesettur",
+      "renk": "zumrut",
+      "palet": "lila",
+      "tr": {
+        "ust": "Tesettür Koleksiyonu",
+        "baslik": "Şık Ve Kapalı Tesettür Abiye Modelleri",
+        "buton": "Tesettür Abiyeleri Gör"
+      },
+      "en": {
+        "ust": "Hijab Collection",
+        "baslik": "Elegant Hijab Evening Dresses",
+        "buton": "See Hijab Dresses"
+      },
+      "ru": {
+        "ust": "Закрытые Модели",
+        "baslik": "Элегантные Закрытые Вечерние Платья",
+        "buton": "Смотреть Модели"
+      }
+    }
+  ]
 }

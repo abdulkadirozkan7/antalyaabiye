@@ -173,29 +173,29 @@ module.exports = function (ctx, dil) {
     mainEntity: t.sss.map(q => ({ '@type': 'Question', name: q[0], acceptedAnswer: { '@type': 'Answer', text: sssMetin(q[1]) } }))
   };
   const govde = `
-<section class="as-hero">
-  <div class="as-hero-ic">
-    <div class="as-hero-yazi">
-      <p class="as-ust">${IK.konum}<span>${esc(t.ust)}</span></p>
-      <h1>${esc(t.h1)}</h1>
-      <p class="as-giris">${esc(t.giris)}</p>
-      <div class="as-btnler">
-        <a class="as-btn" href="${href(dil, yeni ? yeni[dil].slug : '')}">${esc(t.btnModel)}${ok}</a>
-        <a class="aa-wp-btn as-btn-wp" href="${wa(i18n[dil].wpMesaj)}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="ana_hero">${IK.wp}<span>${esc(t.btnWp)}</span></a>
-      </div>
-      <ul class="as-guven">
-        <li><a href="${esc(A.google)}" target="_blank" rel="noopener"><span class="as-yildiz">${yildiz}</span><b>${esc(A.googlePuan)}</b> · ${esc(t.google.replace('{n}', A.googleYorum))}</a></li>
-        <li>${IK.konum}<span>${esc(t.magaza)}</span></li>
-        ${A.instagramTakipci ? `<li><a href="https://www.instagram.com/${esc(A.instagram)}/" target="_blank" rel="noopener">${IK.ig}<span>${esc(t.takipci.replace('{n}', takipciYaz(A.instagramTakipci, dil)))}</span></a></li>` : ''}
-      </ul>
-    </div>
-    <div class="as-hero-gorsel" aria-hidden="true">
-      <div class="as-kemer as-kemer-buyuk">${elbise('prenses', 'pembe', 'h1')}</div>
-      <div class="as-kemer as-kemer-kucuk as-k1">${elbise('tesettur', 'bordo', 'h2')}</div>
-      <div class="as-kemer as-kemer-kucuk as-k2">${elbise('nisan', 'mor', 'h3')}</div>
-    </div>
-  </div>
+<section class="as-banner" id="as-banner" aria-roledescription="carousel">
+  <div class="as-b-ray" id="as-b-ray">${(site.bannerlar || []).map((bn, i) => {
+    const k = kat(bn.kategori);
+    const link = k ? href(dil, k[dil].slug) : './';
+    const B = bn[dil];
+    const gorsel = bn.gorsel
+      ? `<picture class="as-b-foto">${bn.gorselMobil ? `<source media="(max-width:700px)" srcset="${esc(bn.gorselMobil)}">` : ''}<img src="${esc(bn.gorsel)}" alt="${esc(B.baslik)}"${i ? ' loading="lazy"' : ''}></picture>`
+      : `<span class="as-b-cizim" aria-hidden="true">${elbise(bn.model, bn.renk, `b${i}`)}</span>`;
+    const Hb = i === 0 ? 'h1' : 'h2';
+    return `<a class="as-b-slayt as-b-${esc(bn.palet || 'pembe')}${bn.gorsel ? ' as-b-gorselli' : ''}" href="${link}" aria-label="${esc(B.baslik)}">${gorsel}<span class="as-b-yazi"><small>${esc(B.ust)}</small><${Hb}>${esc(B.baslik)}</${Hb}><span class="as-btn">${esc(B.buton)}${ok}</span></span></a>`;
+  }).join('')}</div>
+  <button type="button" class="as-b-ok as-b-geri" aria-label="‹"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button type="button" class="as-b-ok as-b-ileri" aria-label="›"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  <div class="as-b-noktalar" id="as-b-noktalar">${(site.bannerlar || []).map((x, i) => `<button type="button"${i === 0 ? ' class="on"' : ''} aria-label="${i + 1}"></button>`).join('')}</div>
 </section>
+<div class="as-guven-bant">
+  <ul class="as-guven">
+    <li><a href="${esc(A.google)}" target="_blank" rel="noopener"><span class="as-yildiz">${yildiz}</span><b>${esc(A.googlePuan)}</b> · ${esc(t.google.replace('{n}', A.googleYorum))}</a></li>
+    <li>${IK.konum}<span>${esc(t.magaza)}</span></li>
+    ${A.instagramTakipci ? `<li><a href="https://www.instagram.com/${esc(A.instagram)}/" target="_blank" rel="noopener">${IK.ig}<span>${esc(t.takipci.replace('{n}', takipciYaz(A.instagramTakipci, dil)))}</span></a></li>` : ''}
+    <li>${IK.wp}<a href="${wa(i18n[dil].wpMesaj)}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="ana_guven">${esc(t.btnWp)} · ${esc(telGoster(A.whatsapp))}</a></li>
+  </ul>
+</div>
 
 <section class="as-bolum">
   <div class="as-baslik">
