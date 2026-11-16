@@ -72,16 +72,33 @@
     }
   }
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (!gecerli()) { hata.hidden = false; form.elements.tel.focus(); return; }
-    if (oku()) { sonucGoster(oku(), false); return; }
+  var cihaz = (function () {
+    try {
+      var c = localStorage.getItem('aa_cihaz');
+      if (!c) { c = Date.now().toString(36) + Math.random().toString(36).slice(2, 8); localStorage.setItem('aa_cihaz', c); }
+      return c;
+    } catch (e) { return ''; }
+  })();
+  var normalTel = function (v) {
+    var ham = String(v).trim();
+    if (ham.charAt(0) === '+' && ham.replace(/\D/g, '').indexOf('90') !== 0) return '+' + ham.replace(/\D/g, '');
+    return temizTel(ham);
+  };
+  var sunucu = function (veri) {
+    return fetch(V.kayitUrl, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(veri) })
+      .then(function (r) { return r.json(); });
+  };
+  var hataGoster = function (metin) {
+    hata.textContent = metin;
+    hata.hidden = false;
+  };
+
+  var cevir = function (tel) {
     var i = sec();
     var n = V.dilimler.length, dilim = 360 / n;
     var sapma = (Math.random() - 0.5) * dilim * 0.6;
     var aci = 360 * 6 - (i * dilim + dilim / 2) + sapma;
     var tutar = V.dilimler[i].tutar;
-    var tel = form.elements.tel.value.trim();
     var k = { tutar: tutar, kod: kodUret(tutar), tel: tel, aci: aci % 360, zaman: new Date().toISOString() };
     cevirBtn.disabled = true;
     cevirBtn.textContent = T.donuyor;
@@ -93,11 +110,30 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: 'cark_cevir', indirim: tutar });
     if (V.kayitUrl) {
-      try {
-        fetch(V.kayitUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ telefon: tel, kod: k.kod, tutar: tutar, dil: d.documentElement.lang, sayfa: location.pathname, zaman: k.zaman, ticariIleti: true, kvkk: true }) });
-      } catch (x) {}
+      sunucu({ islem: 'kaydet', telefon: tel, kod: k.kod, tutar: tutar, dil: d.documentElement.lang, sayfa: location.pathname, cihaz: cihaz, ticariIleti: true, kvkk: true }).catch(function () {});
     }
     setTimeout(function () { sonucGoster(k, true); }, hareket ? 5400 : 200);
+  };
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!gecerli()) { hataGoster(T.hata); form.elements.tel.focus(); return; }
+    if (oku()) { sonucGoster(oku(), false); return; }
+    var tel = normalTel(form.elements.tel.value);
+    if (!V.kayitUrl) { cevir(tel); return; }
+    cevirBtn.disabled = true;
+    cevirBtn.textContent = T.kontrol;
+    sunucu({ islem: 'kontrol', telefon: tel, cihaz: cihaz })
+      .then(function (r) {
+        if (r && r.kullanildi) {
+          cevirBtn.textContent = T.cevir;
+          kontrol();
+          hataGoster(T.kullanildi);
+          return;
+        }
+        cevir(tel);
+      })
+      .catch(function () { cevir(tel); });
   });
 
   kutu.querySelector('.ck-kopyala').addEventListener('click', function (e) {

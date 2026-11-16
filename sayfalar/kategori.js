@@ -85,6 +85,8 @@ module.exports = function (ctx, dil, kat, urunler) {
     grup(E.kol, 'kol', kol, false)
   ].join('');
   const ad = kat[dil].ad;
+  const rehberY = (ctx.BLOG || []).find(y => y.kategori === kat.id && y[dil]);
+  const rehber = rehberY ? `<p class="kt-rehber">${esc({ tr: 'Rehber', en: 'Guide', ru: 'Статья' }[dil])}: <a href="${ctx.href(dil, rehberY[dil].slug)}">${esc(rehberY[dil].h1)}</a></p>` : '';
   const kartlar = liste.map((u, i) => kart(ctx, dil, u, i)).join('');
   const bosWp = `<a class="aa-wp-btn" href="${wa(i18n[dil].wpMesaj)}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="kategori_bos">${IK.wp}<span>${esc(t.wp)}</span></a>`;
   const govde = `
@@ -116,7 +118,7 @@ module.exports = function (ctx, dil, kat, urunler) {
     <div class="kt-bos" id="kt-bos" hidden><p>${esc(t.bosFiltre)}</p>${bosWp}</div>
   </div>` : `<div class="kt-bos kt-bos-kat"><p>${esc(t.bosKategori)}</p>${bosWp}</div>`}
 </section>
-<section class="kt-seo"><p>${esc(t.seo.replace('{ad}', ad))}</p></section>
+<section class="kt-seo"><p>${esc(t.seo.replace('{ad}', ad))}</p>${rehber}</section>
 <div class="kt-perde" hidden></div>`;
   return {
     baslik: t.baslik.replace('{ad}', ad),

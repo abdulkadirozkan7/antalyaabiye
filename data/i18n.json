@@ -79,7 +79,9 @@
       "mesaj": "Merhaba, çarkıfelekten {tutar} TL indirim kazandım.\nKodum: {kod}\nTelefon: {tel}",
       "hata": "Geçerli bir telefon numarası yaz.",
       "kapat": "Kapat",
-      "tl": "TL"
+      "tl": "TL",
+      "kullanildi": "Bu telefon numarasıyla çark daha önce çevrildi. Her numara çarkı bir kez çevirebilir.",
+      "kontrol": "Kontrol ediliyor..."
     }
   },
   "en": {
@@ -162,7 +164,9 @@
       "mesaj": "Hello, I won a {tutar} TL discount on the wheel.\nMy code: {kod}\nPhone: {tel}",
       "hata": "Please enter a valid phone number.",
       "kapat": "Close",
-      "tl": "TL"
+      "tl": "TL",
+      "kullanildi": "This phone number has already been used to spin the wheel. Each number can spin once.",
+      "kontrol": "Checking..."
     }
   },
   "ru": {
@@ -245,7 +249,9 @@
       "mesaj": "Здравствуйте, я выиграл(а) скидку {tutar} TL на колесе.\nМой код: {kod}\nТелефон: {tel}",
       "hata": "Введите корректный номер телефона.",
       "kapat": "Закрыть",
-      "tl": "TL"
+      "tl": "TL",
+      "kullanildi": "С этого номера колесо уже крутили. Каждый номер может крутить колесо один раз.",
+      "kontrol": "Проверяем..."
     }
   }
 }

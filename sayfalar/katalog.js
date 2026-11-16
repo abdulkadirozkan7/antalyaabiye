@@ -59,7 +59,7 @@ function kart(ctx, dil, u, i) {
   const E = ETIKET[dil];
   const renkler = u.renkler.map(r => `<i style="background:${SOZ.renk[r].hex}" title="${esc(SOZ.renk[r][dil])}"></i>`).join('');
   const foto = u.fotograflar[0]
-    ? `<img src="${esc(u.fotograflar[0])}" alt="${esc(u[dil].ad)}" loading="lazy">${u.fotograflar[1] ? `<img class="kt-ikinci" src="${esc(u.fotograflar[1])}" alt="" loading="lazy">` : ''}`
+    ? `<img src="${esc(u.fotograflar[0])}" alt="${esc(u[dil].ad)}" width="600" height="900" loading="lazy">${u.fotograflar[1] ? `<img class="kt-ikinci" src="${esc(u.fotograflar[1])}" alt="" width="600" height="900" loading="lazy">` : ''}`
     : fotoYer(dil, 1);
   return `<li class="kt-kart" data-renk="${u.renkler.join(' ')}" data-beden="${u.bedenler.join(' ')}" data-boy="${u.boy}" data-kesim="${u.kesim}" data-kol="${u.kol}" data-kullanim="${u.kullanim.join(' ')}" data-stok="${u.stok === false ? 0 : 1}" data-sira="${i}">
   <a class="kt-gorsel" href="${href(dil, u[dil].slug)}">${foto}

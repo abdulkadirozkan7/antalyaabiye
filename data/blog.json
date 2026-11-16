@@ -1,0 +1,266 @@
+{
+  "yazilar": [
+    {
+      "id": "abiye-magazalari",
+      "tarih": "2026-11-17",
+      "guncelleme": "2026-11-17",
+      "kapak": "",
+      "kategori": "yeni",
+      "tr": {
+        "slug": "antalya-abiye-magazalari",
+        "baslik": "Antalya Abiye Mağazaları: Güllük Caddesi Rehberi | Antalya Abiye",
+        "aciklama": "Antalya'da abiye mağazası arıyorsan: Güllük Caddesi'nde abiye alışverişi, mağazada deneme, beden seçimi ve WhatsApp'tan sipariş hakkında bilmen gerekenler.",
+        "h1": "Antalya Abiye Mağazaları: Güllük Caddesi'nde Abiye Alışverişi",
+        "ozet": "Antalya'da abiye bakarken nereden başlamalı, mağazada neye dikkat etmeli, bedenini bilmiyorsan ne yapmalı? Güllük Caddesi'ndeki mağazamızdan kısa bir rehber.",
+        "govde": [
+          "Antalya'da abiye mağazası denince çoğu kişinin aklına önce şehir merkezindeki caddeler gelir: Selekler Çarşısı, Işıklar ve Güllük Caddesi. Bu yazıda Muratpaşa'da, Güllük Caddesi'ndeki mağazamızda nasıl alışveriş yapıldığını ve abiye seçerken işine yarayacak birkaç pratik bilgiyi topladık.",
+          "## Antalya Abiye Mağazamız Nerede?",
+          "Mağazamız Kışla Mahallesi, Güllük Caddesi No:4, Muratpaşa / Antalya adresinde. Pazartesiden cumartesiye 09:30–20:30, pazar günü 11:00–20:30 arası açığız. Yol tarifi, harita ve telefon bilgileri [İletişim](sayfa:iletisim) sayfasında.",
+          "Mağazaya gelmeden önce WhatsApp'tan yazıp beğendiğin modelin renk ve beden durumunu sorabilirsin. Böylece geldiğinde denemek istediğin elbiseler hazır olur.",
+          "## Güllük Caddesi'nde Abiye Alışverişi Nasıl Yapılır?",
+          "### 1. Önce Modeli Seç",
+          "Sitedeki kategorilerden başlayabilirsin: [Tesettür Abiye](kat:tesettur), [Prenses Abiye](kat:prenses), [Nişan Abiye](kat:nisan), [Kına Abiyesi](kat:kina), [Mezuniyet Abiyesi](kat:mezuniyet) ve [Büyük Beden Abiye](kat:buyuk-beden). Her ürünün bir ürün kodu var. Mağazada ya da WhatsApp'ta bu kodu söylemen yeterli.",
+          "### 2. Bedenini Netleştir",
+          "Abiyede en sık yaşanan sorun beden. Göğüs, bel ve basen ölçünü bir mezurayla alıp [Beden Tablosu](sayfa:beden) sayfasındaki hesaplayıcıya girersen hangi bedenin sana uyduğunu görürsün. Bedenini bilmiyorsan sipariş verirken \"Bilmiyorum\" seçeneğini işaretle, beden danışmanlığı için seni arayalım.",
+          "### 3. Mağazada Dene ya da Adresine Gelsin",
+          "Güllük Caddesi'ndeki mağazaya gelip deneyebilirsin. Gelemiyorsan WhatsApp'tan sipariş verip adrese teslim alabilirsin. Kapıda ödeme ve taksit seçenekleri için siparişte bilgi veriyoruz.",
+          "## Abiye Mağazasında Neye Dikkat Etmelisin?",
+          "- Elbiseyi giyeceğin ayakkabı yüksekliğini bil. Uzun abiyede boy, topuğa göre ayarlanır.",
+          "- Davetin saatini düşün. Gündüz törenlerinde daha sade kumaşlar, akşam davetlerinde parlak ve işlemeli modeller öne çıkar.",
+          "- Oturup kalkarak dene. Ayakta güzel duran bir elbise otururken sıkabilir.",
+          "- Tesettür abiyede astar, kol boyu ve yaka kapalılığını mutlaka kontrol et.",
+          "## Muratpaşa'da Abiye Arayanlar İçin Kısa Not",
+          "Muratpaşa'da oturuyorsan ya da işin şehir merkezindeyse, mesai çıkışında uğramak çoğu zaman en kolayı. Akşam 20:30'a kadar açık olduğumuz için iş çıkışı deneme yapabilirsin. Kalabalık saatlerde beklememek için gelmeden önce WhatsApp'tan haber vermen yeterli.",
+          "## Fırsat Abiyeleri",
+          "Sezon sonu kalan ve sınırlı bedende olan modeller [Fırsat Abiyeler](kat:firsat) sayfasında. Bu ürünlerde beden sayısı az olduğu için stok durumunu sipariş öncesi teyit ediyoruz."
+        ],
+        "sss": [
+          ["Antalya Abiye mağazası nerede?", "Kışla Mahallesi, Güllük Caddesi No:4, Muratpaşa / Antalya adresindeyiz."],
+          ["Mağazada abiye denemek için randevu gerekiyor mu?", "Randevu gerekmiyor. Gelmeden önce WhatsApp'tan beğendiğin ürün kodunu yazarsan elbiseyi hazırlarız."],
+          ["Bedenimi bilmiyorum, sipariş verebilir miyim?", "Evet. Siparişte \"Bilmiyorum\" seçeneğini işaretle ya da Beden Tablosu sayfasındaki ölçülerini WhatsApp'tan gönder, beden konusunda birlikte karar verelim."]
+        ]
+      }
+    },
+    {
+      "id": "tesettur-abiye",
+      "tarih": "2026-11-17",
+      "guncelleme": "2026-11-17",
+      "kapak": "",
+      "kategori": "tesettur",
+      "tr": {
+        "slug": "antalya-tesettur-abiye",
+        "baslik": "Antalya Tesettür Abiye: Model Seçimi Ve Mağaza Rehberi | Antalya Abiye",
+        "aciklama": "Antalya'da tesettür abiye arıyorsan: kol, yaka, astar ve boy seçimi, düğün ve nişan için model önerileri, Güllük Caddesi'ndeki mağazamızda deneme.",
+        "h1": "Antalya Tesettür Abiye: Model Seçimi Ve Mağaza Rehberi",
+        "ozet": "Tesettür abiyede kol, yaka, astar ve boy nasıl seçilir? Antalya'da tesettür abiye mağazası arayanlar için pratik bir rehber.",
+        "govde": [
+          "Tesettür abiye seçerken iki şeyi aynı anda istersin: kapalı ve rahat olsun, ama davette de şık dursun. Bu yazıda Antalya'da tesettür abiye bakarken nelere dikkat etmen gerektiğini, mağazamızda en çok sorulan sorular üzerinden anlattık.",
+          "## Tesettür Abiyede Dikkat Edilecek 4 Detay",
+          "### Kol Boyu Ve Manşet",
+          "Kolun bileği tam kapatması ve kol hareket ettiğinde yukarı kaymaması gerekir. Lastikli ya da düğmeli manşetler bu konuda daha güvenli. Tül ve şifon kollarda astar olup olmadığına bak.",
+          "### Yaka Ve Eşarp Uyumu",
+          "Dik yaka ve kapalı yaka modeller eşarpla daha düzgün durur. Taşlı ya da işlemeli yakalarda eşarbın düz bir renkte olması elbiseyi öne çıkarır.",
+          "### Astar",
+          "Dantel, tül ve ince saten kumaşlarda tam astar önemli. Mağazada denerken elbiseyi ışığa karşı tutup kontrol edebilirsin.",
+          "### Boy",
+          "Tesettür abiyede etek boyu genellikle yere kadar tercih edilir. Giyeceğin ayakkabının topuk yüksekliğini bilirsen boy ayarı çok daha kolay olur.",
+          "## Davete Göre Tesettür Abiye Seçimi",
+          "- Düğün: Akşam düğünlerinde saten, kadife ya da taş işlemeli modeller. Gelinle aynı renkte olmamaya dikkat et.",
+          "- Nişan: Nişan sahibiysen açık tonlar ve prenses kesim modeller. Misafirsen daha sade bir model yeterli. [Nişan Abiye](kat:nisan) kategorisine göz atabilirsin.",
+          "- Kına: Kırmızı, bordo ve mor tonları kına gecesinin klasikleri. [Kına Abiyesi](kat:kina) kategorisinde bu renkleri bulabilirsin.",
+          "- Mezuniyet: Gündüz töreni için daha hafif kumaşlar, akşam balosu için daha gösterişli modeller.",
+          "## Antalya Tesettür Abiye Mağazası Olarak Nasıl Çalışıyoruz?",
+          "Tüm tesettür modellerimizi [Tesettür Abiye](kat:tesettur) sayfasında renk, beden ve boy filtresiyle inceleyebilirsin. Beğendiğin modelin ürün kodunu WhatsApp'tan yazman yeterli. Stok, renk ve beden durumunu hemen bildiriyoruz.",
+          "Denemek istersen mağazamız Güllük Caddesi No:4, Muratpaşa'da. Gelemiyorsan adrese teslimat yapıyoruz. Beden konusunda tereddüdün varsa [Beden Tablosu](sayfa:beden) sayfasından ölçülerini girip sonucu bize gönderebilirsin.",
+          "## Büyük Beden Tesettür Abiye",
+          "Tesettür modellerimizin bir kısmı 56 bedene kadar çıkıyor. Büyük bedende A kesim ve empire bel modeller hem rahat hem de dengeli bir görünüm sağlar. Tüm büyük beden modeller için [Büyük Beden Abiye](kat:buyuk-beden) sayfasına bakabilirsin."
+        ],
+        "sss": [
+          ["Antalya'da tesettür abiye mağazanız nerede?", "Kışla Mahallesi, Güllük Caddesi No:4, Muratpaşa / Antalya adresindeyiz."],
+          ["Tesettür abiyeler kaç bedene kadar var?", "Modele göre değişmekle birlikte 36'dan 56 bedene kadar seçenek bulunuyor. Her ürünün sayfasında mevcut bedenler yazıyor."],
+          ["Tesettür abiyeyi mağazaya gelmeden alabilir miyim?", "Evet. Ürün kodunu WhatsApp'tan yazarak sipariş verebilir, adrese teslim alabilirsin."]
+        ]
+      }
+    },
+    {
+      "id": "nisan-elbisesi",
+      "tarih": "2026-11-17",
+      "guncelleme": "2026-11-17",
+      "kapak": "",
+      "kategori": "nisan",
+      "tr": {
+        "slug": "antalya-nisan-elbisesi",
+        "baslik": "Antalya Nişan Elbisesi: Renk, Kesim Ve Boy Seçimi | Antalya Abiye",
+        "aciklama": "Antalya'da nişan elbisesi seçerken renk, kesim ve boy nasıl belirlenir? Nişan abiyesi için pratik öneriler ve Güllük Caddesi'nde deneme.",
+        "h1": "Antalya Nişan Elbisesi: Renk, Kesim Ve Boy Seçimi",
+        "ozet": "Nişan elbisesi için renk, kesim ve boy seçimi. Nişan sahibi ve misafirler için ayrı öneriler.",
+        "govde": [
+          "Nişan elbisesi, düğün öncesi giyilen ve fotoğraflarda en çok görünen elbiselerden biri. Bu yüzden seçimi aceleye getirmemek gerekiyor. Aşağıda Antalya'da nişan elbisesi arayanlar için renk, kesim ve boy seçimini sırayla anlattık.",
+          "## Nişan Elbisesi Rengi Nasıl Seçilir?",
+          "Nişan sahibi için en çok tercih edilen renkler pudra, açık pembe, lila, şampanya ve gümüş tonlarıdır. Beyaz genellikle düğün için ayrıldığından nişanda daha az tercih edilir.",
+          "Ten rengin açıksa pudra ve lila tonları, buğday ya da esmer tenlerde şampanya, gold ve bordo tonları daha canlı durur. Mekan dış mekansa ve nişan gündüz yapılıyorsa açık renkler, akşam salonda yapılıyorsa daha koyu ve parlak renkler öne çıkar.",
+          "## Nişan Elbisesinde Kesim Seçimi",
+          "### Prenses Kesim",
+          "Beli oturan, eteği kabarık modeller. Nişan sahibi için en klasik seçenek. Prenses modelleri [Prenses Abiye](kat:prenses) sayfasında bulabilirsin.",
+          "### Balık Kesim",
+          "Vücut hatlarını gösteren, dizden sonra açılan modeller. Hareket alanı daha dar olduğu için uzun süre dans edeceksen denerken mutlaka adım at.",
+          "### A Kesim",
+          "Her vücut tipine uyan, rahat ve dengeli bir kesim. Tesettür nişan elbiselerinde de en çok tercih edilen kesimlerden biri.",
+          "## Uzun Mu Kısa Mı?",
+          "Nişan sahibi için uzun model daha yaygın. Misafir olarak katılıyorsan kısa ya da midi boy modeller de uygundur. Uzun modeller için [Uzun Abiye](kat:uzun), kısa modeller için [Kısa Abiye](kat:kisa) sayfalarına bakabilirsin.",
+          "## Nişan Elbisesi Alırken Zamanlama",
+          "Nişandan en az birkaç hafta önce seçim yapmak, beden ve boy ayarı için zaman bırakır. Bedenini bilmiyorsan [Beden Tablosu](sayfa:beden) sayfasındaki hesaplayıcı işini kolaylaştırır.",
+          "## Antalya'da Nişan Elbisesi Nereden Alınır?",
+          "Tüm nişan modellerimiz [Nişan Abiye](kat:nisan) sayfasında. Beğendiğin modelin kodunu WhatsApp'tan yazabilir ya da Muratpaşa'da, Güllük Caddesi No:4'teki mağazamıza gelip deneyebilirsin."
+        ],
+        "sss": [
+          ["Nişan elbisesi hangi renk olmalı?", "Nişan sahibi için pudra, lila, şampanya ve gümüş tonları en çok tercih edilenler. Ten rengine ve nişanın saatine göre seçim yapabilirsin."],
+          ["Nişan elbisesini mağazada deneyebilir miyim?", "Evet, Güllük Caddesi No:4, Muratpaşa'daki mağazamızda deneyebilirsin."],
+          ["Nişan elbisesi siparişi nasıl verilir?", "Ürün sayfasından renk ve bedeni seçip WhatsApp'tan sipariş butonuna basman yeterli. Mesaj ürün koduyla birlikte bize gelir."]
+        ]
+      }
+    },
+    {
+      "id": "buyuk-beden-abiye",
+      "tarih": "2026-11-17",
+      "guncelleme": "2026-11-17",
+      "kapak": "",
+      "kategori": "buyuk-beden",
+      "tr": {
+        "slug": "antalya-buyuk-beden-abiye",
+        "baslik": "Antalya Büyük Beden Abiye: 56 Bedene Kadar Rehber | Antalya Abiye",
+        "aciklama": "Antalya'da büyük beden abiye arıyorsan: 46-56 beden arası kesim, kumaş ve renk önerileri, doğru beden seçimi ve mağazada deneme.",
+        "h1": "Antalya Büyük Beden Abiye: 56 Bedene Kadar Model Rehberi",
+        "ozet": "Büyük beden abiyede hangi kesim, kumaş ve renk daha iyi durur? 46'dan 56 bedene kadar model seçimi için rehber.",
+        "govde": [
+          "Büyük beden abiye ararken en sık duyduğumuz şikayet, beğenilen modelin bedeninin olmaması. Bu yüzden büyük beden modellerimizi ayrı bir kategoride topladık ve 56 bedene kadar seçenek sunuyoruz. Bu yazıda büyük bedende hangi modellerin daha iyi durduğunu anlattık.",
+          "## Büyük Beden Abiyede Hangi Kesim Daha İyi Durur?",
+          "### A Kesim",
+          "Göğüsten itibaren hafifçe açılan A kesim, bel ve basen bölgesini dengeler. Büyük beden abiyede en güvenli seçeneklerden biri.",
+          "### Empire Bel",
+          "Belin göğüs altından başladığı empire kesim, karın bölgesini rahat bırakır ve boyu daha uzun gösterir.",
+          "### Kruvaze Yaka",
+          "Çapraz yaka, göğüs bölgesini dengeler ve dikey bir çizgi oluşturarak daha ince bir görünüm sağlar.",
+          "## Kumaş Ve Renk Seçimi",
+          "- Saten ve kadife gibi ağır dökümlü kumaşlar vücuda yapışmadan düşer.",
+          "- Çok parlak ve ince kumaşlar her kıvrımı gösterebilir. Mat ya da hafif parlak kumaşlar daha dengeli durur.",
+          "- Koyu tonlar (lacivert, bordo, zümrüt, siyah) zayıf gösterir. Açık renk seviyorsan tek renk ve dikey detaylı modelleri tercih et.",
+          "## Doğru Bedeni Nasıl Seçersin?",
+          "Büyük bedende markadan markaya ölçüler değişebiliyor. Bu yüzden etiket bedenine değil, ölçülerine bak. Göğüs, bel ve basen ölçünü alıp [Beden Tablosu](sayfa:beden) sayfasındaki hesaplayıcıya gir. 54 beden için göğüs 130, bel 112, basen 138 cm; 56 beden için göğüs 136, bel 118, basen 144 cm ölçülerini esas alıyoruz.",
+          "Ölçülerin iki beden arasında kalıyorsa genelde büyük olanı seçmek daha rahat olur. Kararsız kalırsan ölçülerini WhatsApp'tan gönder, birlikte bakalım.",
+          "## Antalya'da Büyük Beden Abiye Mağazası",
+          "Büyük beden modellerimizin tamamı [Büyük Beden Abiye](kat:buyuk-beden) sayfasında. Kapalı modeller arıyorsan [Tesettür Abiye](kat:tesettur) kategorisinde de büyük beden seçenekler var. Denemek istersen Güllük Caddesi No:4, Muratpaşa'daki mağazamıza gelebilirsin."
+        ],
+        "sss": [
+          ["Büyük beden abiyeler kaç bedene kadar var?", "56 bedene kadar seçenek bulunuyor. Her ürün sayfasında o modelin mevcut bedenleri yazıyor."],
+          ["Büyük beden abiyede hangi kesim daha iyi durur?", "A kesim, empire bel ve kruvaze yaka modeller büyük bedende dengeli ve rahat bir görünüm sağlar."],
+          ["Bedenimden emin değilim, ne yapmalıyım?", "Beden Tablosu sayfasındaki hesaplayıcıya ölçülerini gir ya da ölçülerini WhatsApp'tan gönder, beden konusunda yardımcı olalım."]
+        ]
+      }
+    },
+    {
+      "id": "mezuniyet-elbiseleri",
+      "tarih": "2026-11-17",
+      "guncelleme": "2026-11-17",
+      "kapak": "",
+      "kategori": "mezuniyet",
+      "tr": {
+        "slug": "antalya-mezuniyet-elbiseleri",
+        "baslik": "Antalya Mezuniyet Elbiseleri: Tören Ve Balo Rehberi | Antalya Abiye",
+        "aciklama": "Antalya'da mezuniyet elbisesi arıyorsan: tören ve balo için model, renk ve boy önerileri, sıcak havaya uygun kumaşlar ve WhatsApp'tan sipariş.",
+        "h1": "Antalya Mezuniyet Elbiseleri: Tören Ve Balo İçin Seçim Rehberi",
+        "ozet": "Mezuniyet töreni ve balo için elbise seçimi. Antalya'nın sıcağına uygun kumaşlar, renkler ve boylar.",
+        "govde": [
+          "Mezuniyet sezonu Antalya'da genellikle sıcak havaya denk gelir. Bu yüzden elbise seçerken sadece görünüşe değil, saatlerce giyeceğin bir elbisenin rahatlığına da bakmak gerekiyor. Bu yazıda mezuniyet töreni ve balo için seçimi kolaylaştıracak önerileri topladık.",
+          "## Mezuniyet Töreni Mi, Balo Mu?",
+          "Gündüz yapılan törenlerde hafif kumaşlı, midi ya da kısa boy elbiseler daha rahattır. Akşam balosunda ise uzun, parlak ve işlemeli modeller öne çıkar. İkisine de aynı elbiseyle katılacaksan sade ama şık bir uzun model iyi bir orta yol olur.",
+          "## Antalya'nın Sıcağına Uygun Kumaşlar",
+          "- Şifon ve krep: Hafif ve havadar, açık havada yapılan törenler için uygun.",
+          "- Saten: Akşam balosunda şık durur ama gündüz sıcağında daha sıcak tutabilir.",
+          "- Tül: Kabarık etekli modellerde hafiflik sağlar, astarlı olmasına dikkat et.",
+          "## Mezuniyet Elbisesi Renkleri",
+          "Fotoğraflarda canlı duran renkler mezuniyette en çok tercih edilenler: pembe, fuşya, mavi tonları, zümrüt yeşili ve lila. Daha klasik bir görünüm istiyorsan siyah, lacivert ve bordo her zaman güvenli seçenekler.",
+          "## Uzun Mu Kısa Mı?",
+          "Balo için uzun modeller daha yaygın. Gün boyu ayakta kalacaksan ve dans edeceksen kısa ya da midi boy daha rahat olabilir. Seçenekler için [Uzun Abiye](kat:uzun) ve [Kısa Abiye](kat:kisa) sayfalarına bakabilirsin.",
+          "## Tesettür Mezuniyet Elbisesi",
+          "Kapalı bir model arıyorsan [Tesettür Abiye](kat:tesettur) kategorisinde hafif kumaşlı, uzun kollu modeller bulabilirsin. Sıcak havada astarın pamuklu ya da nefes alan bir kumaştan olması rahatlık sağlar.",
+          "## Antalya'da Mezuniyet Elbisesi Nereden Alınır?",
+          "Tüm mezuniyet modellerimiz [Mezuniyet Abiyesi](kat:mezuniyet) sayfasında. Beğendiğin modelin kodunu WhatsApp'tan yazabilir, Güllük Caddesi No:4, Muratpaşa'daki mağazamıza gelip deneyebilirsin. Sezon yoğun geçtiği için mezuniyetten birkaç hafta önce seçim yapmanı öneririz."
+        ],
+        "sss": [
+          ["Mezuniyet elbisesi uzun mu kısa mı olmalı?", "Akşam balosu için uzun modeller, gündüz töreni için midi ya da kısa modeller daha yaygın tercih ediliyor."],
+          ["Sıcak havada hangi kumaş daha rahat?", "Şifon ve krep gibi hafif kumaşlar sıcak havada daha rahat. Saten daha şık ama daha sıcak tutabilir."],
+          ["Mezuniyet elbisesini ne zaman almalıyım?", "Mezuniyet sezonu yoğun geçtiği için tarihten birkaç hafta önce seçim yapmanı öneririz."]
+        ]
+      }
+    },
+    {
+      "id": "evening-dresses-antalya",
+      "tarih": "2026-11-17",
+      "guncelleme": "2026-11-17",
+      "kapak": "",
+      "kategori": "yeni",
+      "en": {
+        "slug": "evening-dresses-antalya",
+        "baslik": "Evening Dresses In Antalya: Where To Shop | Antalya Abiye",
+        "aciklama": "Looking for an evening dress in Antalya? Our store on Güllük Street, Muratpaşa: opening hours, fitting, sizes 36–56 and ordering on WhatsApp.",
+        "h1": "Evening Dresses In Antalya: Where To Shop And How To Order",
+        "ozet": "Visiting Antalya and need a dress for a wedding, engagement or gala? Here is how to find our store, try dresses on and order on WhatsApp.",
+        "govde": [
+          "If you are in Antalya for a wedding, an engagement party or a hotel gala and need an evening dress, this short guide explains how to shop with us, in the store or on WhatsApp.",
+          "## Where Is Our Store In Antalya?",
+          "Our store is at Kışla Mah., Güllük Cd. No:4, Muratpaşa / Antalya, in the city centre. We are open Monday to Saturday 09:30–20:30 and Sunday 11:00–20:30. You can find the map on our [Contact](sayfa:iletisim) page.",
+          "## How To Choose Your Size",
+          "Turkish dress sizes are usually two numbers higher than UK sizes (for example, a UK 10 is roughly a 38 here), but it is safer to use your measurements. Measure your bust, waist and hips and use the calculator on our [Size Guide](sayfa:beden) page. Our sizes go from 36 to 56.",
+          "## How To Order On WhatsApp",
+          "- Pick a dress from our collections, for example [Hijab Evening Dresses](kat:tesettur), [Princess Dresses](kat:prenses) or [Engagement Dresses](kat:nisan).",
+          "- Choose the colour and size on the product page and tap the WhatsApp button. Your message includes the product code.",
+          "- We reply with stock information and delivery details. You can also visit the store to try the dress on.",
+          "## Tips For Visitors",
+          "- Bring the shoes you plan to wear, so the length can be checked.",
+          "- Antalya is warm most of the year. Chiffon and crepe dresses are more comfortable for outdoor events.",
+          "- Message us before you come, and we will have your chosen dresses ready to try."
+        ],
+        "sss": [
+          ["Where is Antalya Abiye located?", "Kışla Mah., Güllük Cd. No:4, Muratpaşa / Antalya, in the city centre."],
+          ["Which sizes do you have?", "Our dresses range from size 36 to 56. Each product page shows the sizes available for that model."],
+          ["Can I order without visiting the store?", "Yes. Choose your dress and send us the product code on WhatsApp."]
+        ]
+      }
+    },
+    {
+      "id": "vechernie-platya-antalya",
+      "tarih": "2026-11-17",
+      "guncelleme": "2026-11-17",
+      "kapak": "",
+      "kategori": "yeni",
+      "ru": {
+        "slug": "vechernie-platya-antalya",
+        "baslik": "Вечерние Платья В Анталье: Где Купить И Как Заказать | Antalya Abiye",
+        "aciklama": "Ищете вечернее платье в Анталье? Наш магазин на улице Гюллюк, Муратпаша: часы работы, примерка, размеры 36–56 и заказ через WhatsApp.",
+        "h1": "Вечерние Платья В Анталье: Где Купить И Как Заказать",
+        "ozet": "Нужно платье на свадьбу, помолвку или вечер в отеле? Как найти наш магазин, примерить платье и заказать через WhatsApp.",
+        "govde": [
+          "Если вы в Анталье и вам нужно вечернее платье на свадьбу, помолвку или праздничный вечер, в этом коротком руководстве мы рассказываем, как купить платье у нас в магазине или через WhatsApp.",
+          "## Где Находится Наш Магазин В Анталье?",
+          "Магазин находится по адресу: Kışla Mah., Güllük Cd. No:4, Muratpaşa / Antalya, в центре города. Мы работаем с понедельника по субботу с 09:30 до 20:30, в воскресенье с 11:00 до 20:30. Карта есть на странице [Контакты](sayfa:iletisim).",
+          "## Как Выбрать Размер",
+          "Турецкие размеры обычно отличаются от российских: например, российский 44 примерно соответствует турецкому 38. Надёжнее ориентироваться на мерки. Измерьте обхват груди, талии и бёдер и воспользуйтесь калькулятором на странице [Таблица Размеров](sayfa:beden). У нас есть размеры от 36 до 56.",
+          "## Как Заказать Через WhatsApp",
+          "- Выберите платье в каталоге, например [Закрытые Вечерние Платья](kat:tesettur), [Платья Принцессы](kat:prenses) или [Платья На Помолвку](kat:nisan).",
+          "- На странице товара выберите цвет и размер и нажмите кнопку WhatsApp. В сообщении будет код товара.",
+          "- Мы ответим о наличии и доставке. Вы также можете прийти в магазин на примерку.",
+          "## Советы",
+          "- Возьмите с собой туфли, в которых пойдёте на праздник, чтобы проверить длину.",
+          "- В Анталье тепло большую часть года. Для мероприятий на улице удобнее платья из шифона и крепа.",
+          "- Напишите нам перед визитом, и мы подготовим выбранные платья к примерке."
+        ],
+        "sss": [
+          ["Где находится Antalya Abiye?", "Kışla Mah., Güllük Cd. No:4, Muratpaşa / Antalya, в центре города."],
+          ["Какие размеры есть в наличии?", "Платья представлены в размерах от 36 до 56. На странице каждого товара указаны доступные размеры."],
+          ["Можно ли заказать без визита в магазин?", "Да. Выберите платье и отправьте нам код товара в WhatsApp."]
+        ]
+      }
+    }
+  ]
+}

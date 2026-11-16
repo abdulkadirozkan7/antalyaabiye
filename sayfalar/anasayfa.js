@@ -49,7 +49,7 @@ const T = {
     ]
   },
   en: {
-    baslik: 'Antalya Abiye | Evening Dresses For Engagements, Henna Nights And Proms',
+    baslik: 'Antalya Abiye | Evening Dresses For Engagements And Proms',
     aciklama: 'Antalya Abiye: hijab, princess, engagement and plus size evening dresses at our store on Güllük Street, Antalya. Ask about any style on WhatsApp.',
     ust: 'Güllük Street · Muratpaşa / Antalya',
     h1: 'Evening Dresses In Antalya For Engagements, Henna Nights And Proms',
@@ -274,3 +274,4 @@ module.exports = function (ctx, dil) {
     js: ['anasayfa.js']
   };
 };
+module.exports.T = T;
