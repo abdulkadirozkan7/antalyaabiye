@@ -111,7 +111,8 @@ body.aa-kilit{overflow:hidden}
 .aa-c-alt a{display:block;padding:8px 0;font-size:15.5px;color:var(--yazi)}
 .aa-c-alt-kisim{padding:16px 22px 22px;border-top:1px solid var(--cizgi);display:grid;gap:14px;justify-items:center}
 
-.aa-footer{position:relative;color:rgba(255,255,255,.86);background:linear-gradient(120deg,#6f43c0 0%,#a33aa8 30%,#d52878 62%,#f2683f 86%,#fd8c2c 100%);overflow:hidden}
+.aa-footer{position:relative;margin-top:14px;color:rgba(255,255,255,.86);background:linear-gradient(120deg,#6f43c0 0%,#a33aa8 30%,#d52878 62%,#f2683f 86%,#fd8c2c 100%)}
+.aa-footer::after{content:"";position:absolute;left:0;right:0;top:-14px;height:3px;background:var(--grad)}
 .aa-footer::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 90% at 12% 0%,rgba(255,255,255,.16),transparent 60%),radial-gradient(50% 80% at 100% 100%,rgba(36,18,43,.22),transparent 65%);pointer-events:none}
 .aa-f-ic{position:relative;max-width:var(--en);margin:0 auto;padding:52px 28px 38px;display:grid;grid-template-columns:1.25fr 1.5fr .9fr 1.1fr;gap:44px}
 .aa-f-marka img{height:96px;width:auto;margin-left:-5px}

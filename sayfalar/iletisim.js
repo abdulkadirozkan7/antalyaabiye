@@ -177,18 +177,6 @@ module.exports = function (ctx, dil) {
       </div>
     </div>
   </div>
-  <form class="il-form" id="il-form" data-wa="${esc(A.whatsapp)}" data-sablon="${esc(t.sablon)}" novalidate>
-    <div class="il-form-bas">
-      <h2>${esc(t.formBaslik)}</h2>
-      <p>${esc(t.formAlt)}</p>
-    </div>
-    <div class="il-alanlar">
-      <label><span>${esc(t.ad)}</span><input name="ad" type="text" autocomplete="name" placeholder="${esc(t.adPh)}" required></label>
-      <label><span>${esc(t.konu)}</span><select name="konu">${t.konular.map(k => `<option>${esc(k)}</option>`).join('')}</select></label>
-      <label class="il-genis"><span>${esc(t.mesaj)}</span><textarea name="mesaj" rows="4" placeholder="${esc(t.mesajPh)}" required></textarea></label>
-    </div>
-    <button type="submit" class="aa-wp-btn aa-genis">${IK.wp}<span>${esc(t.gonder)}</span></button>
-  </form>
 </section>`;
   return {
     baslik: t.baslik,

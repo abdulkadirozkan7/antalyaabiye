@@ -22,26 +22,4 @@
     durum.hidden = false;
   }
 
-  var form = d.getElementById('il-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var ad = form.elements.ad.value.trim();
-      var mesaj = form.elements.mesaj.value.trim();
-      var eksik = false;
-      [['ad', ad], ['mesaj', mesaj]].forEach(function (x) {
-        var el = form.elements[x[0]];
-        el.closest('label').classList.toggle('il-hata', !x[1]);
-        if (!x[1] && !eksik) { el.focus(); eksik = true; }
-      });
-      if (eksik) return;
-      var metin = form.getAttribute('data-sablon').replace('{ad}', ad).replace('{konu}', form.elements.konu.value).replace('{mesaj}', mesaj);
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'whatsapp_tikla', konum: 'iletisim_form', dil: d.documentElement.lang });
-      window.open('https://wa.me/' + form.getAttribute('data-wa') + '?text=' + encodeURIComponent(metin), '_blank', 'noopener');
-    });
-    form.querySelectorAll('input, textarea').forEach(function (el) {
-      el.addEventListener('input', function () { el.closest('label').classList.remove('il-hata'); });
-    });
-  }
 })();

@@ -154,7 +154,7 @@ function halka(id, y, rx, ry, etiket) {
 }
 
 function figur(t) {
-  return `<svg class="bd-svg" viewBox="0 0 340 620" role="img" aria-label="${t.figurNot}">
+  return `<svg class="bd-svg" viewBox="0 78 340 542" role="img" aria-label="${t.figurNot}">
   <defs>
     <linearGradient id="bd-ten" x1="0" x2="1"><stop offset="0" stop-color="#dcc7d3"/><stop offset=".42" stop-color="#fbf5f8"/><stop offset=".62" stop-color="#f3e7ee"/><stop offset="1" stop-color="#cfb8c6"/></linearGradient>
     <linearGradient id="bd-elbise" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a49c9"/><stop offset=".42" stop-color="#c22d86"/><stop offset=".75" stop-color="#e5506a"/><stop offset="1" stop-color="#fd8c2c"/></linearGradient>
@@ -165,17 +165,15 @@ function figur(t) {
   </defs>
   <ellipse cx="170" cy="596" rx="156" ry="14" fill="url(#bd-zemin)"/>
   <g class="bd-boy" data-olcu="boy">
-    <path d="M18 40 V592 M10 40 H26 M10 592 H26"/>
-    <text x="0" y="0" transform="translate(36 330) rotate(-90)" class="bd-etiket">${t.boy}</text>
-    <text x="0" y="0" transform="translate(52 330) rotate(-90)" class="bd-deger" data-deger="boy">— cm</text>
+    <path d="M18 96 V592 M10 96 H26 M10 592 H26"/>
+    <text x="0" y="0" transform="translate(36 360) rotate(-90)" class="bd-etiket">${t.boy}</text>
+    <text x="0" y="0" transform="translate(52 360) rotate(-90)" class="bd-deger" data-deger="boy">— cm</text>
   </g>
   <path fill="url(#bd-ten)" d="M116 126 C104 140 100 176 104 214 C106 240 104 270 100 296 C99 304 108 306 109 298 C113 272 116 244 116 218 C116 188 118 160 124 140 Z"/>
   <path fill="url(#bd-ten)" d="M224 126 C236 140 240 176 236 214 C234 240 236 270 240 296 C241 304 232 306 231 298 C227 272 224 244 224 218 C224 188 222 160 216 140 Z"/>
-  <path fill="url(#bd-ten)" d="M160 92 L180 92 L182 114 L158 114 Z"/>
+  <path fill="url(#bd-ten)" d="M161 96 L179 96 L182 114 L158 114 Z"/>
+  <ellipse cx="170" cy="96" rx="9" ry="3" fill="#cdb6c4"/>
   <path fill="url(#bd-ten)" d="M160 108 C146 112 124 114 116 124 C108 134 112 152 118 166 C122 184 132 206 136 224 C138 244 120 262 118 286 L222 286 C220 262 202 244 204 224 C208 206 218 184 222 166 C228 152 232 134 224 124 C216 114 194 112 180 108 Z"/>
-  <ellipse cx="170" cy="70" rx="21" ry="26" fill="url(#bd-ten)"/>
-  <path fill="#3a1d4a" d="M149 70 C146 46 192 38 192 66 C186 54 162 50 149 70 Z"/>
-  <circle cx="184" cy="44" r="12" fill="#3a1d4a"/>
   <g class="bd-elbise">
     <path id="bd-govde" fill="url(#bd-elbise)" d="M118 146 C126 140 150 150 170 150 C190 150 214 140 222 146 C224 160 220 176 216 190 C210 206 204 214 204 224 C204 240 220 258 224 284 C240 370 272 470 306 584 C250 598 90 598 34 584 C68 470 100 370 116 284 C120 258 136 240 136 224 C136 214 130 206 124 190 C120 176 116 160 118 146 Z"/>
     <path fill="url(#bd-golge)" d="M118 146 C126 140 150 150 170 150 C190 150 214 140 222 146 C224 160 220 176 216 190 C210 206 204 214 204 224 C204 240 220 258 224 284 C240 370 272 470 306 584 C250 598 90 598 34 584 C68 470 100 370 116 284 C120 258 136 240 136 224 C136 214 130 206 124 190 C120 176 116 160 118 146 Z"/>
