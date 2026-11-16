@@ -8,6 +8,8 @@ const T = {
     temizle: 'Temizle',
     sonuclar: 'Sonuçları Göster',
     sirala: 'Sırala',
+    stokta: 'Stoktakiler',
+    sutun: 'Sütun',
     siralar: [['onerilen', 'Önerilen'], ['yeni', 'Yeni Eklenenler'], ['az', 'A\'dan Z\'ye']],
     kapat: 'Kapat',
     bosFiltre: 'Seçtiğin filtrelere uygun model yok. Filtreleri değiştir ya da aradığın modeli WhatsApp\'tan sor.',
@@ -24,6 +26,8 @@ const T = {
     temizle: 'Clear',
     sonuclar: 'Show Results',
     sirala: 'Sort',
+    stokta: 'In Stock',
+    sutun: 'Columns',
     siralar: [['onerilen', 'Recommended'], ['yeni', 'Newest'], ['az', 'A To Z']],
     kapat: 'Close',
     bosFiltre: 'No dresses match these filters. Change the filters or ask us on WhatsApp.',
@@ -40,6 +44,8 @@ const T = {
     temizle: 'Сбросить',
     sonuclar: 'Показать',
     sirala: 'Сортировка',
+    stokta: 'В Наличии',
+    sutun: 'Колонки',
     siralar: [['onerilen', 'Рекомендуемые'], ['yeni', 'Новинки'], ['az', 'От А до Я']],
     kapat: 'Закрыть',
     bosFiltre: 'Нет моделей по выбранным фильтрам. Измените фильтры или спросите нас в WhatsApp.',
@@ -99,7 +105,11 @@ module.exports = function (ctx, dil, kat, urunler) {
     <div class="kt-ust">
       <button type="button" class="kt-filtre-btn"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>${esc(t.filtrele)}<b class="kt-secili" hidden></b></button>
       <p class="kt-sayi" data-kalip="${esc(t.urun)}">${esc(t.urun.replace('{n}', liste.length))}</p>
-      <label class="kt-sirala"><span>${esc(t.sirala)}</span><select id="kt-sirala">${t.siralar.map(s => `<option value="${s[0]}">${esc(s[1])}</option>`).join('')}</select></label>
+      <div class="kt-sag">
+        <div class="kt-sutun" role="group" aria-label="${esc(t.sutun)}"><button type="button" data-sutun="3">3</button><i></i><button type="button" data-sutun="4" class="on">4</button></div>
+        <label class="kt-stok"><input type="checkbox" id="kt-stok"><span>${esc(t.stokta)}</span></label>
+        <label class="kt-sirala"><span>${esc(t.sirala)}</span><select id="kt-sirala">${t.siralar.map(s => `<option value="${s[0]}">${esc(s[1])}</option>`).join('')}</select></label>
+      </div>
     </div>
     <div class="kt-etiketler" id="kt-etiketler"></div>
     <ul class="kt-liste" id="kt-liste">${kartlar}</ul>

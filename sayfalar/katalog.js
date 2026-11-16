@@ -41,9 +41,9 @@ const SOZ = {
 };
 
 const ETIKET = {
-  tr: { renk: 'Renk', beden: 'Beden', boy: 'Boy', kesim: 'Kesim', kol: 'Kol', kullanim: 'Kullanım Alanı', urunKodu: 'Ürün Kodu', firsat: 'Fırsat', ornek: 'Örnek Ürün', favori: 'Favorilere ekle', foto: 'Fotoğraf' },
-  en: { renk: 'Colour', beden: 'Size', boy: 'Length', kesim: 'Silhouette', kol: 'Sleeve', kullanim: 'Occasion', urunKodu: 'Product Code', firsat: 'Offer', ornek: 'Sample Item', favori: 'Add to favourites', foto: 'Photo' },
-  ru: { renk: 'Цвет', beden: 'Размер', boy: 'Длина', kesim: 'Силуэт', kol: 'Рукав', kullanim: 'Повод', urunKodu: 'Код Товара', firsat: 'Скидка', ornek: 'Пример', favori: 'В избранное', foto: 'Фото' }
+  tr: { renk: 'Renk', beden: 'Beden', boy: 'Boy', kesim: 'Kesim', kol: 'Kol', kullanim: 'Kullanım Alanı', urunKodu: 'Ürün Kodu', firsat: 'Fırsat Ürünü', yeni: 'Yeni Ürün', ornek: 'Örnek Ürün', favori: 'Favorilere ekle', foto: 'Fotoğraf' },
+  en: { renk: 'Colour', beden: 'Size', boy: 'Length', kesim: 'Silhouette', kol: 'Sleeve', kullanim: 'Occasion', urunKodu: 'Product Code', firsat: 'Special Offer', yeni: 'New In', ornek: 'Sample Item', favori: 'Add to favourites', foto: 'Photo' },
+  ru: { renk: 'Цвет', beden: 'Размер', boy: 'Длина', kesim: 'Силуэт', kol: 'Рукав', kullanim: 'Повод', urunKodu: 'Код Товара', firsat: 'Выгодно', yeni: 'Новинка', ornek: 'Пример', favori: 'В избранное', foto: 'Фото' }
 };
 
 const BEDEN_SIRA = ['34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56'];
@@ -61,9 +61,9 @@ function kart(ctx, dil, u, i) {
   const foto = u.fotograflar[0]
     ? `<img src="${esc(u.fotograflar[0])}" alt="${esc(u[dil].ad)}" loading="lazy">${u.fotograflar[1] ? `<img class="kt-ikinci" src="${esc(u.fotograflar[1])}" alt="" loading="lazy">` : ''}`
     : fotoYer(dil, 1);
-  return `<li class="kt-kart" data-renk="${u.renkler.join(' ')}" data-beden="${u.bedenler.join(' ')}" data-boy="${u.boy}" data-kesim="${u.kesim}" data-kol="${u.kol}" data-kullanim="${u.kullanim.join(' ')}" data-sira="${i}">
+  return `<li class="kt-kart" data-renk="${u.renkler.join(' ')}" data-beden="${u.bedenler.join(' ')}" data-boy="${u.boy}" data-kesim="${u.kesim}" data-kol="${u.kol}" data-kullanim="${u.kullanim.join(' ')}" data-stok="${u.stok === false ? 0 : 1}" data-sira="${i}">
   <a class="kt-gorsel" href="${href(dil, u[dil].slug)}">${foto}
-    <span class="kt-rozetler">${u.kategoriler.includes('firsat') ? `<b class="kt-rozet kt-r-firsat">${esc(E.firsat)}</b>` : ''}${u.ornek ? `<b class="kt-rozet kt-r-ornek">${esc(E.ornek)}</b>` : ''}</span>
+    <span class="kt-rozetler">${u.yeni ? `<b class="kt-rozet kt-r-yeni">${esc(E.yeni)}</b>` : ''}${u.kategoriler.includes('firsat') ? `<b class="kt-rozet kt-r-firsat">${esc(E.firsat)}</b>` : ''}${u.ornek ? `<b class="kt-rozet kt-r-ornek">${esc(E.ornek)}</b>` : ''}</span>
   </a>
   <button type="button" class="kt-fav" data-fav="${esc(u.kod)}" aria-label="${esc(E.favori)}" aria-pressed="false"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 20.2s-7.4-4.4-7.4-10.1A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.4 2.5c0 5.7-7.4 10.1-7.4 10.1z"/></svg></button>
   <div class="kt-bilgi">

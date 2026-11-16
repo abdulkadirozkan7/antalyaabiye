@@ -1,4 +1,4 @@
-const { elbise } = require('./elbise.js');
+const { kart } = require('./katalog.js');
 
 const T = {
   tr: {
@@ -12,6 +12,9 @@ const T = {
     google: 'Google\'da {n} yorum',
     magaza: 'Güllük Caddesi\'nde mağaza',
     takipci: 'Instagram\'da {n} takipçi',
+    sekmeYeni: 'Yeni Gelenler',
+    sekmeFirsat: 'Fırsat Abiyeler',
+    kesfet: 'Keşfet',
     katBaslik: 'Ne İçin Arıyorsun?',
     katAlt: 'Davetine göre seç, gerisini birlikte netleştirelim.',
     tumu: 'Tüm Modeller',
@@ -56,6 +59,9 @@ const T = {
     google: '{n} reviews on Google',
     magaza: 'Store on Güllük Street',
     takipci: '{n} followers on Instagram',
+    sekmeYeni: 'New Arrivals',
+    sekmeFirsat: 'Special Offers',
+    kesfet: 'Discover',
     katBaslik: 'What Is The Occasion?',
     katAlt: 'Choose by occasion and we will sort out the details together.',
     tumu: 'All Dresses',
@@ -100,6 +106,9 @@ const T = {
     google: '{n} отзывов в Google',
     magaza: 'Магазин на улице Гюллюк',
     takipci: '{n} подписчиков в Instagram',
+    sekmeYeni: 'Новинки',
+    sekmeFirsat: 'Выгодные Предложения',
+    kesfet: 'Смотреть',
     katBaslik: 'Для Какого Повода?',
     katAlt: 'Выберите по поводу, детали уточним вместе.',
     tumu: 'Все Модели',
@@ -135,16 +144,6 @@ const T = {
   }
 };
 
-const KATEGORI = [
-  ['tesettur', 'tesettur', 'bordo'],
-  ['prenses', 'prenses', 'pembe'],
-  ['nisan', 'nisan', 'mor'],
-  ['kina', 'kina', 'turuncu'],
-  ['mezuniyet', 'mezuniyet', 'gece'],
-  ['buyuk-beden', 'buyuk-beden', 'lila'],
-  ['uzun', 'uzun', 'zumrut'],
-  ['firsat', 'firsat', 'altin']
-];
 
 function isilti(t) {
   let s = (t + 3) * 7919;
@@ -178,11 +177,9 @@ module.exports = function (ctx, dil) {
   const yeni = kat('yeni');
   const yildiz = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 3.2l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 17l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8z"/></svg>';
   const ok = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-  const kartlar = KATEGORI.map(([id, model, renk], i) => {
-    const k = kat(id);
-    if (!k) return '';
-    return `<li><a class="as-kat" href="${href(dil, k[dil].slug)}"><span class="as-kemer">${elbise(model, renk, `k${i}`)}</span><span class="as-kat-ad">${esc(k[dil].ad)}</span></a></li>`;
-  }).join('');
+  const URUN = ctx.URUNLER || [];
+  const yeniUrunler = URUN.filter(u => !u.kategoriler.includes('firsat')).slice().reverse().slice(0, 10);
+  const firsatUrunler = URUN.filter(u => u.kategoriler.includes('firsat')).slice(0, 10);
   const adimlar = t.adimlar.map((a, i) => `<li><b>${i + 1}</b><h3>${esc(a[0])}</h3><p>${esc(a[1])}</p></li>`).join('');
   const sssMetin = s => s.replace('{adres}', A.adres).replace('{saat}', saatOzet(dil));
   const sss = t.sss.map((q, i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q[0])}${IK.ok}</summary><p>${esc(sssMetin(q[1]))}</p></details>`).join('');
@@ -205,16 +202,30 @@ module.exports = function (ctx, dil) {
   }).join('')}</div>
   <button type="button" class="as-b-ok as-b-geri" aria-label="‹"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
   <button type="button" class="as-b-ok as-b-ileri" aria-label="›"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-  <div class="as-b-noktalar" id="as-b-noktalar">${(site.bannerlar || []).map((x, i) => `<button type="button"${i === 0 ? ' class="on"' : ''} aria-label="${i + 1}"></button>`).join('')}</div>
+  <div class="as-b-alt-bar"><span class="as-b-sayac"><b id="as-b-no">01</b> / ${String((site.bannerlar || []).length).padStart(2, '0')}</span><div class="as-b-noktalar" id="as-b-noktalar">${(site.bannerlar || []).map((x, i) => `<button type="button"${i === 0 ? ' class="on"' : ''} aria-label="${i + 1}"></button>`).join('')}</div></div>
 </section>
 
-<section class="as-bolum">
-  <div class="as-baslik">
-    <div><h2>${esc(t.katBaslik)}</h2><p>${esc(t.katAlt)}</p></div>
-    <a class="as-link" href="${href(dil, yeni ? yeni[dil].slug : '')}">${esc(t.tumu)}${ok}</a>
+<section class="as-urunler">
+  <div class="as-u-ust">
+    <div class="as-sekmeler" role="tablist">
+      <button type="button" role="tab" class="on" aria-selected="true" data-sekme="yeni">${esc(t.sekmeYeni)}</button>
+      <button type="button" role="tab" aria-selected="false" data-sekme="firsat">${esc(t.sekmeFirsat)}</button>
+    </div>
+    <a class="as-link" id="as-u-tumu" data-yeni="${href(dil, yeni ? yeni[dil].slug : '')}" data-firsat="${href(dil, kat('firsat') ? kat('firsat')[dil].slug : '')}" href="${href(dil, yeni ? yeni[dil].slug : '')}">${esc(t.tumu)}${ok}</a>
   </div>
-  <ul class="as-kategoriler">${kartlar}</ul>
+  <div class="as-u-kutu">
+    <ul class="kt-liste as-u-ray" data-sekme="yeni">${yeniUrunler.map((u, i) => kart(ctx, dil, u, i)).join('')}</ul>
+    <ul class="kt-liste as-u-ray" data-sekme="firsat" hidden>${firsatUrunler.map((u, i) => kart(ctx, dil, u, i)).join('')}</ul>
+    <button type="button" class="as-u-ok as-u-geri" aria-label="‹"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button type="button" class="as-u-ok as-u-ileri" aria-label="›"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
 </section>
+
+<section class="as-vitrin">${(site.vitrin || []).map((v, i) => {
+    const k = kat(v.kategori);
+    if (!k) return '';
+    return `<a class="as-v as-v${i}${v.gorsel ? ' as-v-gorselli' : ''}" href="${href(dil, k[dil].slug)}">${v.gorsel ? `<img src="${esc(v.gorsel)}" alt="${esc(k[dil].ad)}" loading="lazy">` : ''}<span><b>${esc(k[dil].ad)}</b><em>${esc(t.kesfet)}${ok}</em></span></a>`;
+  }).join('')}</section>
 
 <section class="as-bolum as-adim-bolum">
   <h2>${esc(t.adimBaslik)}</h2>

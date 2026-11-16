@@ -34,3 +34,36 @@
   kutu.addEventListener('touchstart', function () { clearInterval(zaman); }, { passive: true });
   basla();
 })();
+(function () {
+  var d = document;
+  var no = d.getElementById('as-b-no');
+  var ray = d.getElementById('as-b-ray');
+  if (no && ray) {
+    ray.addEventListener('scroll', function () {
+      var i = Math.round(ray.scrollLeft / ray.clientWidth) + 1;
+      no.textContent = (i < 10 ? '0' : '') + i;
+    }, { passive: true });
+  }
+  var sekmeler = [].slice.call(d.querySelectorAll('.as-sekmeler button'));
+  var raylar = [].slice.call(d.querySelectorAll('.as-u-ray'));
+  var tumu = d.getElementById('as-u-tumu');
+  var aktifRay = function () { return raylar.filter(function (r) { return !r.hidden; })[0]; };
+  sekmeler.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var s = b.getAttribute('data-sekme');
+      sekmeler.forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-selected', x === b); });
+      raylar.forEach(function (r) { r.hidden = r.getAttribute('data-sekme') !== s; r.scrollLeft = 0; });
+      if (tumu) tumu.href = tumu.getAttribute('data-' + s);
+    });
+  });
+  var kay = function (yon) {
+    var r = aktifRay();
+    if (!r) return;
+    var k = r.querySelector('.kt-kart');
+    var w = k ? k.getBoundingClientRect().width + 18 : 300;
+    r.scrollBy({ left: yon * w * 2, behavior: 'smooth' });
+  };
+  var g = d.querySelector('.as-u-geri'), i2 = d.querySelector('.as-u-ileri');
+  if (g) g.addEventListener('click', function () { kay(-1); });
+  if (i2) i2.addEventListener('click', function () { kay(1); });
+})();

@@ -271,6 +271,7 @@ fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
 const ctx = { esc, wa, href, kok, IK, A, site, i18n, telGoster, telHref, saatOzet, GUN, GUNK, DILLER, ROOT };
 const URUNLER = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/urunler.json'), 'utf8')).urunler;
+ctx.URUNLER = URUNLER;
 const kategoriSayfa = require('./sayfalar/kategori.js');
 const urunSayfa = require('./sayfalar/urun.js');
 const SAYFALAR = [

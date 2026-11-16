@@ -12,6 +12,7 @@
   var sirala = d.getElementById('kt-sirala');
   var filtre = d.getElementById('kt-filtre');
   var perde = d.querySelector('.kt-perde');
+  var stok = d.getElementById('kt-stok');
   var ALAN = { renkler: 'renk', bedenler: 'beden', boy: 'boy', kesim: 'kesim', kol: 'kol', kullanim: 'kullanim' };
 
   function secimler() {
@@ -23,7 +24,7 @@
   function uygula() {
     var s = secimler(), n = 0, toplam = 0;
     kartlar.forEach(function (k) {
-      var uy = Object.keys(s).every(function (ad) {
+      var uy = (!stok.checked || k.getAttribute('data-stok') === '1') && Object.keys(s).every(function (ad) {
         var v = (k.getAttribute('data-' + ALAN[ad]) || '').split(' ');
         return s[ad].some(function (i) { return v.indexOf(i.value) > -1; });
       });
@@ -57,6 +58,15 @@
   }
 
   form.addEventListener('change', uygula);
+  stok.addEventListener('change', uygula);
+  var sutunlar = [].slice.call(d.querySelectorAll('.kt-sutun button'));
+  var sutunYaz = function (n) {
+    liste.setAttribute('data-sutun', n);
+    sutunlar.forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-sutun') === n); });
+    try { localStorage.setItem('aa_sutun', n); } catch (e) {}
+  };
+  sutunlar.forEach(function (b) { b.addEventListener('click', function () { sutunYaz(b.getAttribute('data-sutun')); }); });
+  try { var ks = localStorage.getItem('aa_sutun'); if (ks) sutunYaz(ks); } catch (e) {}
   sirala.addEventListener('change', sirayla);
   etiketler.addEventListener('click', function (e) {
     var b = e.target.closest('button');

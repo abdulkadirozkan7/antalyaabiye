@@ -434,5 +434,27 @@
         "alt": "Закрытые, элегантные и удобные модели."
       }
     }
+  ],
+  "vitrin": [
+    {
+      "kategori": "tesettur",
+      "gorsel": ""
+    },
+    {
+      "kategori": "firsat",
+      "gorsel": ""
+    },
+    {
+      "kategori": "nisan",
+      "gorsel": ""
+    },
+    {
+      "kategori": "kina",
+      "gorsel": ""
+    },
+    {
+      "kategori": "mezuniyet",
+      "gorsel": ""
+    }
   ]
 }
