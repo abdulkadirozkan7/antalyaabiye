@@ -1,0 +1,327 @@
+{
+  "ayarlar": {
+    "marka": "Antalya Abiye",
+    "whatsapp": "905416205207",
+    "telefon": "902422421121",
+    "instagram": "antalyaabiye",
+    "adres": "",
+    "harita": "",
+    "saatler": "",
+    "gtm": "",
+    "alanadi": "",
+    "facebook": "antalyaabiye"
+  },
+  "kategoriler": [
+    {
+      "id": "yeni",
+      "menu": true,
+      "tr": {
+        "ad": "Yeni Gelenler",
+        "slug": "yeni-gelen-abiye-modelleri"
+      },
+      "en": {
+        "ad": "New Arrivals",
+        "slug": "new-evening-dresses"
+      },
+      "ru": {
+        "ad": "Новинки",
+        "slug": "novinki-vechernie-platya"
+      }
+    },
+    {
+      "id": "tesettur",
+      "menu": true,
+      "tr": {
+        "ad": "Tesettür Abiye",
+        "slug": "tesettur-abiye"
+      },
+      "en": {
+        "ad": "Hijab Evening Dresses",
+        "slug": "hijab-evening-dresses",
+        "kisa": "Hijab Dresses"
+      },
+      "ru": {
+        "ad": "Закрытые Вечерние Платья",
+        "slug": "zakrytye-vechernie-platya",
+        "kisa": "Закрытые Платья"
+      }
+    },
+    {
+      "id": "prenses",
+      "menu": true,
+      "tr": {
+        "ad": "Prenses Abiye",
+        "slug": "prenses-abiye"
+      },
+      "en": {
+        "ad": "Princess Gowns",
+        "slug": "princess-gowns"
+      },
+      "ru": {
+        "ad": "Платья Принцессы",
+        "slug": "platya-printsessy",
+        "kisa": "Принцесса"
+      }
+    },
+    {
+      "id": "nisan",
+      "menu": true,
+      "tr": {
+        "ad": "Nişan Abiye",
+        "slug": "nisan-abiye"
+      },
+      "en": {
+        "ad": "Engagement Dresses",
+        "slug": "engagement-dresses",
+        "kisa": "Engagement"
+      },
+      "ru": {
+        "ad": "Платья На Помолвку",
+        "slug": "platya-na-pomolvku",
+        "kisa": "Помолвка"
+      }
+    },
+    {
+      "id": "uzun",
+      "menu": false,
+      "tr": {
+        "ad": "Uzun Abiye",
+        "slug": "uzun-abiye"
+      },
+      "en": {
+        "ad": "Long Evening Dresses",
+        "slug": "long-evening-dresses"
+      },
+      "ru": {
+        "ad": "Длинные Вечерние Платья",
+        "slug": "dlinnye-vechernie-platya"
+      }
+    },
+    {
+      "id": "kisa",
+      "menu": false,
+      "tr": {
+        "ad": "Kısa Abiye",
+        "slug": "kisa-abiye"
+      },
+      "en": {
+        "ad": "Short Evening Dresses",
+        "slug": "short-evening-dresses"
+      },
+      "ru": {
+        "ad": "Короткие Вечерние Платья",
+        "slug": "korotkie-vechernie-platya"
+      }
+    },
+    {
+      "id": "buyuk-beden",
+      "menu": false,
+      "tr": {
+        "ad": "Büyük Beden Abiye",
+        "slug": "buyuk-beden-abiye"
+      },
+      "en": {
+        "ad": "Plus Size Evening Dresses",
+        "slug": "plus-size-evening-dresses"
+      },
+      "ru": {
+        "ad": "Вечерние Платья Больших Размеров",
+        "slug": "vechernie-platya-bolshih-razmerov"
+      }
+    },
+    {
+      "id": "kina",
+      "menu": false,
+      "tr": {
+        "ad": "Kına Abiyesi",
+        "slug": "kina-abiyesi"
+      },
+      "en": {
+        "ad": "Henna Night Dresses",
+        "slug": "henna-night-dresses"
+      },
+      "ru": {
+        "ad": "Платья На Ночь Хны",
+        "slug": "platya-na-noch-hny"
+      }
+    },
+    {
+      "id": "mezuniyet",
+      "menu": false,
+      "tr": {
+        "ad": "Mezuniyet Abiyesi",
+        "slug": "mezuniyet-abiyesi"
+      },
+      "en": {
+        "ad": "Prom Dresses",
+        "slug": "prom-dresses"
+      },
+      "ru": {
+        "ad": "Выпускные Платья",
+        "slug": "vypusknye-platya"
+      }
+    },
+    {
+      "id": "firsat",
+      "menu": true,
+      "vurgu": true,
+      "tr": {
+        "ad": "Fırsat Abiyeler",
+        "slug": "firsat-abiyeler"
+      },
+      "en": {
+        "ad": "Special Offers",
+        "slug": "evening-dress-offers",
+        "kisa": "Offers"
+      },
+      "ru": {
+        "ad": "Выгодные Предложения",
+        "slug": "vechernie-platya-skidki",
+        "kisa": "Скидки"
+      }
+    }
+  ],
+  "sayfalar": {
+    "beden": {
+      "tr": {
+        "ad": "Beden Tablosu",
+        "slug": "beden-tablosu"
+      },
+      "en": {
+        "ad": "Size Guide",
+        "slug": "size-guide"
+      },
+      "ru": {
+        "ad": "Таблица Размеров",
+        "slug": "tablitsa-razmerov",
+        "kisa": "Размеры"
+      }
+    },
+    "blog": {
+      "tr": {
+        "ad": "Blog",
+        "slug": "blog"
+      },
+      "en": {
+        "ad": "Blog",
+        "slug": "blog"
+      },
+      "ru": {
+        "ad": "Блог",
+        "slug": "blog"
+      }
+    },
+    "hakkimizda": {
+      "tr": {
+        "ad": "Hakkımızda",
+        "slug": "hakkimizda"
+      },
+      "en": {
+        "ad": "About Us",
+        "slug": "about"
+      },
+      "ru": {
+        "ad": "О Нас",
+        "slug": "o-nas"
+      }
+    },
+    "iletisim": {
+      "tr": {
+        "ad": "İletişim",
+        "slug": "iletisim"
+      },
+      "en": {
+        "ad": "Contact",
+        "slug": "contact"
+      },
+      "ru": {
+        "ad": "Контакты",
+        "slug": "kontakty"
+      }
+    },
+    "siparis": {
+      "tr": {
+        "ad": "Sipariş Nasıl Verilir",
+        "slug": "siparis-nasil-verilir"
+      },
+      "en": {
+        "ad": "How To Order",
+        "slug": "how-to-order"
+      },
+      "ru": {
+        "ad": "Как Заказать",
+        "slug": "kak-zakazat"
+      }
+    },
+    "sss": {
+      "tr": {
+        "ad": "Sık Sorulan Sorular",
+        "slug": "sss"
+      },
+      "en": {
+        "ad": "FAQ",
+        "slug": "faq"
+      },
+      "ru": {
+        "ad": "Частые Вопросы",
+        "slug": "voprosy"
+      }
+    },
+    "favoriler": {
+      "tr": {
+        "ad": "Favorilerim",
+        "slug": "favorilerim"
+      },
+      "en": {
+        "ad": "My Favourites",
+        "slug": "favourites"
+      },
+      "ru": {
+        "ad": "Избранное",
+        "slug": "izbrannoe"
+      }
+    },
+    "arama": {
+      "tr": {
+        "ad": "Arama",
+        "slug": "arama"
+      },
+      "en": {
+        "ad": "Search",
+        "slug": "search"
+      },
+      "ru": {
+        "ad": "Поиск",
+        "slug": "poisk"
+      }
+    },
+    "kvkk": {
+      "tr": {
+        "ad": "KVKK Aydınlatma Metni",
+        "slug": "kvkk"
+      },
+      "en": {
+        "ad": "Data Protection Notice",
+        "slug": "data-protection"
+      },
+      "ru": {
+        "ad": "Защита Данных",
+        "slug": "zashchita-dannyh"
+      }
+    },
+    "gizlilik": {
+      "tr": {
+        "ad": "Gizlilik Politikası",
+        "slug": "gizlilik"
+      },
+      "en": {
+        "ad": "Privacy Policy",
+        "slug": "privacy"
+      },
+      "ru": {
+        "ad": "Конфиденциальность",
+        "slug": "konfidentsialnost"
+      }
+    }
+  }
+}
