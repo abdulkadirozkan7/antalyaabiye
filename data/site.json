@@ -4,13 +4,49 @@
     "whatsapp": "905416205207",
     "telefon": "902422421121",
     "instagram": "antalyaabiye",
-    "adres": "",
-    "harita": "",
-    "saatler": "",
+    "adres": "Kışla Mah., Güllük Cd. No:4, 07040 Muratpaşa / Antalya",
+    "harita": "https://www.google.com/maps/dir/?api=1&destination=ANTALYA+AB%C4%B0YE%2C+G%C3%BCll%C3%BCk+Cd.+No%3A4%2C+07040+Muratpa%C5%9Fa%2FAntalya",
+    "saatler": [
+      [
+        "09:30",
+        "20:30"
+      ],
+      [
+        "09:30",
+        "20:30"
+      ],
+      [
+        "09:30",
+        "20:30"
+      ],
+      [
+        "09:30",
+        "20:30"
+      ],
+      [
+        "09:30",
+        "20:30"
+      ],
+      [
+        "09:30",
+        "20:30"
+      ],
+      [
+        "11:00",
+        "20:30"
+      ]
+    ],
     "gtm": "",
     "alanadi": "",
     "facebook": "antalyaabiye",
-    "google": "https://share.google/4WhSPZbquUfVxrLZR"
+    "google": "https://share.google/4WhSPZbquUfVxrLZR",
+    "haritaEmbed": "https://www.google.com/maps?q=ANTALYA+AB%C4%B0YE,+G%C3%BCll%C3%BCk+Cd.+No:4,+07040+Muratpa%C5%9Fa%2FAntalya&output=embed",
+    "googlePuan": "4,7",
+    "googleYorum": 269,
+    "sehir": "Antalya",
+    "ilce": "Muratpaşa",
+    "postaKodu": "07040",
+    "sokak": "Güllük Cd. No:4"
   },
   "kategoriler": [
     {

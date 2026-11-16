@@ -1,0 +1,58 @@
+{
+  "bedenler": [
+    {
+      "beden": "36",
+      "gogus": 84,
+      "bel": 66,
+      "kalca": 92
+    },
+    {
+      "beden": "38",
+      "gogus": 88,
+      "bel": 70,
+      "kalca": 96
+    },
+    {
+      "beden": "40",
+      "gogus": 92,
+      "bel": 74,
+      "kalca": 100
+    },
+    {
+      "beden": "42",
+      "gogus": 96,
+      "bel": 78,
+      "kalca": 104
+    },
+    {
+      "beden": "44",
+      "gogus": 100,
+      "bel": 82,
+      "kalca": 108
+    },
+    {
+      "beden": "46",
+      "gogus": 106,
+      "bel": 88,
+      "kalca": 114
+    },
+    {
+      "beden": "48",
+      "gogus": 112,
+      "bel": 94,
+      "kalca": 120
+    },
+    {
+      "beden": "50",
+      "gogus": 118,
+      "bel": 100,
+      "kalca": 126
+    },
+    {
+      "beden": "52",
+      "gogus": 124,
+      "bel": 106,
+      "kalca": 132
+    }
+  ]
+}

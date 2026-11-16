@@ -61,6 +61,27 @@ function dilAcilir(dil, slugs) {
   return `<details class="aa-dil-ac"><summary aria-label="${esc(i18n[dil].dil)}">${BAYRAK[dil]}<span>${dil.toUpperCase()}</span>${IK.ok}</summary><div><span class="aa-dil-secili">${BAYRAK[dil]}<span>${DILAD[dil]}</span></span>${digerleri}</div></details>`;
 }
 
+const GUNK = {
+  tr: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'],
+  en: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  ru: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+};
+const GUN = {
+  tr: ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'],
+  en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+  ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
+};
+function saatOzet(dil) {
+  const s = A.saatler;
+  if (!Array.isArray(s)) return '';
+  const gruplar = [];
+  s.forEach((r, i) => {
+    const son = gruplar[gruplar.length - 1];
+    if (son && son.r.join() === r.join()) son.bit = i; else gruplar.push({ bas: i, bit: i, r });
+  });
+  return gruplar.map(g => `${GUNK[dil][g.bas]}${g.bit > g.bas ? '–' + GUNK[dil][g.bit] : ''} ${g.r[0] ? g.r.join('–') : '—'}`).join(' · ');
+}
+
 const telHref = n => 'tel:+' + String(n).replace(/\D/g, '');
 
 function header(dil, slugs) {
@@ -137,7 +158,7 @@ function footer(dil, slugs) {
     satir(IK.wp, `<small>${esc(t.fWp)}</small><a href="${waLink}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="footer">${esc(telGoster(A.whatsapp))}</a>`),
     A.telefon ? satir(IK.tel, `<small>${esc(t.magaza)}</small><a href="${telHref(A.telefon)}" data-olay="telefon_tikla" data-konum="footer">${esc(telGoster(A.telefon))}</a>`) : '',
     A.adres ? satir(IK.konum, A.harita ? `<a href="${esc(A.harita)}" target="_blank" rel="noopener">${esc(A.adres)}</a>` : esc(A.adres)) : '',
-    A.saatler ? satir(IK.saat, esc(A.saatler)) : ''
+    A.saatler ? satir(IK.saat, esc(saatOzet(dil))) : ''
   ].join('');
   const sosyal = [
     igLink ? `<a href="${igLink}" target="_blank" rel="noopener" aria-label="Instagram">${IK.ig}</a>` : '',
@@ -154,9 +175,9 @@ function footer(dil, slugs) {
 <footer class="aa-footer">
   <div class="aa-f-ic">
     <div class="aa-f-marka">
-      <a href="./" aria-label="${esc(A.marka)}"><img src="${kok(dil)}assets/img/logo.webp" width="480" height="409" alt="${esc(A.marka)}" loading="lazy"></a>
+      <a href="./" aria-label="${esc(A.marka)}"><img src="${kok(dil)}assets/img/logo-beyaz.webp" width="480" height="409" alt="${esc(A.marka)}" loading="lazy"></a>
       <p>${esc(t.fSlogan)}</p>
-      <a class="aa-wp-btn" href="${waLink}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="footer_buton">${IK.wp}<span>${esc(t.wpSiparis)}</span></a>
+      <a class="aa-wp-btn aa-wp-beyaz" href="${waLink}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="footer_buton">${IK.wp}<span>${esc(t.wpSiparis)}</span></a>
     </div>
     <div class="aa-f-kol aa-f-iki"><h2>${esc(t.fKategori)}</h2><ul>${kategoriler}</ul></div>
     <div class="aa-f-kol"><h2>${esc(t.fKurumsal)}</h2><ul>${kurumsal}</ul><h2>${esc(t.fYardim)}</h2><ul>${yardim}</ul></div>
@@ -177,7 +198,7 @@ function footer(dil, slugs) {
 </nav>`;
 }
 
-function sayfa({ dil, slugs, baslik, aciklama, govde }) {
+function sayfa({ dil, slugs, baslik, aciklama, govde, ek = '', js = [] }) {
   const taban = A.alanadi ? 'https://' + A.alanadi.replace(/^https?:\/\//, '').replace(/\/$/, '') + '/' : '';
   const alt = taban ? DILLER.map(d => `<link rel="alternate" hreflang="${d}" href="${taban}${dosya(d, slugs[d]).replace(/index\.html$/, '')}">`).join('\n') + `\n<link rel="alternate" hreflang="x-default" href="${taban}${dosya('tr', slugs.tr).replace(/index\.html$/, '')}">\n<link rel="canonical" href="${taban}${dosya(dil, slugs[dil]).replace(/index\.html$/, '')}">` : '';
   const gtm = A.gtm ? `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${esc(A.gtm)}');</script>` : '';
@@ -195,6 +216,7 @@ ${alt}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${kok(dil)}assets/css/site.css">
+${ek}
 ${gtm}
 </head>
 <body>
@@ -202,7 +224,7 @@ ${gtmNs}
 ${header(dil, slugs)}
 <main id="icerik">${govde}</main>
 ${footer(dil, slugs)}
-<script src="${kok(dil)}assets/js/site.js" defer></script>
+<script src="${kok(dil)}assets/js/site.js" defer></script>${js.map(f => `\n<script src="${kok(dil)}assets/js/${f}" defer></script>`).join('')}
 </body>
 </html>
 `;
@@ -233,9 +255,20 @@ kopyala(path.join(ROOT, 'assets'), path.join(OUT, 'assets'));
 kopyala(path.join(ROOT, 'data'), path.join(OUT, 'data'));
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
+const ctx = { esc, wa, href, kok, IK, A, site, i18n, telGoster, telHref, saatOzet, GUN, GUNK, DILLER, ROOT };
+const SAYFALAR = [
+  ['beden', require('./sayfalar/beden.js')],
+  ['iletisim', require('./sayfalar/iletisim.js')]
+];
+
 for (const dil of DILLER) {
-  const slugs = { tr: '', en: '', ru: '' };
-  yaz(dosya(dil, ''), sayfa({ dil, slugs, baslik: ANA[dil].baslik, aciklama: ANA[dil].aciklama, govde: '' }));
+  const bos = { tr: '', en: '', ru: '' };
+  yaz(dosya(dil, ''), sayfa({ dil, slugs: bos, baslik: ANA[dil].baslik, aciklama: ANA[dil].aciklama, govde: '' }));
+  for (const [anahtar, uret] of SAYFALAR) {
+    const S = site.sayfalar[anahtar];
+    const slugs = { tr: S.tr.slug, en: S.en.slug, ru: S.ru.slug };
+    yaz(dosya(dil, slugs[dil]), sayfa({ dil, slugs, ...uret(ctx, dil) }));
+  }
 }
 
 console.log('dist hazır');
