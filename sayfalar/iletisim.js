@@ -119,6 +119,8 @@ module.exports = function (ctx, dil) {
     telephone: '+' + String(A.telefon).replace(/\D/g, ''),
     address: { '@type': 'PostalAddress', streetAddress: A.sokak, addressLocality: A.ilce, addressRegion: A.sehir, postalCode: A.postaKodu, addressCountry: 'TR' },
     openingHoursSpecification: A.saatler.map((r, i) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: gunIng[i], opens: r[0], closes: r[1] })),
+    geo: A.enlem ? { '@type': 'GeoCoordinates', latitude: A.enlem, longitude: A.boylam } : undefined,
+    hasMap: A.harita,
     sameAs: [igLink, fbLink].filter(Boolean)
   };
   const govde = `

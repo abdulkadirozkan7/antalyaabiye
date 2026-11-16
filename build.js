@@ -264,7 +264,7 @@ const SAYFALAR = [
 
 for (const dil of DILLER) {
   const bos = { tr: '', en: '', ru: '' };
-  yaz(dosya(dil, ''), sayfa({ dil, slugs: bos, baslik: ANA[dil].baslik, aciklama: ANA[dil].aciklama, govde: '' }));
+  yaz(dosya(dil, ''), sayfa({ dil, slugs: bos, ...require('./sayfalar/anasayfa.js')(ctx, dil) }));
   for (const [anahtar, uret] of SAYFALAR) {
     const S = site.sayfalar[anahtar];
     const slugs = { tr: S.tr.slug, en: S.en.slug, ru: S.ru.slug };

@@ -5,7 +5,7 @@
     "telefon": "902422421121",
     "instagram": "antalyaabiye",
     "adres": "Kışla Mah., Güllük Cd. No:4, 07040 Muratpaşa / Antalya",
-    "harita": "https://www.google.com/maps/dir/?api=1&destination=ANTALYA+AB%C4%B0YE%2C+G%C3%BCll%C3%BCk+Cd.+No%3A4%2C+07040+Muratpa%C5%9Fa%2FAntalya",
+    "harita": "https://www.google.com/maps/place/ANTALYA+AB%C4%B0YE/@36.8863788,30.6981001,17z/data=!4m6!3m5!1s0x14c391bec0316aa3:0x3c978f249852cd30!8m2!3d36.8863788!4d30.6981001",
     "saatler": [
       [
         "09:30",
@@ -39,14 +39,17 @@
     "gtm": "",
     "alanadi": "",
     "facebook": "antalyaabiye",
-    "google": "https://share.google/4WhSPZbquUfVxrLZR",
-    "haritaEmbed": "https://www.google.com/maps?q=ANTALYA+AB%C4%B0YE,+G%C3%BCll%C3%BCk+Cd.+No:4,+07040+Muratpa%C5%9Fa%2FAntalya&output=embed",
+    "google": "https://share.google/ELqWhWzjaaBag7Xbr",
+    "haritaEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1600!2d30.6981001!3d36.8863788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c391bec0316aa3%3A0x3c978f249852cd30!2sANTALYA%20AB%C4%B0YE!5e0!3m2!1str!2str!4v1763300000000!5m2!1str!2str",
     "googlePuan": "4,7",
     "googleYorum": 269,
     "sehir": "Antalya",
     "ilce": "Muratpaşa",
     "postaKodu": "07040",
-    "sokak": "Güllük Cd. No:4"
+    "sokak": "Güllük Cd. No:4",
+    "enlem": 36.8863788,
+    "boylam": 30.6981001,
+    "instagramTakipci": 98600
   },
   "kategoriler": [
     {
