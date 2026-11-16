@@ -85,7 +85,8 @@ module.exports = function (ctx, dil, u, urunler) {
     [E.kullanim, u.kullanim.map(k => SOZ.kullanim[k][dil]).join(', ')],
     [E.beden, `${u.bedenler[0]}–${u.bedenler[u.bedenler.length - 1]}`]
   ].map(([k, v]) => `<li><span>${esc(k)}</span><b>${esc(v)}</b></li>`).join('');
-  const benzer = urunler.filter(x => x.kod !== u.kod && x.kategoriler.some(k => k !== 'firsat' && u.kategoriler.includes(k))).concat(urunler.filter(x => x.kod !== u.kod)).filter((x, i, a) => a.indexOf(x) === i).slice(0, 4);
+  const firsatMi = u.kategoriler.includes('firsat');
+  const benzer = urunler.filter(x => x.kod !== u.kod && x.kategoriler.includes('firsat') === firsatMi && x.kategoriler.some(k => u.kategoriler.includes(k) && k !== 'uzun')).concat(urunler.filter(x => x.kod !== u.kod && x.kategoriler.includes('firsat') === firsatMi)).filter((x, i, a) => a.indexOf(x) === i).slice(0, 4);
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
