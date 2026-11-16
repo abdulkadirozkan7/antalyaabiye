@@ -8,15 +8,8 @@
   kaydi();
   window.addEventListener('scroll', kaydi, { passive: true });
 
-  var serit = $$('.aa-serit span');
-  if (serit.length > 1) {
-    var si = 0;
-    setInterval(function () {
-      serit[si].classList.remove('on');
-      si = (si + 1) % serit.length;
-      serit[si].classList.add('on');
-    }, 4200);
-  }
+  var dilAc = $('.aa-dil-ac');
+  d.addEventListener('click', function (e) { if (dilAc && dilAc.open && !dilAc.contains(e.target)) dilAc.open = false; });
 
   var varLi = $('.aa-var');
   var acBtn = $('.aa-acilir-btn');

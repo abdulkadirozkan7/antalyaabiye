@@ -53,6 +53,14 @@ function dilSecici(dil, slugs, sinif) {
   }).join('') + '</div>';
 }
 
+function dilAcilir(dil, slugs) {
+  const digerleri = DILLER.filter(d => d !== dil).map(d => {
+    const hedef = kok(dil) + dosya(d, slugs[d]).replace(/index\.html$/, '');
+    return `<a href="${hedef || './'}" hreflang="${d}" lang="${d}">${BAYRAK[d]}<span>${DILAD[d]}</span></a>`;
+  }).join('');
+  return `<details class="aa-dil-ac"><summary aria-label="${esc(i18n[dil].dil)}">${BAYRAK[dil]}<span>${dil.toUpperCase()}</span>${IK.ok}</summary><div><span class="aa-dil-secili">${BAYRAK[dil]}<span>${DILAD[dil]}</span></span>${digerleri}</div></details>`;
+}
+
 const telHref = n => 'tel:+' + String(n).replace(/\D/g, '');
 
 function header(dil, slugs) {
@@ -80,13 +88,7 @@ function header(dil, slugs) {
     `<li><a href="${href(dil, S.iletisim[dil].slug)}">${esc(S.iletisim[dil].ad)}</a></li>`
   ].join('');
   return `
-<div class="aa-serit">
-  <div class="aa-serit-ic">
-    ${A.telefon ? `<a class="aa-s-tel" href="${telHref(A.telefon)}" data-olay="telefon_tikla" data-konum="serit">${IK.tel}${esc(telGoster(A.telefon))}</a>` : '<span class="aa-s-tel"></span>'}
-    <div class="aa-s-kayan">${t.serit.map((s, i) => `<span${i === 0 ? ' class="on"' : ''}>${esc(s)}</span>`).join('')}</div>
-    ${dilSecici(dil, slugs, 'aa-dil')}
-  </div>
-</div>
+<div class="aa-serit"><div class="aa-kayan">${[0, 1].map(n => `<div class="aa-kayan-grup"${n ? ' aria-hidden="true"' : ''}>${t.serit.map(s => `<span>${esc(s)}</span>`).join('')}</div>`).join('')}</div></div>
 <header class="aa-header" id="aa-header">
   <div class="aa-ust">
     <button type="button" class="aa-ikon aa-menu-btn" aria-label="${esc(t.menu)}" aria-controls="aa-cekmece" aria-expanded="false">${IK.menu}</button>
@@ -97,6 +99,7 @@ function header(dil, slugs) {
       <button type="submit">${esc(t.araBtn)}</button>
     </form>
     <div class="aa-sag">
+      ${dilAcilir(dil, slugs)}
       <a class="aa-kisa aa-magaza" href="${href(dil, S.iletisim[dil].slug)}">${IK.konum}<span>${esc(t.magaza)}</span></a>
       <a class="aa-kisa aa-fav" href="${href(dil, S.favoriler[dil].slug)}" aria-label="${esc(S.favoriler[dil].ad)}">${IK.kalp}<b class="aa-fav-say" hidden>0</b><span>${esc(t.favori)}</span></a>
       <a class="aa-wp-btn aa-wp-iki" href="${wa(t.wpMesaj)}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="header">${IK.wp}<span><b>${esc(t.wpSiparis)}</b><small>${esc(telGoster(A.whatsapp))}</small></span></a>
