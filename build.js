@@ -264,7 +264,7 @@ function carkHtml(dil) {
 <script type="application/json" id="ck-veri">${JSON.stringify(veri).replace(/</g, '\\u003c')}</script>`;
 }
 
-function sayfa({ dil, slugs, baslik, aciklama, govde, ek = '', js = [], sinif = '' }) {
+function sayfa({ dil, slugs, baslik, aciklama, govde, ek = '', js = [], sinif = '', taban: tabanYolu = '', robots = '' }) {
   const taban = A.alanadi ? 'https://' + A.alanadi.replace(/^https?:\/\//, '').replace(/\/$/, '') + '/' : '';
   const alt = taban ? DILLER.map(d => `<link rel="alternate" hreflang="${d}" href="${taban}${dosya(d, slugs[d]).replace(/index\.html$/, '')}">`).join('\n') + `\n<link rel="alternate" hreflang="x-default" href="${taban}${dosya('tr', slugs.tr).replace(/index\.html$/, '')}">\n<link rel="canonical" href="${taban}${dosya(dil, slugs[dil]).replace(/index\.html$/, '')}">` : '';
   const gtm = A.gtm ? `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${esc(A.gtm)}');</script>` : '';
@@ -272,7 +272,7 @@ function sayfa({ dil, slugs, baslik, aciklama, govde, ek = '', js = [], sinif = 
   return `<!DOCTYPE html>
 <html lang="${HTMLLANG[dil]}">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8">${tabanYolu ? `\n<base href="${esc(tabanYolu)}">` : ''}${robots ? `\n<meta name="robots" content="${esc(robots)}">` : ''}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(baslik)}</title>
 <meta name="description" content="${esc(aciklama)}">
@@ -329,7 +329,8 @@ const kategoriSayfa = require('./sayfalar/kategori.js');
 const urunSayfa = require('./sayfalar/urun.js');
 const SAYFALAR = [
   ['beden', require('./sayfalar/beden.js')],
-  ['iletisim', require('./sayfalar/iletisim.js')]
+  ['iletisim', require('./sayfalar/iletisim.js')],
+  ['kvkk', require('./sayfalar/kvkk.js')]
 ];
 
 for (const dil of DILLER) {
@@ -349,5 +350,7 @@ for (const dil of DILLER) {
     yaz(dosya(dil, slugs[dil]), sayfa({ dil, slugs, ...urunSayfa(ctx, dil, u, URUNLER) }));
   }
 }
+
+yaz('404.html', sayfa({ dil: 'tr', slugs: { tr: '', en: '', ru: '' }, ...require('./sayfalar/bulunamadi.js')(ctx), taban: A.taban || '/' }));
 
 console.log('dist hazır');

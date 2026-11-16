@@ -57,11 +57,7 @@
     }
     return 0;
   };
-  var kodUret = function (tutar) {
-    var h = 'ABCDEFGHJKLMNPRSTUVYZ23456789', s = '';
-    for (var i = 0; i < 4; i++) s += h.charAt(Math.floor(Math.random() * h.length));
-    return 'AA' + tutar + '-' + s;
-  };
+  var kodUret = function (tutar) { return 'KOD' + tutar + 'TL'; };
 
   function sonucGoster(k, animasyon) {
     form.hidden = true;
