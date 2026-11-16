@@ -28,7 +28,10 @@
     "anasayfa": "Ana Sayfa",
     "kategoriler": "Kategoriler",
     "telefon": "Telefon",
-    "araBtn": "Ara"
+    "araBtn": "Ara",
+    "fSayfalar": "Sayfalar",
+    "populer": "Antalya'da Popüler",
+    "popKalip": "Antalya {ad}"
   },
   "en": {
     "serit": [
@@ -59,7 +62,10 @@
     "anasayfa": "Home",
     "kategoriler": "Categories",
     "telefon": "Call",
-    "araBtn": "Search"
+    "araBtn": "Search",
+    "fSayfalar": "Pages",
+    "populer": "Popular In Antalya",
+    "popKalip": "{ad} In Antalya"
   },
   "ru": {
     "serit": [
@@ -90,6 +96,9 @@
     "anasayfa": "Главная",
     "kategoriler": "Категории",
     "telefon": "Звонок",
-    "araBtn": "Найти"
+    "araBtn": "Найти",
+    "fSayfalar": "Страницы",
+    "populer": "Популярное В Анталье",
+    "popKalip": "{ad} В Анталье"
   }
 }

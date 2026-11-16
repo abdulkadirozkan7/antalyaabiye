@@ -33,6 +33,8 @@ const IK = {
   fb: '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M14 8.5V7a1.5 1.5 0 0 1 1.5-1.5H17v-3h-2.2a4.3 4.3 0 0 0-4.3 4.3v1.7H8v3.2h2.5v9.8H14v-9.8h2.6l.4-3.2z"/></svg>',
   ev: '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 10.5L12 4l8 6.5V20h-5.5v-5.5h-5V20H4z"/></svg>',
   izgara: '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>',
+  gg: '<svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285f4" d="M21.6 12.23c0-.71-.06-1.39-.18-2.05H12v3.87h5.38a4.6 4.6 0 0 1-2 3.02v2.5h3.23c1.9-1.74 2.99-4.3 2.99-7.34z"/><path fill="#34a853" d="M12 22c2.7 0 4.96-.9 6.62-2.43l-3.23-2.5c-.9.6-2.04.96-3.39.96-2.6 0-4.81-1.76-5.6-4.12H3.06v2.58A10 10 0 0 0 12 22z"/><path fill="#fbbc05" d="M6.4 13.91a6 6 0 0 1 0-3.82V7.51H3.06a10 10 0 0 0 0 8.98l3.34-2.58z"/><path fill="#ea4335" d="M12 5.97c1.47 0 2.79.5 3.83 1.5l2.86-2.87A9.97 9.97 0 0 0 12 2a10 10 0 0 0-8.94 5.51l3.34 2.58C7.19 7.73 9.4 5.97 12 5.97z"/></svg>',
+  fbDolu: '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M13.6 21v-7.9h2.65l.4-3.1H13.6V8.05c0-.9.25-1.5 1.53-1.5h1.64V3.78a22 22 0 0 0-2.39-.12c-2.36 0-3.98 1.44-3.98 4.09V10H7.73v3.1h2.67V21z"/></svg>',
   saat: '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round"><circle cx="12" cy="12" r="8.500"/><path d="M12 7.500V12l3 2"/></svg>'
 };
 
@@ -117,26 +119,33 @@ function footer(dil, slugs) {
   const t = i18n[dil];
   const S = site.sayfalar;
   const sl = (k) => `<li><a href="${href(dil, k[dil].slug)}">${esc(k[dil].ad)}</a></li>`;
-  const kategoriler = site.kategoriler.filter(k => k.id !== 'yeni').map(sl).join('');
-  const kurumsal = [S.hakkimizda, S.blog, S.iletisim].map(sl).join('');
-  const yardim = [S.siparis, S.beden, S.sss, S.kvkk, S.gizlilik].map(sl).join('');
+  const kats = site.kategoriler.filter(k => k.id !== 'yeni');
+  const kategoriler = kats.map(sl).join('');
+  const sayfalar = `<li><a href="./">${esc(t.anasayfa)}</a></li>` + [S.hakkimizda, S.beden, S.siparis, S.sss, S.blog, S.iletisim].map(sl).join('');
   const tel = A.telefon || A.whatsapp;
-  const satir = (ik, ic) => `<li>${ik}<span>${ic}</span></li>`;
+  const waLink = wa(t.wpMesaj);
+  const igLink = A.instagram ? `https://www.instagram.com/${esc(A.instagram)}/` : '';
+  const fbLink = A.facebook ? `https://www.facebook.com/${esc(A.facebook)}` : '';
   const iletisim = [
-    satir(IK.wp, `<small>${esc(t.fWp)}</small><a href="${wa(t.wpMesaj)}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="footer">${esc(telGoster(A.whatsapp))}</a>`),
-    A.telefon ? satir(IK.tel, `<small>${esc(t.magaza)}</small><a href="${telHref(A.telefon)}" data-olay="telefon_tikla" data-konum="footer">${esc(telGoster(A.telefon))}</a>`) : '',
-    A.adres ? satir(IK.konum, A.harita ? `<a href="${esc(A.harita)}" target="_blank" rel="noopener">${esc(A.adres)}</a>` : esc(A.adres)) : '',
-    A.saatler ? satir(IK.saat, esc(A.saatler)) : ''
+    `<li><small>WhatsApp</small><a href="${waLink}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="footer">${esc(telGoster(A.whatsapp))}</a></li>`,
+    A.telefon ? `<li><small>${esc(t.magaza)}</small><a href="${telHref(A.telefon)}" data-olay="telefon_tikla" data-konum="footer">${esc(telGoster(A.telefon))}</a></li>` : '',
+    A.adres ? `<li>${A.harita ? `<a href="${esc(A.harita)}" target="_blank" rel="noopener">${esc(A.adres)}</a>` : esc(A.adres)}</li>` : '',
+    A.saatler ? `<li>${esc(A.saatler)}</li>` : ''
   ].join('');
-  const sosyal = [
-    A.instagram ? `<a href="https://www.instagram.com/${esc(A.instagram)}/" target="_blank" rel="noopener" aria-label="Instagram">${IK.ig}</a>` : '',
-    A.facebook ? `<a href="https://www.facebook.com/${esc(A.facebook)}" target="_blank" rel="noopener" aria-label="Facebook">${IK.fb}</a>` : ''
+  const daire = [
+    igLink ? `<a class="aa-s-ig" href="${igLink}" target="_blank" rel="noopener" aria-label="Instagram">${IK.ig}</a>` : '',
+    fbLink ? `<a class="aa-s-fb" href="${fbLink}" target="_blank" rel="noopener" aria-label="Facebook">${IK.fbDolu}</a>` : '',
+    A.google ? `<a href="${esc(A.google)}" target="_blank" rel="noopener" aria-label="Google">${IK.gg}</a>` : '',
+    `<a class="aa-s-wp" href="${waLink}" target="_blank" rel="noopener" aria-label="WhatsApp" data-olay="whatsapp_tikla" data-konum="footer_ikon">${IK.wp}</a>`
   ].join('');
+  const populer = kats.filter(k => !k.vurgu).map(k => `<a href="${href(dil, k[dil].slug)}">${esc(t.popKalip.replace('{ad}', k[dil].ad))}</a>`).join('');
   const buyukWp = IK.wp.replace('width="20" height="20"', 'width="26" height="26"');
   const yan = [
-    `<a class="aa-y-wp" href="${wa(t.wpMesaj)}" target="_blank" rel="noopener" aria-label="WhatsApp" data-olay="whatsapp_tikla" data-konum="sabit">${buyukWp}</a>`,
-    `<a href="${telHref(tel)}" aria-label="${esc(t.ara2)}" data-olay="telefon_tikla" data-konum="sabit">${IK.tel}</a>`,
-    A.instagram ? `<a href="https://www.instagram.com/${esc(A.instagram)}/" target="_blank" rel="noopener" aria-label="Instagram">${IK.ig}</a>` : ''
+    `<a class="aa-y-wp" href="${waLink}" target="_blank" rel="noopener" aria-label="WhatsApp" data-olay="whatsapp_tikla" data-konum="sabit">${buyukWp}</a>`,
+    `<a class="aa-y-tel" href="${telHref(tel)}" aria-label="${esc(t.ara2)}" data-olay="telefon_tikla" data-konum="sabit">${IK.tel}</a>`,
+    igLink ? `<a class="aa-y-ig" href="${igLink}" target="_blank" rel="noopener" aria-label="Instagram">${IK.ig}</a>` : '',
+    fbLink ? `<a class="aa-y-fb" href="${fbLink}" target="_blank" rel="noopener" aria-label="Facebook">${IK.fbDolu}</a>` : '',
+    A.google ? `<a class="aa-y-gg" href="${esc(A.google)}" target="_blank" rel="noopener" aria-label="Google">${IK.gg}</a>` : ''
   ].join('');
   return `
 <footer class="aa-footer">
@@ -144,23 +153,23 @@ function footer(dil, slugs) {
     <div class="aa-f-marka">
       <a href="./" aria-label="${esc(A.marka)}"><img src="${kok(dil)}assets/img/logo.webp" width="480" height="409" alt="${esc(A.marka)}" loading="lazy"></a>
       <p>${esc(t.fSlogan)}</p>
-      <div class="aa-f-sosyal">${sosyal}</div>
     </div>
-    <div class="aa-f-kol aa-f-iki"><h2>${esc(t.fKategori)}</h2><ul>${kategoriler}</ul></div>
-    <div class="aa-f-kol"><h2>${esc(t.fKurumsal)}</h2><ul>${kurumsal}</ul><h2>${esc(t.fYardim)}</h2><ul>${yardim}</ul></div>
-    <div class="aa-f-kol aa-f-iletisim"><h2>${esc(t.fIletisim)}</h2><ul>${iletisim}</ul><a class="aa-wp-btn" href="${wa(t.wpMesaj)}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="footer_buton">${IK.wp}<span>${esc(t.wpSiparis)}</span></a></div>
+    <div class="aa-f-kol"><h2>${esc(t.fKategori)}</h2><ul>${kategoriler}</ul></div>
+    <div class="aa-f-kol"><h2>${esc(t.fSayfalar)}</h2><ul>${sayfalar}</ul></div>
+    <div class="aa-f-kol aa-f-iletisim"><h2>${esc(t.fIletisim)}</h2><ul>${iletisim}</ul><div class="aa-f-sosyal">${daire}</div></div>
   </div>
+  <div class="aa-f-pop"><b>${esc(t.populer)}</b>${populer}</div>
   <div class="aa-f-alt">
-    <p>© ${new Date().getFullYear()} ${esc(A.marka)}. ${esc(t.fHak)}</p>
+    <p>© ${new Date().getFullYear()} ${esc(A.marka)} · ${esc(t.fHak)}</p>
+    <p><a href="${href(dil, S.kvkk[dil].slug)}">${esc(S.kvkk[dil].ad)}</a> · <a href="${href(dil, S.gizlilik[dil].slug)}">${esc(S.gizlilik[dil].ad)}</a></p>
     ${dilSecici(dil, slugs, 'aa-dil')}
-    <p class="aa-f-imza"><a href="https://ozkandijital.com.tr" target="_blank" rel="noopener">Özkan Dijital</a></p>
   </div>
 </footer>
 <div class="aa-yan">${yan}</div>
 <nav class="aa-alt-bar" aria-label="${esc(t.menu)}">
   <a href="./">${IK.ev}<span>${esc(t.anasayfa)}</span></a>
   <button type="button" class="aa-kat-btn">${IK.izgara}<span>${esc(t.kategoriler)}</span></button>
-  <a class="aa-ab-wp" href="${wa(t.wpMesaj)}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="alt_bar"><i>${buyukWp}</i><span>WhatsApp</span></a>
+  <a class="aa-ab-wp" href="${waLink}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="alt_bar"><i>${buyukWp}</i><span>WhatsApp</span></a>
   <a class="aa-fav" href="${href(dil, S.favoriler[dil].slug)}">${IK.kalp}<b class="aa-fav-say" hidden>0</b><span>${esc(t.favori)}</span></a>
   <a href="${telHref(tel)}" data-olay="telefon_tikla" data-konum="alt_bar">${IK.tel}<span>${esc(t.telefon)}</span></a>
 </nav>`;
