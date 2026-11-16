@@ -22,6 +22,8 @@ Panel (`/yonetim/`) ve çarkıfelek numara kaydı tek bir Google Apps Script üz
 3. `sifreBelirle` fonksiyonundaki `YENI_SIFRE = ''` satırına panel şifresini yaz, `sifreBelirle`'yi çalıştır, sonra satırı tekrar boşalt ve kaydet.
    - Kullanıcı adı: `zafer` (değiştirmek için özelliklerdeki `YONETICI_KULLANICI`).
 
+4. E-tabloyu müşteriyle paylaşmak için `eTabloyuPaylas` fonksiyonundaki `EPOSTA = ''` satırına adresi yaz, çalıştır. (Adres GitHub'a yazılmaz, sadece Apps Script'te kalır.) Ya da e-tablonun sağ üstündeki **Paylaş** butonunu kullan.
+
 ## 4. Yayınla
 
 1. **Dağıt → Yeni dağıtım → Tür: Web uygulaması**.

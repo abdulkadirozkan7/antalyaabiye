@@ -29,6 +29,8 @@
 
   var form = d.getElementById('ur-form');
   if (!form) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: 'urun_goruntule', urun: form.getAttribute('data-kod'), ad: form.getAttribute('data-ad') });
   var wp = d.getElementById('ur-wp');
   var sepetBtn = d.getElementById('ur-sepet');
   var sabitBtn = d.querySelector('.ur-sabit-btn');

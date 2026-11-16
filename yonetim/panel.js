@@ -15,6 +15,17 @@
   };
   var BEDENLER = ['34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56'];
   var GUNLER = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'];
+  var ONERI = {
+    urun: '1200 × 1800 px · dikey (2:3)',
+    banner: '1920 × 700 px · yatay',
+    bannerMobil: '1000 × 1250 px · dikey (4:5)',
+    vitrin: '1200 × 1000 px · önemli kısım ortada',
+    blog: '1600 × 900 px · yatay (16:9)',
+    kapak: '1080 × 1920 px · dikey (9:16)',
+    magaza: '1600 × 1067 px · yatay (3:2)',
+    kategori: '1200 × 630 px · yatay',
+    video: 'MP4 · 1080 × 1920 px · dikey (9:16) · en fazla 20 MB'
+  };
   var BOYUT = { urun: 1800, banner: 1920, bannerMobil: 1000, vitrin: 1200, blog: 1600, kapak: 1080, magaza: 1600, kategori: 1600 };
 
   var S = { api: '', token: sessionStorage.getItem('aa_panel_token') || '', demo: false, veri: {}, gorunum: 'urunler', duzen: null };
@@ -148,7 +159,7 @@
     var tek = max === 1;
     var liste = tek ? (v ? [v] : []) : (v || []).filter(Boolean);
     var video = tur === 'video';
-    return '<div class="alan genis foto-alan" data-yol="' + yol + '" data-tur="' + tur + '" data-max="' + max + '"><label>' + esc(etiket) + '</label><div class="fotolar">' +
+    return '<div class="alan genis foto-alan" data-yol="' + yol + '" data-tur="' + tur + '" data-max="' + max + '"><div class="foto-bas"><label>' + esc(etiket) + '</label>' + (ONERI[tur] ? '<span class="foto-oneri"><b>Önerilen:</b> ' + esc(ONERI[tur]) + (video ? '' : ' · JPG/PNG yükle, otomatik WebP\'ye çevrilip küçültülür') + '</span>' : '') + '</div><div class="fotolar">' +
       liste.map(function (p, i) {
         return '<div class="foto" data-i="' + i + '">' + (video ? '<video src="../' + esc(p) + '" muted></video>' : '<img src="../' + esc(p) + '" alt="">') +
           '<div class="foto-btn">' + (!tek && i > 0 ? '<button type="button" data-foto="sol" title="Sola al">‹</button>' : '') + '<button type="button" data-foto="sil" title="Kaldır">×</button>' + (!tek && i < liste.length - 1 ? '<button type="button" data-foto="sag" title="Sağa al">›</button>' : '') + '</div>' + (i === 0 && !tek ? '<b class="foto-ana">Kapak</b>' : '') + '</div>';
@@ -193,7 +204,7 @@
           return p.then(function () { return dosyaYukle(f, tur, ad).then(function (y) { mevcut.push(y); }); });
         }, Promise.resolve()).catch(function () {}).then(function () {
           ata(nesne, yol, max === 1 ? (mevcut[0] || getir(nesne, yol) || '') : mevcut);
-          fa.outerHTML = fotoAlan(fa.querySelector('label').textContent, yol, nesne, tur, max, (fa.querySelector('.ipucu') || {}).textContent);
+          fa.outerHTML = fotoAlan(fa.querySelector('.foto-bas label').textContent, yol, nesne, tur, max, (fa.querySelector('.ipucu') || {}).textContent);
           if (degisti) degisti(yol, getir(nesne, yol));
         });
       }
@@ -209,7 +220,7 @@
           else { var j = b.dataset.foto === 'sol' ? i - 1 : i + 1; var x = l[i]; l[i] = l[j]; l[j] = x; }
           ata(nesne, yol, l);
         }
-        fa.outerHTML = fotoAlan(fa.querySelector('label').textContent, yol, nesne, fa.dataset.tur, max, (fa.querySelector('.ipucu') || {}).textContent);
+        fa.outerHTML = fotoAlan(fa.querySelector('.foto-bas label').textContent, yol, nesne, fa.dataset.tur, max, (fa.querySelector('.ipucu') || {}).textContent);
         if (degisti) degisti(yol, getir(nesne, yol));
       }
       var sk = e.target.closest('[data-sekme]');
@@ -617,7 +628,7 @@
       }).join('') + '</div>' +
       '<h3>Rakamlar</h3><div class="izgara">' + alan('Google Puanı', 'googlePuan', A, 'text', { ph: '4,7' }) + alan('Google Yorum Sayısı', 'googleYorum', A, 'number') + alan('Instagram Takipçi Sayısı', 'instagramTakipci', A, 'number') + '</div>' +
       fotoAlan('Mağaza Fotoğrafı (Hakkımızda sayfası)', 'magazaGorsel', A, 'magaza', 1) +
-      '<h3>Takip Ve Alan Adı</h3><div class="izgara">' + alan('Google Tag Manager Kimliği', 'gtm', A, 'text', { ph: 'GTM-XXXXXXX', ipucu: 'GA4 ve Meta Pixel GTM üzerinden bağlanır.' }) + alan('Alan Adı', 'alanadi', A, 'text', { ph: 'antalyaabiye.com', ipucu: 'Gerçek alan adı bağlanınca yazılır. Canonical ve site haritası buna göre oluşur.' }) + '</div></form>';
+      '<h3>Takip Ve Alan Adı</h3><div class="izgara">' + alan('Google Analytics 4 Ölçüm Kimliği', 'ga4', A, 'text', { ph: 'G-XXXXXXXXXX' }) + alan('Meta Pixel Kimliği', 'metaPixel', A, 'text', { ph: '123456789012345' }) + alan('TikTok Pixel Kimliği', 'tiktokPixel', A, 'text', { ph: 'CXXXXXXXXXXXXXXXXXXX' }) + alan('Google Tag Manager Kimliği', 'gtm', A, 'text', { ph: 'GTM-XXXXXXX', ipucu: 'Yukarıdakileri GTM içinde de kurduysan orada boş bırak, yoksa çift sayılır.' }) + alan('Search Console Doğrulama Kodu', 'googleDogrulama', A, 'text', { ph: 'google-site-verification içeriği', ipucu: 'Search Console > HTML etiketi yöntemindeki content="..." değeri.' }) + alan('Alan Adı', 'alanadi', A, 'text', { ph: 'antalyaabiye.com', ipucu: 'Gerçek alan adı bağlanınca yazılır. Canonical ve site haritası buna göre oluşur.' }) + '</div></form>';
     var form = $('form', el);
     baglan(form, A);
     form.addEventListener('input', function (e) {

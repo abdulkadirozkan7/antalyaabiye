@@ -68,7 +68,7 @@
     else l.push({ kod: u.k, ad: u.a, url: pathYap(u.u || './'), foto: u.f || '', renk: renk, beden: beden, adet: 1 });
     yaz(l);
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'sepete_ekle', urun: u.k, renk: renk, beden: beden });
+    window.dataLayer.push({ event: 'sepete_ekle', urun: u.k, ad: u.a, renk: renk, beden: beden });
     ac(true);
   };
 

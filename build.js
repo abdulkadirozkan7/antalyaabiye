@@ -229,7 +229,7 @@ function sepetHtml(dil) {
   <div class="sp-bos" id="sp-bos"><span class="sp-bos-ikon">${IK.canta.replace('width="20" height="20"', 'width="40" height="40"')}</span><p>${esc(t.bos)}</p><button type="button" class="as-btn sp-devam">${esc(t.devam)}</button></div>
   <div class="sp-alt" id="sp-alt" hidden>
     <p class="sp-not">${esc(t.not)}</p>
-    <a class="aa-wp-btn aa-genis sp-tamamla" id="sp-tamamla" href="#" target="_blank" rel="noopener" data-olay="whatsapp_siparis" data-konum="sepet">${IK.wp}<span>${esc(t.tamamla)}</span></a>
+    <a class="aa-wp-btn aa-genis sp-tamamla" id="sp-tamamla" href="#" target="_blank" rel="noopener">${IK.wp}<span>${esc(t.tamamla)}</span></a>
     <button type="button" class="sp-devam sp-devam-link">${esc(t.devam)}</button>
   </div>
 </aside>
@@ -327,6 +327,13 @@ function sayfa({ dil, slugs, baslik, aciklama, govde, ek = '', js = [], sinif = 
   const yol = yolSema(govde);
   const kirinti = yol && yol.length > 1 ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: yol.map((o, i) => ({ '@type': 'ListItem', position: i + 1, name: o.ad.replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"'), item: o.h ? new URL(o.h, kanonik).href : kanonik })) }).replace(/</g, '\\u003c')}</script>` : '';
   const gtm = A.gtm ? `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${esc(A.gtm)}');</script>` : '';
+  const ga4 = A.ga4 ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(A.ga4)}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${esc(A.ga4)}');</script>` : '';
+  const fb = A.metaPixel ? `<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${esc(A.metaPixel)}');fbq('track','PageView');</script>` : '';
+  const fbNs = A.metaPixel ? `<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${esc(A.metaPixel)}&ev=PageView&noscript=1" alt=""></noscript>` : '';
+  const tt = A.tiktokPixel ? `<script>!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=d.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=d.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};ttq.load('${esc(A.tiktokPixel)}');ttq.page();}(window,document,'ttq');</script>` : '';
+  const dogrula = A.googleDogrulama ? `<meta name="google-site-verification" content="${esc(A.googleDogrulama)}">` : '';
+  const izleme = (A.ga4 || A.metaPixel || A.tiktokPixel) ? `\n<script src="${kok(dil)}assets/js/izleme.js?v=${SURUM}" defer></script>` : '';
   const gtmNs = A.gtm ? `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${esc(A.gtm)}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>` : '';
   return `<!DOCTYPE html>
 <html lang="${HTMLLANG[dil]}">
@@ -347,16 +354,21 @@ ${kirinti}
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Ysabeau:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${kok(dil)}assets/css/site.css?v=${SURUM}">
 ${ek}
+${dogrula}
 ${gtm}
+${ga4}
+${fb}
+${tt}
 </head>
 <body${sinif ? ` class="${sinif}"` : ''}>
 ${gtmNs}
+${fbNs}
 ${header(dil, slugs)}
 <main id="icerik">${govde}</main>
 ${footer(dil, slugs)}
 ${sepetHtml(dil)}
 ${carkHtml(dil).split('{{KOK}}').join(kok(dil))}
-<script src="${kok(dil)}assets/js/site.js?v=${SURUM}" defer></script>
+<script src="${kok(dil)}assets/js/site.js?v=${SURUM}" defer></script>${izleme}
 <script src="${kok(dil)}assets/js/sepet.js?v=${SURUM}" defer></script>${site.cark && site.cark.aktif ? `\n<script src="${kok(dil)}assets/js/cark.js?v=${SURUM}" defer></script>` : ''}${js.map(f => `\n<script src="${kok(dil)}assets/js/${f}?v=${SURUM}" defer></script>`).join('')}
 </body>
 </html>

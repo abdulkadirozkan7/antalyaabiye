@@ -14,6 +14,13 @@ function kurulum() {
   Logger.log('Kurulum tamam. Şimdi GITHUB_TOKEN ekleyin ve sifreBelirle() çalıştırın.');
 }
 
+function eTabloyuPaylas() {
+  const EPOSTA = '';
+  if (!EPOSTA) throw new Error('EPOSTA satırına paylaşılacak e-posta adresini yazın.');
+  SpreadsheetApp.getActiveSpreadsheet().addEditor(EPOSTA);
+  Logger.log('E-tablo paylaşıldı: ' + EPOSTA);
+}
+
 function sifreBelirle() {
   const YENI_SIFRE = '';
   if (YENI_SIFRE.length < 10) throw new Error('YENI_SIFRE en az 10 karakter olmalı.');

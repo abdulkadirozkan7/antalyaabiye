@@ -148,3 +148,6 @@ h1,h2,h3{color:var(--m);margin:0}
   .sss-satir{grid-template-columns:1fr 36px}
   .sss-satir textarea{grid-column:1}
 }
+.foto-bas{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.foto-oneri{font-size:12px;color:#7a6c80;background:#f6eff3;border-radius:6px;padding:4px 8px}
+.foto-oneri b{color:#3a1747;font-weight:600}
