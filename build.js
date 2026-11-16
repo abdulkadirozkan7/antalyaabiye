@@ -7,6 +7,7 @@ const site = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/site.json'), 'utf8
 const i18n = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/i18n.json'), 'utf8'));
 const A = site.ayarlar;
 const DILLER = ['tr', 'en', 'ru'];
+const SURUM = Date.now().toString(36);
 const HTMLLANG = { tr: 'tr', en: 'en', ru: 'ru' };
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -215,7 +216,7 @@ ${alt}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Ysabeau:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${kok(dil)}assets/css/site.css">
+<link rel="stylesheet" href="${kok(dil)}assets/css/site.css?v=${SURUM}">
 ${ek}
 ${gtm}
 </head>
@@ -224,7 +225,7 @@ ${gtmNs}
 ${header(dil, slugs)}
 <main id="icerik">${govde}</main>
 ${footer(dil, slugs)}
-<script src="${kok(dil)}assets/js/site.js" defer></script>${js.map(f => `\n<script src="${kok(dil)}assets/js/${f}" defer></script>`).join('')}
+<script src="${kok(dil)}assets/js/site.js?v=${SURUM}" defer></script>${js.map(f => `\n<script src="${kok(dil)}assets/js/${f}?v=${SURUM}" defer></script>`).join('')}
 </body>
 </html>
 `;
