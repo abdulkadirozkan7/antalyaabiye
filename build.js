@@ -212,6 +212,58 @@ function footer(dil, slugs) {
 </nav>`;
 }
 
+function carkHtml(dil) {
+  const C = site.cark;
+  if (!C || !C.aktif || !C.dilimler || !C.dilimler.length) return '';
+  const t = i18n[dil].cark;
+  const S = site.sayfalar;
+  const n = C.dilimler.length;
+  const aci = 360 / n;
+  const nokta = (a, r) => { const rad = (a - 90) * Math.PI / 180; return [(150 + r * Math.cos(rad)).toFixed(2), (150 + r * Math.sin(rad)).toFixed(2)]; };
+  const dilimler = C.dilimler.map((d, i) => {
+    const koyu = ['#3a1747', '#d52878', '#7a49c9', '#f2683f'];
+    const [bg, fg] = i % 2 === 0 ? [koyu[(i / 2) % 4], '#fff'] : ['#fff', '#3a1747'];
+    const a1 = i * aci, a2 = (i + 1) * aci;
+    const [x1, y1] = nokta(a1, 132), [x2, y2] = nokta(a2, 132);
+    const orta = a1 + aci / 2;
+    return `<path d="M150 150 L${x1} ${y1} A132 132 0 0 1 ${x2} ${y2} Z" fill="${bg}"/><g transform="rotate(${orta} 150 150)"><text x="150" y="58" text-anchor="middle" fill="${fg}" font-size="22" font-weight="700" font-family="Onest,Arial,sans-serif">${d.tutar}</text><text x="150" y="80" text-anchor="middle" fill="${fg}" font-size="13" font-weight="600" letter-spacing="1.5" font-family="Onest,Arial,sans-serif">${esc(t.tl)}</text></g>`;
+  }).join('');
+  const lambalar = Array.from({ length: n * 3 }, (_, i) => { const [x, y] = nokta(i * 360 / (n * 3), 142); return `<circle cx="${x}" cy="${y}" r="3.2" fill="${i % 2 ? '#fdba74' : '#fff'}"/>`; }).join('');
+  const carkSvg = `<svg viewBox="0 0 300 300" aria-hidden="true"><circle cx="150" cy="150" r="148" fill="#24122b"/>${lambalar}<g class="ck-teker" id="ck-teker">${dilimler}</g><circle cx="150" cy="150" r="40" fill="#fff" stroke="#24122b" stroke-width="4"/><image href="${'{{KOK}}'}assets/img/logo.webp" x="118" y="122" width="64" height="55"/></svg><span class="ck-ok" aria-hidden="true"></span>`;
+  const veri = { dilimler: C.dilimler, kayitUrl: C.kayitUrl || '', wa: A.whatsapp, t: { mesaj: t.mesaj, kazandin: t.kazandin, hata: t.hata, kopyalandi: t.kopyalandi, kopyala: t.kopyala, donuyor: t.donuyor, cevir: t.cevir } };
+  return `
+<button type="button" class="ck-ac" id="ck-ac"><span class="ck-ac-ikon" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#24122b"/><path d="M20 20L20 3A17 17 0 0 1 36.2 15Z" fill="#d52878"/><path d="M20 20L36.2 15A17 17 0 0 1 30 33.8Z" fill="#fff"/><path d="M20 20L30 33.8A17 17 0 0 1 10 33.8Z" fill="#7a49c9"/><path d="M20 20L10 33.8A17 17 0 0 1 3.8 15Z" fill="#fff"/><path d="M20 20L3.8 15A17 17 0 0 1 20 3Z" fill="#fd8c2c"/><circle cx="20" cy="20" r="5" fill="#fff"/></svg></span><span>${esc(t.buton)}</span></button>
+<div class="ck" id="ck" role="dialog" aria-modal="true" aria-labelledby="ck-baslik" hidden>
+  <div class="ck-kutu">
+    <button type="button" class="ck-kapat" aria-label="${esc(t.kapat)}">${IK.x}</button>
+    <div class="ck-sol">
+      <div class="ck-bant">${esc(t.bant)}</div>
+      <div class="ck-cark">${carkSvg}</div>
+    </div>
+    <div class="ck-sag">
+      <form class="ck-form" id="ck-form" novalidate>
+        <h2 id="ck-baslik">${esc(t.baslik)}</h2>
+        <p>${esc(t.metin)}</p>
+        <input type="tel" name="tel" inputmode="tel" autocomplete="tel" placeholder="${esc(t.telefon)}" maxlength="18" required>
+        <p class="ck-hata" hidden>${esc(t.hata)}</p>
+        <label><input type="checkbox" name="ticari" required><span>${esc(t.ticari)} *</span></label>
+        <label><input type="checkbox" name="kvkk" required><span>${esc(t.kvkk).replace('KVKK', `<a href="${href(dil, S.kvkk[dil].slug)}" target="_blank">KVKK</a>`)} *</span></label>
+        <button type="submit" class="ck-cevir" disabled>${esc(t.cevir)}</button>
+      </form>
+      <div class="ck-sonuc" id="ck-sonuc" hidden>
+        <p class="ck-tebrik">${esc(t.tebrik)}</p>
+        <h2 class="ck-kazandin"></h2>
+        <p class="ck-kod-et">${esc(t.kodun)}</p>
+        <div class="ck-kod"><b id="ck-kod"></b><button type="button" class="ck-kopyala">${esc(t.kopyala)}</button></div>
+        <a class="aa-wp-btn aa-genis ck-kullan" id="ck-kullan" href="#" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="cark">${IK.wp}<span>${esc(t.kullan)}</span></a>
+        <p class="ck-not">${esc(t.not)}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="application/json" id="ck-veri">${JSON.stringify(veri).replace(/</g, '\\u003c')}</script>`;
+}
+
 function sayfa({ dil, slugs, baslik, aciklama, govde, ek = '', js = [], sinif = '' }) {
   const taban = A.alanadi ? 'https://' + A.alanadi.replace(/^https?:\/\//, '').replace(/\/$/, '') + '/' : '';
   const alt = taban ? DILLER.map(d => `<link rel="alternate" hreflang="${d}" href="${taban}${dosya(d, slugs[d]).replace(/index\.html$/, '')}">`).join('\n') + `\n<link rel="alternate" hreflang="x-default" href="${taban}${dosya('tr', slugs.tr).replace(/index\.html$/, '')}">\n<link rel="canonical" href="${taban}${dosya(dil, slugs[dil]).replace(/index\.html$/, '')}">` : '';
@@ -238,7 +290,8 @@ ${gtmNs}
 ${header(dil, slugs)}
 <main id="icerik">${govde}</main>
 ${footer(dil, slugs)}
-<script src="${kok(dil)}assets/js/site.js?v=${SURUM}" defer></script>${js.map(f => `\n<script src="${kok(dil)}assets/js/${f}?v=${SURUM}" defer></script>`).join('')}
+${carkHtml(dil).split('{{KOK}}').join(kok(dil))}
+<script src="${kok(dil)}assets/js/site.js?v=${SURUM}" defer></script>${site.cark && site.cark.aktif ? `\n<script src="${kok(dil)}assets/js/cark.js?v=${SURUM}" defer></script>` : ''}${js.map(f => `\n<script src="${kok(dil)}assets/js/${f}?v=${SURUM}" defer></script>`).join('')}
 </body>
 </html>
 `;

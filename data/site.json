@@ -456,5 +456,31 @@
       "kategori": "mezuniyet",
       "gorsel": ""
     }
-  ]
+  ],
+  "cark": {
+    "aktif": true,
+    "kayitUrl": "",
+    "dilimler": [
+      {
+        "tutar": 100,
+        "olasilik": 45
+      },
+      {
+        "tutar": 500,
+        "olasilik": 25
+      },
+      {
+        "tutar": 750,
+        "olasilik": 15
+      },
+      {
+        "tutar": 1000,
+        "olasilik": 10
+      },
+      {
+        "tutar": 2000,
+        "olasilik": 5
+      }
+    ]
+  }
 }

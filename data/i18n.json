@@ -58,7 +58,29 @@
         "Beden Danışmanlığı",
         "Ölçülerini gönder, bedenini birlikte seçelim."
       ]
-    ]
+    ],
+    "cark": {
+      "buton": "Çarkı çevir, indirim kazan!",
+      "bant": "Çarkı Çevir, Kazan!",
+      "baslik": "Hediye çarkını çevir, indirimini kazan!",
+      "metin": "Telefon numaranı yaz, çarkı çevir; kazandığın kodu WhatsApp'tan kullan.",
+      "telefon": "Telefon numaran",
+      "ticari": "Kampanya ve indirimlerden SMS ve WhatsApp ile haberdar olmak için Antalya Abiye'nin bana ticari ileti göndermesini kabul ediyorum.",
+      "kvkk": "Kişisel verilerimin KVKK Aydınlatma Metni kapsamında işlenmesini onaylıyorum.",
+      "cevir": "Çarkı Çevir",
+      "donuyor": "Çark dönüyor...",
+      "tebrik": "Tebrikler!",
+      "kazandin": "{tutar} TL indirim kazandın",
+      "kodun": "İndirim kodun",
+      "kopyala": "Kopyala",
+      "kopyalandi": "Kopyalandı",
+      "kullan": "WhatsApp'tan Kullan",
+      "not": "Kodu siparişini verirken WhatsApp'tan ilet.",
+      "mesaj": "Merhaba, çarkıfelekten {tutar} TL indirim kazandım.\nKodum: {kod}\nTelefon: {tel}",
+      "hata": "Geçerli bir telefon numarası yaz.",
+      "kapat": "Kapat",
+      "tl": "TL"
+    }
   },
   "en": {
     "serit": [
@@ -119,7 +141,29 @@
         "Size Advice",
         "Send your measurements and we will pick your size together."
       ]
-    ]
+    ],
+    "cark": {
+      "buton": "Spin the wheel, win a discount!",
+      "bant": "Spin And Win!",
+      "baslik": "Spin the gift wheel and win your discount!",
+      "metin": "Enter your phone number, spin the wheel and use your code on WhatsApp.",
+      "telefon": "Your phone number",
+      "ticari": "I agree that Antalya Abiye may send me commercial messages about offers by SMS and WhatsApp.",
+      "kvkk": "I consent to the processing of my personal data under the Data Protection Notice.",
+      "cevir": "Spin The Wheel",
+      "donuyor": "Spinning...",
+      "tebrik": "Congratulations!",
+      "kazandin": "You won a {tutar} TL discount",
+      "kodun": "Your discount code",
+      "kopyala": "Copy",
+      "kopyalandi": "Copied",
+      "kullan": "Use On WhatsApp",
+      "not": "Send the code on WhatsApp when you place your order.",
+      "mesaj": "Hello, I won a {tutar} TL discount on the wheel.\nMy code: {kod}\nPhone: {tel}",
+      "hata": "Please enter a valid phone number.",
+      "kapat": "Close",
+      "tl": "TL"
+    }
   },
   "ru": {
     "serit": [
@@ -180,6 +224,28 @@
         "Помощь С Размером",
         "Пришлите мерки, и мы вместе подберём размер."
       ]
-    ]
+    ],
+    "cark": {
+      "buton": "Крутите колесо, получите скидку!",
+      "bant": "Крутите И Выигрывайте!",
+      "baslik": "Крутите колесо подарков и получите скидку!",
+      "metin": "Введите номер телефона, крутите колесо и используйте код в WhatsApp.",
+      "telefon": "Ваш номер телефона",
+      "ticari": "Я согласен(на) получать от Antalya Abiye рекламные сообщения об акциях по SMS и WhatsApp.",
+      "kvkk": "Я даю согласие на обработку персональных данных в соответствии с уведомлением о защите данных.",
+      "cevir": "Крутить Колесо",
+      "donuyor": "Колесо крутится...",
+      "tebrik": "Поздравляем!",
+      "kazandin": "Вы выиграли скидку {tutar} TL",
+      "kodun": "Ваш код скидки",
+      "kopyala": "Копировать",
+      "kopyalandi": "Скопировано",
+      "kullan": "Использовать В WhatsApp",
+      "not": "Отправьте код в WhatsApp при оформлении заказа.",
+      "mesaj": "Здравствуйте, я выиграл(а) скидку {tutar} TL на колесе.\nМой код: {kod}\nТелефон: {tel}",
+      "hata": "Введите корректный номер телефона.",
+      "kapat": "Закрыть",
+      "tl": "TL"
+    }
   }
 }
