@@ -135,37 +135,45 @@ function footer(dil, slugs) {
     A.adres ? `<li>${A.harita ? `<a href="${esc(A.harita)}" target="_blank" rel="noopener">${esc(A.adres)}</a>` : esc(A.adres)}</li>` : '',
     A.saatler ? `<li>${esc(A.saatler)}</li>` : ''
   ].join('');
-  const daire = [
-    igLink ? `<a class="aa-s-ig" href="${igLink}" target="_blank" rel="noopener" aria-label="Instagram">${IK.ig}</a>` : '',
-    fbLink ? `<a class="aa-s-fb" href="${fbLink}" target="_blank" rel="noopener" aria-label="Facebook">${IK.fbDolu}</a>` : '',
-    A.google ? `<a href="${esc(A.google)}" target="_blank" rel="noopener" aria-label="Google">${IK.gg}</a>` : '',
-    `<a class="aa-s-wp" href="${waLink}" target="_blank" rel="noopener" aria-label="WhatsApp" data-olay="whatsapp_tikla" data-konum="footer_ikon">${IK.wp}</a>`
+  const sosyal = [
+    igLink ? `<a href="${igLink}" target="_blank" rel="noopener">${IK.ig}<span>Instagram</span></a>` : '',
+    fbLink ? `<a href="${fbLink}" target="_blank" rel="noopener">${IK.fb}<span>Facebook</span></a>` : '',
+    A.google ? `<a href="${esc(A.google)}" target="_blank" rel="noopener">${IK.konum}<span>Google</span></a>` : ''
   ].join('');
-  const populer = kats.filter(k => !k.vurgu).map(k => `<a href="${href(dil, k[dil].slug)}">${esc(t.popKalip.replace('{ad}', k[dil].ad))}</a>`).join('');
   const buyukWp = IK.wp.replace('width="20" height="20"', 'width="26" height="26"');
   const yan = [
-    `<a class="aa-y-wp" href="${waLink}" target="_blank" rel="noopener" aria-label="WhatsApp" data-olay="whatsapp_tikla" data-konum="sabit">${buyukWp}</a>`,
-    `<a class="aa-y-tel" href="${telHref(tel)}" aria-label="${esc(t.ara2)}" data-olay="telefon_tikla" data-konum="sabit">${IK.tel}</a>`,
-    igLink ? `<a class="aa-y-ig" href="${igLink}" target="_blank" rel="noopener" aria-label="Instagram">${IK.ig}</a>` : '',
-    fbLink ? `<a class="aa-y-fb" href="${fbLink}" target="_blank" rel="noopener" aria-label="Facebook">${IK.fbDolu}</a>` : '',
-    A.google ? `<a class="aa-y-gg" href="${esc(A.google)}" target="_blank" rel="noopener" aria-label="Google">${IK.gg}</a>` : ''
+    `<a class="aa-y-wp" href="${waLink}" target="_blank" rel="noopener" aria-label="WhatsApp" data-olay="whatsapp_tikla" data-konum="sabit">${IK.wp}</a>`,
+    `<a href="${telHref(tel)}" aria-label="${esc(t.ara2)}" data-olay="telefon_tikla" data-konum="sabit">${IK.tel}</a>`,
+    igLink ? `<a href="${igLink}" target="_blank" rel="noopener" aria-label="Instagram">${IK.ig}</a>` : '',
+    fbLink ? `<a href="${fbLink}" target="_blank" rel="noopener" aria-label="Facebook">${IK.fb}</a>` : '',
+    A.google ? `<a href="${esc(A.google)}" target="_blank" rel="noopener" aria-label="Google">${IK.konum}</a>` : ''
   ].join('');
   return `
 <footer class="aa-footer">
-  <div class="aa-f-ic">
-    <div class="aa-f-marka">
-      <a href="./" aria-label="${esc(A.marka)}"><img src="${kok(dil)}assets/img/logo.webp" width="480" height="409" alt="${esc(A.marka)}" loading="lazy"></a>
-      <p>${esc(t.fSlogan)}</p>
+  <div class="aa-f-cta">
+    <a class="aa-f-logo" href="./" aria-label="${esc(A.marka)}"><img src="${kok(dil)}assets/img/logo.webp" width="480" height="409" alt="${esc(A.marka)}" loading="lazy"></a>
+    <div class="aa-f-cta-yazi">
+      <h2>${esc(t.ctaBaslik)}</h2>
+      <p>${esc(t.ctaMetin)}</p>
     </div>
-    <div class="aa-f-kol"><h2>${esc(t.fKategori)}</h2><ul>${kategoriler}</ul></div>
-    <div class="aa-f-kol"><h2>${esc(t.fSayfalar)}</h2><ul>${sayfalar}</ul></div>
-    <div class="aa-f-kol aa-f-iletisim"><h2>${esc(t.fIletisim)}</h2><ul>${iletisim}</ul><div class="aa-f-sosyal">${daire}</div></div>
+    <a class="aa-wp-btn aa-wp-iki" href="${waLink}" target="_blank" rel="noopener" data-olay="whatsapp_tikla" data-konum="footer_cta">${IK.wp}<span><b>${esc(t.wpSiparis)}</b><small>${esc(telGoster(A.whatsapp))}</small></span></a>
   </div>
-  <div class="aa-f-pop"><b>${esc(t.populer)}</b>${populer}</div>
-  <div class="aa-f-alt">
-    <p>© ${new Date().getFullYear()} ${esc(A.marka)} · ${esc(t.fHak)}</p>
-    <p><a href="${href(dil, S.kvkk[dil].slug)}">${esc(S.kvkk[dil].ad)}</a> · <a href="${href(dil, S.gizlilik[dil].slug)}">${esc(S.gizlilik[dil].ad)}</a></p>
-    ${dilSecici(dil, slugs, 'aa-dil')}
+  <div class="aa-f-koyu">
+    <div class="aa-f-ic">
+      <div class="aa-f-marka">
+        <p>${esc(t.fSlogan)}</p>
+        <h2>${esc(t.fTakip)}</h2>
+        <div class="aa-f-sosyal">${sosyal}</div>
+      </div>
+      <div class="aa-f-model"><h2>${esc(t.fKategori)}</h2><ul>${kategoriler}</ul></div>
+      <div class="aa-f-kol"><h2>${esc(t.fSayfalar)}</h2><ul>${sayfalar}</ul></div>
+      <div class="aa-f-kol aa-f-iletisim"><h2>${esc(t.fIletisim)}</h2><ul>${iletisim}</ul></div>
+    </div>
+    <div class="aa-f-alt">
+      <p>© ${new Date().getFullYear()} ${esc(A.marka)} · ${esc(t.fHak)}</p>
+      <p><a href="${href(dil, S.kvkk[dil].slug)}">${esc(S.kvkk[dil].ad)}</a> · <a href="${href(dil, S.gizlilik[dil].slug)}">${esc(S.gizlilik[dil].ad)}</a></p>
+      ${dilSecici(dil, slugs, 'aa-dil')}
+    </div>
   </div>
 </footer>
 <div class="aa-yan">${yan}</div>

@@ -33,7 +33,10 @@
     "araBtn": "Ara",
     "fSayfalar": "Sayfalar",
     "populer": "Antalya'da Popüler",
-    "popKalip": "Antalya {ad}"
+    "popKalip": "Antalya {ad}",
+    "ctaBaslik": "Aklında Bir Model Mi Var?",
+    "ctaMetin": "Fotoğrafını ya da ürün kodunu WhatsApp'tan gönder, bedenini birlikte netleştirelim.",
+    "fTakip": "Bizi Takip Et"
   },
   "en": {
     "serit": [
@@ -69,7 +72,10 @@
     "araBtn": "Search",
     "fSayfalar": "Pages",
     "populer": "Popular In Antalya",
-    "popKalip": "{ad} In Antalya"
+    "popKalip": "{ad} In Antalya",
+    "ctaBaslik": "Got A Dress In Mind?",
+    "ctaMetin": "Send us its photo or product code on WhatsApp and we will sort out your size together.",
+    "fTakip": "Follow Us"
   },
   "ru": {
     "serit": [
@@ -105,6 +111,9 @@
     "araBtn": "Найти",
     "fSayfalar": "Страницы",
     "populer": "Популярное В Анталье",
-    "popKalip": "{ad} В Анталье"
+    "popKalip": "{ad} В Анталье",
+    "ctaBaslik": "Уже Присмотрели Платье?",
+    "ctaMetin": "Отправьте фото или код товара в WhatsApp, и мы вместе подберём ваш размер.",
+    "fTakip": "Мы В Соцсетях"
   }
 }
