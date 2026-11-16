@@ -1,4 +1,4 @@
-const { kart } = require('./katalog.js');
+const { kart, yol } = require('./katalog.js');
 
 const T = {
   tr: {
@@ -12,6 +12,9 @@ const T = {
     google: 'Google\'da {n} yorum',
     magaza: 'Güllük Caddesi\'nde mağaza',
     takipci: 'Instagram\'da {n} takipçi',
+    blogBaslik: 'Abiye Rehberi',
+    blogAlt: 'Model, beden ve renk seçimi için ipuçları',
+    blogTumu: 'Tüm Yazılar',
     cokBaslik: 'Çok Satanlar',
     cokAlt: 'En çok tercih edilen abiye modelleri',
     sekmeYeni: 'Yeni Gelenler',
@@ -61,6 +64,9 @@ const T = {
     google: '{n} reviews on Google',
     magaza: 'Store on Güllük Street',
     takipci: '{n} followers on Instagram',
+    blogBaslik: 'Evening Dress Guides',
+    blogAlt: 'Tips on choosing style, size and colour',
+    blogTumu: 'All Posts',
     cokBaslik: 'Bestsellers',
     cokAlt: 'Our most popular evening dresses',
     sekmeYeni: 'New Arrivals',
@@ -110,6 +116,9 @@ const T = {
     google: '{n} отзывов в Google',
     magaza: 'Магазин на улице Гюллюк',
     takipci: '{n} подписчиков в Instagram',
+    blogBaslik: 'Советы По Выбору Платья',
+    blogAlt: 'Подсказки по выбору фасона, размера и цвета',
+    blogTumu: 'Все Статьи',
     cokBaslik: 'Хиты Продаж',
     cokAlt: 'Самые популярные вечерние платья',
     sekmeYeni: 'Новинки',
@@ -187,6 +196,8 @@ module.exports = function (ctx, dil) {
   const yeniUrunler = URUN.filter(u => !u.kategoriler.includes('firsat')).slice().reverse().slice(0, 10);
   const firsatUrunler = URUN.filter(u => u.kategoriler.includes('firsat')).slice(0, 10);
   const cokUrunler = URUN.filter(u => u.cokSatan).slice(0, 12);
+  const blogMod = require('./blog.js');
+  const blogYazilar = (ctx.BLOG || []).filter(y => y[dil]).slice(0, 4);
   const cokKat = kat('cok-satanlar');
   const okSol = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>';
   const okSag = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
@@ -198,7 +209,7 @@ module.exports = function (ctx, dil) {
     const u = v.urun ? URUN.find(x => x.kod === v.urun) : null;
     const baslik = (v[dil] && v[dil].baslik) || (u ? u[dil].ad : '');
     const medya = v.video
-      ? `<video class="ig-video" src="${esc(v.video)}"${v.kapak ? ` poster="${esc(v.kapak)}"` : ''} muted loop playsinline preload="none" aria-label="${esc(baslik || it.etiket)}"></video><button type="button" class="ig-ses" aria-label="${esc(it.sesAc)}" data-ac="${esc(it.sesAc)}" data-kapat="${esc(it.sesKapat)}">${sesKapali}</button>`
+      ? `<video class="ig-video" src="${esc(yol(dil, v.video))}"${v.kapak ? ` poster="${esc(yol(dil, v.kapak))}"` : ''} muted loop playsinline preload="none" aria-label="${esc(baslik || it.etiket)}"></video><button type="button" class="ig-ses" aria-label="${esc(it.sesAc)}" data-ac="${esc(it.sesAc)}" data-kapat="${esc(it.sesKapat)}">${sesKapali}</button>`
       : `<span class="ig-bos">${oynat}<small>${esc(it.bos)}</small></span>`;
     return `<li class="ig-kart">
     ${medya}
@@ -221,7 +232,7 @@ module.exports = function (ctx, dil) {
     const link = k ? href(dil, k[dil].slug) : './';
     const B = bn[dil];
     const gorsel = bn.gorsel
-      ? `<picture class="as-b-foto">${bn.gorselMobil ? `<source media="(max-width:700px)" srcset="${esc(bn.gorselMobil)}">` : ''}<img src="${esc(bn.gorsel)}" alt="${esc(B.baslik)}"${i ? ' loading="lazy"' : ''}></picture>`
+      ? `<picture class="as-b-foto">${bn.gorselMobil ? `<source media="(max-width:700px)" srcset="${esc(yol(dil, bn.gorselMobil))}">` : ''}<img src="${esc(yol(dil, bn.gorsel))}" alt="${esc(B.baslik)}" width="1920" height="700"${i ? ' loading="lazy"' : ' fetchpriority="high"'} decoding="async"></picture>`
       : `<svg class="as-b-isilti" viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${isilti(i)}</svg>`;
     const Hb = i === 0 ? 'h1' : 'h2';
     return `<a class="as-b-slayt${bn.gorsel ? ' as-b-gorselli' : ''}" href="${link}" aria-label="${esc(B.baslik)}">${gorsel}<span class="as-b-cerceve" aria-hidden="true"></span><span class="as-b-yazi"><small>${esc(B.ust)}</small><${Hb}>${esc(B.baslik)}</${Hb}><i class="as-b-cizgi" aria-hidden="true"></i>${B.alt ? `<span class="as-b-alt">${esc(B.alt)}</span>` : ''}<span class="as-b-btn">${esc(B.buton)}${ok}</span></span></a>`;
@@ -230,8 +241,6 @@ module.exports = function (ctx, dil) {
   <button type="button" class="as-b-ok as-b-ileri" aria-label="›"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
   <div class="as-b-alt-bar"><span class="as-b-sayac"><b id="as-b-no">01</b> / ${String((site.bannerlar || []).length).padStart(2, '0')}</span><div class="as-b-noktalar" id="as-b-noktalar">${(site.bannerlar || []).map((x, i) => `<button type="button"${i === 0 ? ' class="on"' : ''} aria-label="${i + 1}"></button>`).join('')}</div></div>
 </section>
-
-${ctx.avantajlar(dil).replace('class="aa-avantaj"', 'class="aa-avantaj as-avantaj"')}
 
 <section class="as-urunler">
   <div class="as-u-ust">
@@ -252,7 +261,7 @@ ${ctx.avantajlar(dil).replace('class="aa-avantaj"', 'class="aa-avantaj as-avanta
 <section class="as-vitrin">${(site.vitrin || []).map((v, i) => {
     const k = kat(v.kategori);
     if (!k) return '';
-    return `<a class="as-v as-v${i}${v.gorsel ? ' as-v-gorselli' : ''}" href="${href(dil, k[dil].slug)}">${v.gorsel ? `<img src="${esc(v.gorsel)}" alt="${esc(k[dil].ad)}" loading="lazy">` : ''}<span><b>${esc(k[dil].ad)}</b><em>${esc(t.kesfet)}${ok}</em></span></a>`;
+    return `<a class="as-v as-v${i}${v.gorsel ? ' as-v-gorselli' : ''}" href="${href(dil, k[dil].slug)}">${v.gorsel ? `<img src="${esc(yol(dil, v.gorsel))}" alt="${esc(k[dil].ad)}" width="900" height="1100" loading="lazy" decoding="async">` : ''}<span><b>${esc(k[dil].ad)}</b><em>${esc(t.kesfet)}${ok}</em></span></a>`;
   }).join('')}</section>
 
 ${cokUrunler.length ? `<section class="as-urunler as-cok">
@@ -308,21 +317,24 @@ ${igUrl ? `<section class="ig">
   <div class="as-harita"><iframe src="${esc(A.haritaEmbed)}" title="${esc(t.haritaBaslik)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
 </section>
 
+${blogYazilar.length ? `<section class="as-bolum as-blog">
+  <div class="as-u-ust">
+    <div><h2 class="as-blog-baslik">${esc(t.blogBaslik)}</h2><p class="as-blog-alt">${esc(t.blogAlt)}</p></div>
+    <a class="as-link" href="${href(dil, S.blog[dil].slug)}">${esc(t.blogTumu)}${ok}</a>
+  </div>
+  <ul class="bl-liste as-blog-liste">${blogYazilar.map(y => blogMod.kart(ctx, dil, y).replace(/<(\/?)h2>/g, '<$1h3>')).join('')}</ul>
+</section>` : ''}
+
 <section class="as-bolum as-alt">
   <div class="as-seo">
     <h2>${esc(t.seoBaslik)}</h2>
     ${t.seo.map(p => `<p>${esc(p)}</p>`).join('')}
-  </div>
-  <div class="as-sss">
-    <h2>${esc(t.sssBaslik)}</h2>
-    ${sss}
   </div>
 </section>`;
   return {
     baslik: t.baslik,
     aciklama: t.aciklama,
     govde,
-    ek: `<script type="application/ld+json">${JSON.stringify(sssSchema)}</script>`,
     js: ['anasayfa.js']
   };
 };

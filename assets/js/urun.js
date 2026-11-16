@@ -74,6 +74,24 @@
   });
   sabitBtn.addEventListener('click', function () { sepetBtn.click(); });
   form.addEventListener('change', guncelle);
+  var galeri = d.getElementById('ur-galeri');
+  var renkGaleri = galeri && galeri.getAttribute('data-renkler') ? JSON.parse(galeri.getAttribute('data-renkler')) : null;
+  if (renkGaleri) {
+    form.addEventListener('change', function (e) {
+      if (e.target.name !== 'renk' || !renkGaleri[e.target.value]) return;
+      var l = renkGaleri[e.target.value];
+      var adi = galeri.getAttribute('data-ad') + ' ' + e.target.value;
+      [].forEach.call(galeri.querySelectorAll('.ur-slayt'), function (sl, i) {
+        sl.innerHTML = l[i] ? '<img src="' + l[i] + '" alt="' + adi.replace(/"/g, '&quot;') + ' ' + (i + 1) + '" width="1200" height="1800">' : '';
+        sl.hidden = !l[i];
+      });
+      [].forEach.call(galeri.querySelectorAll('.ur-kucuk'), function (k, i) {
+        k.innerHTML = l[i] ? '<img src="' + l[i] + '" alt="" width="1200" height="1800">' : '';
+        k.hidden = !l[i];
+      });
+      if (ray) ray.scrollTo({ left: 0 });
+    });
+  }
   guncelle();
 
   var sabit = d.getElementById('ur-sabit');

@@ -124,6 +124,7 @@ module.exports = function (ctx, dil, kat, urunler) {
     baslik: t.baslik.replace('{ad}', ad),
     aciklama: t.aciklama.replace('{ad}', ad),
     govde,
+    gorsel: kat.gorsel || ((liste.find(u => (u.fotograflar || []).filter(Boolean).length) || {}).fotograflar || []).filter(Boolean)[0] || '',
     js: liste.length ? ['kategori.js'] : []
   };
 };

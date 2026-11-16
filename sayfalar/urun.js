@@ -1,4 +1,4 @@
-const { SOZ, ETIKET, fotoYer, kart, sepetVeri } = require('./katalog.js');
+const { SOZ, ETIKET, fotoYer, kart, sepetVeri, yol, urunFotolari } = require('./katalog.js');
 
 const T = {
   tr: {
@@ -72,9 +72,19 @@ module.exports = function (ctx, dil, u, urunler) {
   const E = ETIKET[dil];
   const ad = u[dil].ad;
   const anaKat = site.kategoriler.find(k => k.id === u.kategoriler[0]);
-  const fotolar = u.fotograflar.map((f, i) => f ? `<img src="${esc(f)}" alt="${esc(ad)} ${i + 1}"${i ? ' loading="lazy"' : ''}>` : fotoYer(dil, i + 1));
+  const ilkRenk = SOZ.renk[u.renkler[0]][dil];
+  const genel = (u.fotograflar || []).filter(Boolean);
+  const rf = u.renkFotolari || {};
+  const ilkRenkFoto = (rf[u.renkler[0]] || []).filter(Boolean);
+  const gosterilen = ilkRenkFoto.length ? ilkRenkFoto : urunFotolari(u);
+  const slot = Math.max(5, gosterilen.length);
+  const fotolar = Array.from({ length: slot }, (_, i) => gosterilen[i] ? `<img src="${esc(yol(dil, gosterilen[i]))}" alt="${esc(ad)} ${esc(ilkRenk)} ${i + 1}" width="1200" height="1800"${i ? ' loading="lazy"' : ' fetchpriority="high"'} decoding="async">` : fotoYer(dil, i + 1));
+  const renkGaleri = {};
+  u.renkler.forEach(k => { const l = (rf[k] || []).filter(Boolean); if (l.length) renkGaleri[SOZ.renk[k][dil]] = l.map(p => yol(dil, p)); });
+  if (Object.keys(renkGaleri).length && genel.length) u.renkler.forEach(k => { const n = SOZ.renk[k][dil]; if (!renkGaleri[n]) renkGaleri[n] = genel.map(p => yol(dil, p)); });
+  const tumFotolar = genel.concat(...u.renkler.map(k => (rf[k] || []).filter(Boolean))).filter((x, i, a) => a.indexOf(x) === i);
   const ana = fotolar.map((f, i) => `<div class="ur-slayt" data-i="${i}">${f}</div>`).join('');
-  const kucuk = fotolar.map((f, i) => `<button type="button" class="ur-kucuk${i === 0 ? ' on' : ''}" data-i="${i}" aria-label="${esc(E.foto)} ${i + 1}">${f}</button>`).join('');
+  const kucuk = fotolar.map((f, i) => `<button type="button" class="ur-kucuk${i === 0 ? ' on' : ''}" data-i="${i}" aria-label="${esc(E.foto)} ${i + 1}">${f.replace(/alt="[^"]*"/, 'alt=""').replace(' fetchpriority="high"', ' loading="lazy"')}</button>`).join('');
   const renkler = u.renkler.map((r, i) => `<label class="ur-renk"><input type="radio" name="renk" value="${esc(SOZ.renk[r][dil])}"${i === 0 ? ' checked' : ''}><i style="background:${SOZ.renk[r].hex}"></i><span>${esc(SOZ.renk[r][dil])}</span></label>`).join('');
   const bedenler = u.bedenler.map(b => `<label class="ur-beden"><input type="radio" name="beden" value="${esc(b)}"><span>${esc(b)}</span></label>`).join('') + `<label class="ur-beden ur-bilmiyorum"><input type="radio" name="beden" value="${esc(t.bedenSor)}"><span>${esc(t.bedenSor)}</span></label>`;
   const detay = [
@@ -94,13 +104,15 @@ module.exports = function (ctx, dil, u, urunler) {
     sku: u.kod,
     brand: { '@type': 'Brand', name: A.marka },
     color: u.renkler.map(r => SOZ.renk[r][dil]).join(', '),
-    image: u.fotograflar.filter(Boolean)
+    image: tumFotolar.map(p => ctx.tabanUrl + p),
+    description: u[dil].aciklama || undefined,
+    url: ctx.tabanUrl + (dil === 'tr' ? '' : dil + '/') + u[dil].slug + '.html'
   };
   const govde = `
 <section class="ur">
   <nav class="aa-yol ur-yol" aria-label="breadcrumb"><a href="./">${esc(t.anasayfa)}</a><span>/</span>${anaKat ? `<a href="${href(dil, anaKat[dil].slug)}">${esc(anaKat[dil].ad)}</a><span>/</span>` : ''}<span aria-current="page">${esc(ad)}</span></nav>
   <div class="ur-izgara">
-    <div class="ur-galeri" id="ur-galeri">
+    <div class="ur-galeri" id="ur-galeri" data-ad="${esc(ad)}"${Object.keys(renkGaleri).length ? ` data-renkler="${esc(JSON.stringify(renkGaleri))}"` : ''}>
       <div class="ur-kucukler">${kucuk}</div>
       <div class="ur-ana">
         <div class="ur-ray" id="ur-ray">${ana}</div>
@@ -137,6 +149,8 @@ ${benzer.length ? `<section class="as-bolum ur-benzer"><div class="as-baslik"><d
     aciklama: t.aciklama.replace('{ad}', ad).replace('{kod}', u.kod).replace('{renkler}', u.renkler.map(r => SOZ.renk[r][dil]).join(', ')).replace('{bedenler}', `${u.bedenler[0]}–${u.bedenler[u.bedenler.length - 1]}`),
     govde,
     ek: `<script type="application/ld+json">${JSON.stringify(schema)}</script>`,
+    gorsel: tumFotolar[0] || '',
+    gorseller: tumFotolar,
     js: ['urun.js'],
     sinif: 'ur-sayfa'
   };

@@ -65,7 +65,7 @@
     var l = oku();
     var var_ = l.filter(function (x) { return x.kod === u.k && x.renk === renk && x.beden === beden; })[0];
     if (var_) var_.adet = (var_.adet || 1) + 1;
-    else l.push({ kod: u.k, ad: u.a, url: pathYap(u.u || './'), foto: u.f ? pathYap(u.f) : '', renk: renk, beden: beden, adet: 1 });
+    else l.push({ kod: u.k, ad: u.a, url: pathYap(u.u || './'), foto: u.f || '', renk: renk, beden: beden, adet: 1 });
     yaz(l);
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: 'sepete_ekle', urun: u.k, renk: renk, beden: beden });

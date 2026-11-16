@@ -6,6 +6,7 @@ const OUT = path.join(ROOT, 'dist');
 const site = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/site.json'), 'utf8'));
 const i18n = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/i18n.json'), 'utf8'));
 const A = site.ayarlar;
+A.saatler = (A.saatler || []).map(r => (r && r[0] ? r : ['', '']));
 const DILLER = ['tr', 'en', 'ru'];
 const SURUM = Date.now().toString(36);
 const HTMLLANG = { tr: 'tr', en: 'en', ru: 'ru' };
@@ -191,8 +192,7 @@ function footer(dil, slugs) {
     `<a href="${telHref(tel)}" aria-label="${esc(t.ara2)}" data-olay="telefon_tikla" data-konum="sabit">${IK.tel}</a>`,
     igLink ? `<a href="${igLink}" target="_blank" rel="noopener" aria-label="Instagram">${IK.ig}</a>` : ''
   ].join('');
-  const anaSayfa = DILLER.every(d => !slugs[d]);
-  return `${anaSayfa ? '' : avantajlar(dil)}
+  return `${avantajlar(dil)}
 <footer class="aa-footer">
   <div class="aa-f-ic">
     <div class="aa-f-marka">
@@ -265,7 +265,7 @@ function carkHtml(dil) {
   }).join('');
   const lambalar = Array.from({ length: n * 3 }, (_, i) => { const [x, y] = nokta(i * 360 / (n * 3), 142); return `<circle cx="${x}" cy="${y}" r="3.2" fill="${i % 2 ? '#fdba74' : '#fff'}"/>`; }).join('');
   const carkSvg = `<svg viewBox="0 0 300 300" aria-hidden="true"><circle cx="150" cy="150" r="148" fill="#24122b"/>${lambalar}<g class="ck-teker" id="ck-teker">${dilimler}</g><circle cx="150" cy="150" r="40" fill="#fff" stroke="#24122b" stroke-width="4"/><image href="${'{{KOK}}'}assets/img/logo.webp" x="118" y="122" width="64" height="55"/></svg><span class="ck-ok" aria-hidden="true"></span>`;
-  const veri = { dilimler: C.dilimler, kayitUrl: C.kayitUrl || '', wa: A.whatsapp, t: { mesaj: t.mesaj, kazandin: t.kazandin, hata: t.hata, kopyalandi: t.kopyalandi, kopyala: t.kopyala, donuyor: t.donuyor, cevir: t.cevir, kullanildi: t.kullanildi, kontrol: t.kontrol } };
+  const veri = { dilimler: C.dilimler, kayitUrl: C.kayitUrl || A.yonetimApi || '', wa: A.whatsapp, t: { mesaj: t.mesaj, kazandin: t.kazandin, hata: t.hata, kopyalandi: t.kopyalandi, kopyala: t.kopyala, donuyor: t.donuyor, cevir: t.cevir, kullanildi: t.kullanildi, kontrol: t.kontrol } };
   return `
 <button type="button" class="ck-ac" id="ck-ac"><span class="ck-ac-ikon" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#24122b"/><path d="M20 20L20 3A17 17 0 0 1 36.2 15Z" fill="#d52878"/><path d="M20 20L36.2 15A17 17 0 0 1 30 33.8Z" fill="#fff"/><path d="M20 20L30 33.8A17 17 0 0 1 10 33.8Z" fill="#7a49c9"/><path d="M20 20L10 33.8A17 17 0 0 1 3.8 15Z" fill="#fff"/><path d="M20 20L3.8 15A17 17 0 0 1 20 3Z" fill="#fd8c2c"/><circle cx="20" cy="20" r="5" fill="#fff"/></svg></span><span>${esc(t.buton)}</span></button>
 <div class="ck" id="ck" role="dialog" aria-modal="true" aria-labelledby="ck-baslik" hidden>
@@ -312,18 +312,18 @@ function yolSema(govde) {
   return ogeler;
 }
 
-function sayfa({ dil, slugs, baslik, aciklama, govde, ek = '', js = [], sinif = '', taban: tabanYolu = '', robots = '', diller = DILLER, haritaya = true }) {
+function sayfa({ dil, slugs, baslik, aciklama, govde, ek = '', js = [], sinif = '', taban: tabanYolu = '', robots = '', diller = DILLER, haritaya = true, gorsel = '', gorseller = [] }) {
   const taban = TABAN;
   const kanonik = tamUrl(dil, slugs[dil]);
   const alt = taban && !robots ? diller.map(d => `<link rel="alternate" hreflang="${d}" href="${tamUrl(d, slugs[d])}">`).join('\n') + (diller.includes('tr') ? `\n<link rel="alternate" hreflang="x-default" href="${tamUrl('tr', slugs.tr)}">` : '') + `\n<link rel="canonical" href="${kanonik}">` : '';
-  if (taban && !robots && haritaya) URL_LISTE.push({ loc: kanonik, alt: diller.map(d => [d, tamUrl(d, slugs[d])]) });
+  if (taban && !robots && haritaya) URL_LISTE.push({ loc: kanonik, alt: diller.map(d => [d, tamUrl(d, slugs[d])]), resimler: (gorseller.length ? gorseller : gorsel ? [gorsel] : []).map(p => /^https?:/.test(p) ? p : taban + p) });
   const og = taban ? `<meta property="og:site_name" content="${esc(A.marka)}">
 <meta property="og:title" content="${esc(baslik)}">
 <meta property="og:description" content="${esc(aciklama)}">
 <meta property="og:url" content="${kanonik}">
-<meta property="og:image" content="${taban}assets/img/logo.png">
+<meta property="og:image" content="${gorsel ? (/^https?:/.test(gorsel) ? gorsel : taban + gorsel) : taban + 'assets/img/icon-512.png'}">
 <meta property="og:locale" content="${OGLOC[dil]}">${ek.includes('og:type') ? '' : '\n<meta property="og:type" content="website">'}
-<meta name="twitter:card" content="summary">` : '';
+<meta name="twitter:card" content="${gorsel ? 'summary_large_image' : 'summary'}">` : '';
   const yol = yolSema(govde);
   const kirinti = yol && yol.length > 1 ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: yol.map((o, i) => ({ '@type': 'ListItem', position: i + 1, name: o.ad.replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"'), item: o.h ? new URL(o.h, kanonik).href : kanonik })) }).replace(/</g, '\\u003c')}</script>` : '';
   const gtm = A.gtm ? `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${esc(A.gtm)}');</script>` : '';
@@ -338,7 +338,10 @@ function sayfa({ dil, slugs, baslik, aciklama, govde, ek = '', js = [], sinif = 
 ${alt}
 ${og}
 ${kirinti}
-<link rel="icon" href="${kok(dil)}assets/img/favicon.png">
+<link rel="icon" href="${kok(dil)}assets/img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="${kok(dil)}assets/img/favicon-48.png">
+<link rel="apple-touch-icon" href="${kok(dil)}assets/img/favicon.png">
+<meta name="theme-color" content="#7a49c9">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Ysabeau:wght@500;600&display=swap" rel="stylesheet">
@@ -383,10 +386,27 @@ const ANA = {
 fs.rmSync(OUT, { recursive: true, force: true });
 kopyala(path.join(ROOT, 'assets'), path.join(OUT, 'assets'));
 kopyala(path.join(ROOT, 'data'), path.join(OUT, 'data'));
+kopyala(path.join(ROOT, 'yonetim'), path.join(OUT, 'yonetim'));
+for (const f of ['index.html']) { const p = path.join(OUT, 'yonetim', f); fs.writeFileSync(p, fs.readFileSync(p, 'utf8').replace(/__SURUM__/g, SURUM)); }
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
+fs.copyFileSync(path.join(ROOT, 'assets/img/favicon.ico'), path.join(OUT, 'favicon.ico'));
 
 const ctx = { avantajlar, esc, wa, href, kok, IK, A, site, i18n, telGoster, telHref, saatOzet, GUN, GUNK, DILLER, ROOT };
 const URUNLER = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/urunler.json'), 'utf8')).urunler;
+const RENKLER = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/renkler.json'), 'utf8')).renkler;
+for (const u of URUNLER) {
+  u.renkler = (u.renkler || []).filter(r => RENKLER[r]);
+  if (!u.renkler.length) u.renkler = [Object.keys(RENKLER)[0]];
+  u.bedenler = (u.bedenler && u.bedenler.length) ? u.bedenler : ['38'];
+  u.kullanim = u.kullanim || [];
+  u.fotograflar = u.fotograflar || [];
+  for (const d of DILLER) {
+    u[d] = u[d] || {};
+    if (!u[d].ad) u[d].ad = u.tr.ad;
+    if (!u[d].aciklama) u[d].aciklama = d === 'tr' ? '' : u.tr.aciklama || '';
+    if (!u[d].slug) u[d].slug = u.tr.slug + (d === 'tr' ? '' : '-' + d);
+  }
+}
 ctx.URUNLER = URUNLER;
 ctx.BLOG = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/blog.json'), 'utf8')).yazilar;
 ctx.tabanUrl = TABAN;
@@ -396,6 +416,7 @@ const urunSayfa = require('./sayfalar/urun.js');
 const SAYFALAR = [
   ['beden', require('./sayfalar/beden.js')],
   ['iletisim', require('./sayfalar/iletisim.js')],
+  ['hakkimizda', require('./sayfalar/hakkimizda.js')],
   ['kvkk', require('./sayfalar/kvkk.js')],
   ['sss', require('./sayfalar/yardim.js').sss],
   ['siparis', require('./sayfalar/yardim.js').siparis],
@@ -437,12 +458,12 @@ yaz('404.html', sayfa({ dil: 'tr', slugs: { tr: '', en: '', ru: '' }, ...require
 if (TABAN) {
   const bugun = new Date().toISOString().slice(0, 10);
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${URL_LISTE.map(u => `<url><loc>${u.loc}</loc><lastmod>${bugun}</lastmod>${u.alt.length > 1 ? u.alt.map(([d, h]) => `<xhtml:link rel="alternate" hreflang="${d}" href="${h}"/>`).join('') : ''}</url>`).join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${URL_LISTE.map(u => `<url><loc>${u.loc}</loc><lastmod>${bugun}</lastmod>${u.alt.length > 1 ? u.alt.map(([d, h]) => `<xhtml:link rel="alternate" hreflang="${d}" href="${h}"/>`).join('') : ''}${(u.resimler || []).map(r => `<image:image><image:loc>${r}</image:loc></image:image>`).join('')}</url>`).join('\n')}
 </urlset>
 `;
   fs.writeFileSync(path.join(OUT, 'sitemap.xml'), xml);
-  fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${TABAN}sitemap.xml\n`);
+  fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /yonetim/\n\nSitemap: ${TABAN}sitemap.xml\n`);
 }
 
 console.log('dist hazır');

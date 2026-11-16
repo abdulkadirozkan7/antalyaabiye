@@ -1,0 +1,70 @@
+{
+  "renkler": {
+    "siyah": {
+      "hex": "#141414",
+      "tr": "Siyah",
+      "en": "Black",
+      "ru": "Чёрный"
+    },
+    "gumus": {
+      "hex": "#c9ccd3",
+      "tr": "Gümüş",
+      "en": "Silver",
+      "ru": "Серебристый"
+    },
+    "bordo": {
+      "hex": "#7a1131",
+      "tr": "Bordo",
+      "en": "Burgundy",
+      "ru": "Бордовый"
+    },
+    "kirmizi": {
+      "hex": "#c8102e",
+      "tr": "Kırmızı",
+      "en": "Red",
+      "ru": "Красный"
+    },
+    "pembe": {
+      "hex": "#f2a1c0",
+      "tr": "Pembe",
+      "en": "Pink",
+      "ru": "Розовый"
+    },
+    "pudra": {
+      "hex": "#ecc6c4",
+      "tr": "Pudra",
+      "en": "Powder Pink",
+      "ru": "Пудровый"
+    },
+    "lila": {
+      "hex": "#b9a3e3",
+      "tr": "Lila",
+      "en": "Lilac",
+      "ru": "Сиреневый"
+    },
+    "murdum": {
+      "hex": "#5b2245",
+      "tr": "Mürdüm",
+      "en": "Plum",
+      "ru": "Сливовый"
+    },
+    "lacivert": {
+      "hex": "#1c2551",
+      "tr": "Lacivert",
+      "en": "Navy",
+      "ru": "Тёмно-синий"
+    },
+    "zumrut": {
+      "hex": "#0f6b55",
+      "tr": "Zümrüt Yeşili",
+      "en": "Emerald",
+      "ru": "Изумрудный"
+    },
+    "bej": {
+      "hex": "#dcc8ad",
+      "tr": "Bej",
+      "en": "Beige",
+      "ru": "Бежевый"
+    }
+  }
+}

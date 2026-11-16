@@ -57,6 +57,8 @@ function govdeHtml(ctx, dil, satirlar) {
   for (const s of satirlar) {
     if (s.startsWith('- ')) { liste.push(satirIci(ctx, dil, s.slice(2))); continue; }
     bitir();
+    const resim = s.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (resim) { html += `<figure class="bl-resim"><img src="${ctx.esc(ctx.kok(dil) + resim[2])}" alt="${ctx.esc(resim[1])}" width="1600" height="1000" loading="lazy" decoding="async">${resim[1] ? `<figcaption>${ctx.esc(resim[1])}</figcaption>` : ''}</figure>`; continue; }
     if (s.startsWith('### ')) html += `<h3>${satirIci(ctx, dil, s.slice(4))}</h3>`;
     else if (s.startsWith('## ')) html += `<h2>${satirIci(ctx, dil, s.slice(3))}</h2>`;
     else html += `<p>${satirIci(ctx, dil, s)}</p>`;
@@ -155,7 +157,7 @@ ${ilgili.length ? `<section class="bl bl-ilgili"><h2>${esc(t.ilgili)}</h2><ul cl
   }];
   if (v.sss && v.sss.length) sema.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: v.sss.map(([s, c]) => ({ '@type': 'Question', name: s, acceptedAnswer: { '@type': 'Answer', text: c } })) });
   const ek = sema.map(s => `<script type="application/ld+json">${JSON.stringify(s).replace(/</g, '\\u003c')}</script>`).join('\n') + `\n<meta property="og:type" content="article">`;
-  return { baslik: v.baslik, aciklama: v.aciklama, govde, ek };
+  return { baslik: v.baslik, aciklama: v.aciklama, govde, ek, gorsel: y.kapak || '' };
 }
 
-module.exports = { liste, yazi, T };
+module.exports = { liste, yazi, kart, T };

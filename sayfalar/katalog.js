@@ -1,17 +1,5 @@
 const SOZ = {
-  renk: {
-    siyah: { hex: '#141414', tr: 'Siyah', en: 'Black', ru: 'Чёрный' },
-    gumus: { hex: '#c9ccd3', tr: 'Gümüş', en: 'Silver', ru: 'Серебристый' },
-    bordo: { hex: '#7a1131', tr: 'Bordo', en: 'Burgundy', ru: 'Бордовый' },
-    kirmizi: { hex: '#c8102e', tr: 'Kırmızı', en: 'Red', ru: 'Красный' },
-    pembe: { hex: '#f2a1c0', tr: 'Pembe', en: 'Pink', ru: 'Розовый' },
-    pudra: { hex: '#ecc6c4', tr: 'Pudra', en: 'Powder Pink', ru: 'Пудровый' },
-    lila: { hex: '#b9a3e3', tr: 'Lila', en: 'Lilac', ru: 'Сиреневый' },
-    murdum: { hex: '#5b2245', tr: 'Mürdüm', en: 'Plum', ru: 'Сливовый' },
-    lacivert: { hex: '#1c2551', tr: 'Lacivert', en: 'Navy', ru: 'Тёмно-синий' },
-    zumrut: { hex: '#0f6b55', tr: 'Zümrüt Yeşili', en: 'Emerald', ru: 'Изумрудный' },
-    bej: { hex: '#dcc8ad', tr: 'Bej', en: 'Beige', ru: 'Бежевый' }
-  },
+  renk: require('../data/renkler.json').renkler,
   boy: {
     kisa: { tr: 'Kısa', en: 'Short', ru: 'Короткое' },
     midi: { tr: 'Midi', en: 'Midi', ru: 'Миди' },
@@ -54,16 +42,27 @@ function fotoYer(dil, n) {
   return `<span class="kt-foto-bos">${ASKI}<small>${ETIKET[dil].foto} ${n}/5</small></span>`;
 }
 
+const yol = (dil, p) => !p ? '' : /^(https?:)?\/\//.test(p) ? p : (dil === 'tr' ? '' : '../') + p;
+
+function urunFotolari(u) {
+  const genel = (u.fotograflar || []).filter(Boolean);
+  if (genel.length) return genel;
+  const rf = u.renkFotolari || {};
+  for (const r of u.renkler) if (rf[r] && rf[r].filter(Boolean).length) return rf[r].filter(Boolean);
+  return [];
+}
+
 function sepetVeri(dil, u, href) {
-  return JSON.stringify({ k: u.kod, a: u[dil].ad, u: href(dil, u[dil].slug), r: u.renkler.map(r => [SOZ.renk[r][dil], SOZ.renk[r].hex]), b: u.bedenler, f: u.fotograflar[0] || '' });
+  return JSON.stringify({ k: u.kod, a: u[dil].ad, u: href(dil, u[dil].slug), r: u.renkler.map(r => [SOZ.renk[r][dil], SOZ.renk[r].hex]), b: u.bedenler, f: urunFotolari(u)[0] || '' });
 }
 
 function kart(ctx, dil, u, i) {
   const { esc, href } = ctx;
   const E = ETIKET[dil];
   const renkler = u.renkler.map(r => `<i style="background:${SOZ.renk[r].hex}" title="${esc(SOZ.renk[r][dil])}"></i>`).join('');
-  const foto = u.fotograflar[0]
-    ? `<img src="${esc(u.fotograflar[0])}" alt="${esc(u[dil].ad)}" width="600" height="900" loading="lazy">${u.fotograflar[1] ? `<img class="kt-ikinci" src="${esc(u.fotograflar[1])}" alt="" width="600" height="900" loading="lazy">` : ''}`
+  const fl = urunFotolari(u);
+  const foto = fl[0]
+    ? `<img src="${esc(yol(dil, fl[0]))}" alt="${esc(u[dil].ad)}" width="600" height="900" loading="lazy" decoding="async">${fl[1] ? `<img class="kt-ikinci" src="${esc(yol(dil, fl[1]))}" alt="" width="600" height="900" loading="lazy" decoding="async">` : ''}`
     : fotoYer(dil, 1);
   return `<li class="kt-kart" data-renk="${u.renkler.join(' ')}" data-beden="${u.bedenler.join(' ')}" data-boy="${u.boy}" data-kesim="${u.kesim}" data-kol="${u.kol}" data-kullanim="${u.kullanim.join(' ')}" data-stok="${u.stok === false ? 0 : 1}" data-sira="${i}">
   <a class="kt-gorsel" href="${href(dil, u[dil].slug)}">${foto}
@@ -79,4 +78,4 @@ function kart(ctx, dil, u, i) {
 </li>`;
 }
 
-module.exports = { SOZ, ETIKET, BEDEN_SIRA, ASKI, fotoYer, kart, sepetVeri };
+module.exports = { SOZ, ETIKET, BEDEN_SIRA, ASKI, fotoYer, kart, sepetVeri, yol, urunFotolari };

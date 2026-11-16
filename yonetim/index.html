@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Yönetim Paneli | Antalya Abiye</title>
+<link rel="icon" href="../assets/img/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Ysabeau:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="panel.css?v=__SURUM__">
+</head>
+<body>
+<section class="gr" id="giris">
+  <form class="gr-kutu" id="giris-form" autocomplete="on">
+    <img src="../assets/img/logo.webp" width="480" height="409" alt="Antalya Abiye">
+    <h1>Yönetim Paneli</h1>
+    <label>Kullanıcı Adı<input name="kullanici" autocomplete="username" required></label>
+    <label>Şifre<input name="sifre" type="password" autocomplete="current-password" required></label>
+    <p class="gr-hata" id="giris-hata" hidden></p>
+    <button type="submit" class="pb">Giriş Yap</button>
+    <p class="gr-not" id="giris-not" hidden>Panel sunucusu henüz bağlanmadı. Bağlantı kurulana kadar paneli demo modunda inceleyebilirsin; değişiklikler kaydedilmez.</p>
+    <button type="button" class="pb pb-ikinci" id="demo-btn" hidden>Demo Modunda İncele</button>
+  </form>
+</section>
+
+<div class="py" id="panel" hidden>
+  <aside class="py-yan" id="yan">
+    <a class="py-logo" href="../" target="_blank" rel="noopener"><img src="../assets/img/logo.webp" width="480" height="409" alt="Antalya Abiye"><span>Siteyi Aç</span></a>
+    <nav id="menu">
+      <button data-gorunum="urunler" class="on">Ürünler</button>
+      <button data-gorunum="kategoriler">Kategoriler</button>
+      <button data-gorunum="renkler">Renkler</button>
+      <button data-gorunum="bannerlar">Bannerlar</button>
+      <button data-gorunum="vitrin">Kategori Vitrini</button>
+      <button data-gorunum="instagram">Instagram Videoları</button>
+      <button data-gorunum="blog">Blog Yazıları</button>
+      <button data-gorunum="beden">Beden Tablosu</button>
+      <button data-gorunum="cark">Çarkıfelek</button>
+      <button data-gorunum="ayarlar">Ayarlar</button>
+    </nav>
+    <button class="py-cikis" id="cikis">Çıkış Yap</button>
+  </aside>
+  <div class="py-ana">
+    <header class="py-ust">
+      <button class="py-menu-btn" id="menu-btn" aria-label="Menü">☰</button>
+      <p class="py-durum" id="durum"></p>
+      <span class="py-demo" id="demo-etiket" hidden>Demo Modu · Kaydedilmez</span>
+      <span class="py-kim" id="kim"></span>
+    </header>
+    <main class="py-icerik" id="icerik"></main>
+  </div>
+</div>
+<div class="bildirim" id="bildirim" hidden></div>
+<script src="panel.js?v=__SURUM__"></script>
+</body>
+</html>
