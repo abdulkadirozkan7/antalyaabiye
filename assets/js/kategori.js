@@ -1,0 +1,79 @@
+(function () {
+  var d = document;
+  var form = d.getElementById('kt-form');
+  if (!form) return;
+  var liste = d.getElementById('kt-liste');
+  var kartlar = [].slice.call(liste.children);
+  var bos = d.getElementById('kt-bos');
+  var sayi = d.querySelector('.kt-sayi');
+  var etiketler = d.getElementById('kt-etiketler');
+  var temizle = d.querySelector('.kt-temizle');
+  var seciliRozet = d.querySelector('.kt-secili');
+  var sirala = d.getElementById('kt-sirala');
+  var filtre = d.getElementById('kt-filtre');
+  var perde = d.querySelector('.kt-perde');
+  var ALAN = { renkler: 'renk', bedenler: 'beden', boy: 'boy', kesim: 'kesim', kol: 'kol', kullanim: 'kullanim' };
+
+  function secimler() {
+    var s = {};
+    [].forEach.call(form.querySelectorAll('input:checked'), function (i) { (s[i.name] = s[i.name] || []).push(i); });
+    return s;
+  }
+
+  function uygula() {
+    var s = secimler(), n = 0, toplam = 0;
+    kartlar.forEach(function (k) {
+      var uy = Object.keys(s).every(function (ad) {
+        var v = (k.getAttribute('data-' + ALAN[ad]) || '').split(' ');
+        return s[ad].some(function (i) { return v.indexOf(i.value) > -1; });
+      });
+      k.hidden = !uy;
+      if (uy) n++;
+    });
+    sayi.textContent = sayi.getAttribute('data-kalip').replace('{n}', n);
+    bos.hidden = n > 0;
+    var html = '';
+    Object.keys(s).forEach(function (ad) {
+      s[ad].forEach(function (i) {
+        toplam++;
+        var et = i.closest('label').querySelector('span').textContent;
+        html += '<button type="button" data-ad="' + ad + '" data-deger="' + i.value + '">' + et.replace(/[<>&"]/g, '') + '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
+      });
+    });
+    etiketler.innerHTML = html;
+    temizle.hidden = !toplam;
+    seciliRozet.hidden = !toplam;
+    seciliRozet.textContent = toplam;
+  }
+
+  function sirayla() {
+    var v = sirala.value;
+    var sirali = kartlar.slice().sort(function (a, b) {
+      if (v === 'az') return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent, d.documentElement.lang);
+      var x = +a.getAttribute('data-sira'), y = +b.getAttribute('data-sira');
+      return v === 'yeni' ? y - x : x - y;
+    });
+    sirali.forEach(function (k) { liste.appendChild(k); });
+  }
+
+  form.addEventListener('change', uygula);
+  sirala.addEventListener('change', sirayla);
+  etiketler.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    var i = form.querySelector('input[name="' + b.getAttribute('data-ad') + '"][value="' + b.getAttribute('data-deger') + '"]');
+    if (i) { i.checked = false; uygula(); }
+  });
+  temizle.addEventListener('click', function () { form.reset(); uygula(); });
+
+  var ac = function (on) {
+    filtre.classList.toggle('on', on);
+    perde.hidden = !on;
+    d.body.classList.toggle('aa-kilit', on);
+  };
+  d.querySelector('.kt-filtre-btn').addEventListener('click', function () { ac(true); });
+  d.querySelector('.kt-kapat').addEventListener('click', function () { ac(false); });
+  d.querySelector('.kt-goster').addEventListener('click', function () { ac(false); });
+  perde.addEventListener('click', function () { ac(false); });
+  d.addEventListener('keydown', function (e) { if (e.key === 'Escape') ac(false); });
+})();

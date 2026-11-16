@@ -75,6 +75,26 @@
     $$('.aa-fav-say').forEach(function (b) { b.textContent = n; b.hidden = !n; });
   };
   favYaz();
+  var favBtnYaz = function () {
+    var f = favOku();
+    $$('[data-fav]').forEach(function (b) {
+      var on = f.indexOf(b.getAttribute('data-fav')) > -1;
+      b.setAttribute('aria-pressed', on);
+      b.classList.toggle('on', on);
+      var s = b.querySelector('span');
+      if (s && b.getAttribute('data-ekle')) s.textContent = b.getAttribute(on ? 'data-favli' : 'data-ekle');
+    });
+  };
+  favBtnYaz();
+  d.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-fav]');
+    if (!b) return;
+    e.preventDefault();
+    var f = favOku(), k = b.getAttribute('data-fav'), i = f.indexOf(k);
+    if (i > -1) f.splice(i, 1); else { f.push(k); window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'favori_ekle', urun: k }); }
+    try { localStorage.setItem('aa_fav', JSON.stringify(f)); } catch (x) {}
+    favYaz(); favBtnYaz();
+  });
   window.addEventListener('storage', favYaz);
   d.addEventListener('aa:fav', favYaz);
 

@@ -143,6 +143,19 @@ function header(dil, slugs) {
 </aside>`;
 }
 
+const AVANTAJ_IKON = [
+  '<svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6a17 17 0 0 0-14.6 25.7L7 41l9.6-2.4A17 17 0 1 0 24 6z"/><path d="M17.5 16.5c.6-1.3 1.8-1.4 2.4-.6l1.8 3.3c.3.7 0 1.3-.5 1.8l-.9.9c1.2 2.5 3.3 4.6 5.8 5.8l.9-.9c.5-.5 1.1-.8 1.8-.5l3.3 1.8c.8.6.7 1.8-.6 2.4-1.6.8-3.6.9-5.5 0a17 17 0 0 1-8.5-8.5c-.9-1.9-.8-3.9 0-5.5z"/></svg>',
+  '<svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h24v20H4zM28 18h8l6 7v7h-14z"/><circle cx="12" cy="35" r="3.5"/><circle cx="35" cy="35" r="3.5"/><path d="M2 18h8M1 23h6"/></svg>',
+  '<svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 15a4 4 0 1 1 4-4"/><path d="M24 15v4L5 33a2.5 2.5 0 0 0 1.5 4.5h35A2.5 2.5 0 0 0 43 33L24 19"/></svg>',
+  '<svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="12" width="32" height="22" rx="3"/><path d="M5 19h32M10 28h8"/><circle cx="38" cy="30" r="7"/><path d="M35 33l6-6M35.5 27.5h.01M40.5 32.5h.01"/></svg>',
+  '<svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18c0-3.3 8-6 18-6s18 2.7 18 6-8 6-18 6S6 21.3 6 18z"/><path d="M6 18v10c0 3.3 8 6 18 6s18-2.7 18-6V18"/><path d="M14 24v4M20 24.8v5M26 24.8v5M32 24v4"/></svg>'
+];
+
+function avantajlar(dil) {
+  const a = i18n[dil].avantaj || [];
+  return `<section class="aa-avantaj"><ul>${a.map((x, i) => `<li>${AVANTAJ_IKON[i] || ''}<h2>${esc(x[0])}</h2><p>${esc(x[1])}</p></li>`).join('')}</ul></section>`;
+}
+
 function footer(dil, slugs) {
   const t = i18n[dil];
   const S = site.sayfalar;
@@ -172,7 +185,7 @@ function footer(dil, slugs) {
     `<a href="${telHref(tel)}" aria-label="${esc(t.ara2)}" data-olay="telefon_tikla" data-konum="sabit">${IK.tel}</a>`,
     igLink ? `<a href="${igLink}" target="_blank" rel="noopener" aria-label="Instagram">${IK.ig}</a>` : ''
   ].join('');
-  return `
+  return `${avantajlar(dil)}
 <footer class="aa-footer">
   <div class="aa-f-ic">
     <div class="aa-f-marka">
@@ -257,6 +270,9 @@ kopyala(path.join(ROOT, 'data'), path.join(OUT, 'data'));
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
 const ctx = { esc, wa, href, kok, IK, A, site, i18n, telGoster, telHref, saatOzet, GUN, GUNK, DILLER, ROOT };
+const URUNLER = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/urunler.json'), 'utf8')).urunler;
+const kategoriSayfa = require('./sayfalar/kategori.js');
+const urunSayfa = require('./sayfalar/urun.js');
 const SAYFALAR = [
   ['beden', require('./sayfalar/beden.js')],
   ['iletisim', require('./sayfalar/iletisim.js')]
@@ -269,6 +285,14 @@ for (const dil of DILLER) {
     const S = site.sayfalar[anahtar];
     const slugs = { tr: S.tr.slug, en: S.en.slug, ru: S.ru.slug };
     yaz(dosya(dil, slugs[dil]), sayfa({ dil, slugs, ...uret(ctx, dil) }));
+  }
+  for (const kat of site.kategoriler) {
+    const slugs = { tr: kat.tr.slug, en: kat.en.slug, ru: kat.ru.slug };
+    yaz(dosya(dil, slugs[dil]), sayfa({ dil, slugs, ...kategoriSayfa(ctx, dil, kat, URUNLER) }));
+  }
+  for (const u of URUNLER) {
+    const slugs = { tr: u.tr.slug, en: u.en.slug, ru: u.ru.slug };
+    yaz(dosya(dil, slugs[dil]), sayfa({ dil, slugs, ...urunSayfa(ctx, dil, u, URUNLER) }));
   }
 }
 

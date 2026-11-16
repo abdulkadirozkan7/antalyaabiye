@@ -36,7 +36,29 @@
     "popKalip": "Antalya {ad}",
     "ctaBaslik": "Aklında Bir Model Mi Var?",
     "ctaMetin": "Fotoğrafını ya da ürün kodunu WhatsApp'tan gönder, bedenini birlikte netleştirelim.",
-    "fTakip": "Bizi Takip Et"
+    "fTakip": "Bizi Takip Et",
+    "avantaj": [
+      [
+        "WhatsApp'tan Sipariş",
+        "Ürün kodunu yaz, siparişini hemen oluşturalım."
+      ],
+      [
+        "Adrese Teslimat",
+        "Siparişin adresine gönderilir."
+      ],
+      [
+        "Mağazada Deneme",
+        "Güllük Caddesi'ndeki mağazamızda dene."
+      ],
+      [
+        "Kapıda Ödeme Ve Taksit",
+        "Teslimatta öde ya da taksit seçeneklerini sor."
+      ],
+      [
+        "Beden Danışmanlığı",
+        "Ölçülerini gönder, bedenini birlikte seçelim."
+      ]
+    ]
   },
   "en": {
     "serit": [
@@ -75,7 +97,29 @@
     "popKalip": "{ad} In Antalya",
     "ctaBaslik": "Got A Dress In Mind?",
     "ctaMetin": "Send us its photo or product code on WhatsApp and we will sort out your size together.",
-    "fTakip": "Follow Us"
+    "fTakip": "Follow Us",
+    "avantaj": [
+      [
+        "Order On WhatsApp",
+        "Send the product code and we will set up your order."
+      ],
+      [
+        "Home Delivery",
+        "Your order is delivered to your address."
+      ],
+      [
+        "Try In Store",
+        "Try the dresses on at our store on Güllük Street."
+      ],
+      [
+        "Pay On Delivery And Instalments",
+        "Pay when it arrives or ask about instalments."
+      ],
+      [
+        "Size Advice",
+        "Send your measurements and we will pick your size together."
+      ]
+    ]
   },
   "ru": {
     "serit": [
@@ -114,6 +158,28 @@
     "popKalip": "{ad} В Анталье",
     "ctaBaslik": "Уже Присмотрели Платье?",
     "ctaMetin": "Отправьте фото или код товара в WhatsApp, и мы вместе подберём ваш размер.",
-    "fTakip": "Мы В Соцсетях"
+    "fTakip": "Мы В Соцсетях",
+    "avantaj": [
+      [
+        "Заказ В WhatsApp",
+        "Отправьте код товара, и мы оформим заказ."
+      ],
+      [
+        "Доставка На Дом",
+        "Заказ доставляется по вашему адресу."
+      ],
+      [
+        "Примерка В Магазине",
+        "Примерьте платья в магазине на улице Гюллюк."
+      ],
+      [
+        "Оплата При Получении И Рассрочка",
+        "Оплатите при доставке или спросите о рассрочке."
+      ],
+      [
+        "Помощь С Размером",
+        "Пришлите мерки, и мы вместе подберём размер."
+      ]
+    ]
   }
 }
