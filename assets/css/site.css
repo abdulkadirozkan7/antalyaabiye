@@ -474,6 +474,14 @@ main .as-alt{padding-bottom:0}
 .ur-detay li b{font-weight:500;color:var(--murekkep);text-align:right}
 .ur-benzer .kt-liste{margin-top:0}
 
+.ur-noktalar{display:none}
+.ur-bilmiyorum span{min-width:auto;padding:0 14px;color:var(--soluk)}
+.ur-eksik .ur-bedenler{animation:ur-salla .4s}
+.ur-eksik .ur-beden span{border-color:var(--pembe)}
+.ur-uyari{margin:10px 0 0;font-size:13.5px;color:var(--pembe);font-weight:500}
+@keyframes ur-salla{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.ur-sabit{display:none}
+
 @media (max-width:1180px){
   .bd-girdiler{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -594,6 +602,23 @@ main .as-alt{padding-bottom:0}
   .ur-ana{border-radius:0}
   .ur-ok{display:none}
   .ur-bilgi{padding:0 16px}
+}
+@media (max-width:960px){
+  .ur-sayfa .aa-alt-bar{display:none}
+  .ur-sayfa .aa-footer{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  .ur-sayac{display:none}
+  .ur-noktalar{position:absolute;left:0;right:0;bottom:16px;display:flex;justify-content:center;gap:12px}
+  .ur-noktalar i{width:10px;height:10px;border-radius:50%;border:1.5px solid #fff;background:transparent;box-shadow:0 0 4px rgba(0,0,0,.35);transition:background .2s}
+  .ur-noktalar i.on{background:#fff}
+  .ur-rozetler{left:16px;top:16px}
+  .ur-rozetler .kt-r-firsat{padding:8px 14px;font-size:14px;letter-spacing:.03em;text-transform:uppercase;background:#8a2a3f;border-radius:4px}
+  .ur-sabit{position:fixed;left:0;right:0;bottom:0;z-index:58;display:flex;align-items:center;gap:12px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--cizgi);box-shadow:0 -10px 24px -18px rgba(36,18,43,.6);transform:translateY(110%);transition:transform .3s}
+  .ur-sabit.on{transform:none}
+  .ur-sabit>div{display:flex;flex-direction:column;min-width:0;flex:0 1 auto}
+  .ur-sabit b{font-size:15px;font-weight:600;color:var(--murekkep)}
+  .ur-sabit span{font-size:12.5px;color:var(--soluk);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ur-sabit-btn{flex:1;height:50px !important;font-size:15px !important}
+  .ur-sabit-btn span{color:#fff !important;font-size:15px !important}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important;scroll-behavior:auto !important}

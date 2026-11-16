@@ -12,7 +12,9 @@ const T = {
     favli: 'Favorilerde',
     detay: 'Ürün Detayları',
     benzer: 'Benzer Modeller',
-    bedenSor: 'Bedenimi bilmiyorum',
+    bedenSor: 'Bilmiyorum',
+    bedenUyari: 'Lütfen beden seç ya da "Bilmiyorum" de.',
+    firsatUrun: 'Fırsat Ürünü',
     mesaj: 'Merhaba, {ad} modeli için yazıyorum.\nÜrün kodu: {kod}\nRenk: {renk}\nBeden: {beden}\nStok durumu nedir?',
     secilmedi: 'seçilmedi',
     baslik: '{ad} {kod} | Antalya Abiye',
@@ -31,7 +33,9 @@ const T = {
     favli: 'In Favourites',
     detay: 'Product Details',
     benzer: 'Similar Styles',
-    bedenSor: 'I don\'t know my size',
+    bedenSor: 'Not sure',
+    bedenUyari: 'Please pick a size or choose "Not sure".',
+    firsatUrun: 'Special Offer',
     mesaj: 'Hello, I am writing about the {ad}.\nProduct code: {kod}\nColour: {renk}\nSize: {beden}\nIs it in stock?',
     secilmedi: 'not selected',
     baslik: '{ad} {kod} | Antalya Abiye',
@@ -50,7 +54,9 @@ const T = {
     favli: 'В Избранном',
     detay: 'Детали Модели',
     benzer: 'Похожие Модели',
-    bedenSor: 'Не знаю свой размер',
+    bedenSor: 'Не знаю',
+    bedenUyari: 'Выберите размер или отметьте «Не знаю».',
+    firsatUrun: 'Выгодное Предложение',
     mesaj: 'Здравствуйте, пишу о модели {ad}.\nКод товара: {kod}\nЦвет: {renk}\nРазмер: {beden}\nЕсть в наличии?',
     secilmedi: 'не выбран',
     baslik: '{ad} {kod} | Antalya Abiye',
@@ -70,7 +76,7 @@ module.exports = function (ctx, dil, u, urunler) {
   const ana = fotolar.map((f, i) => `<div class="ur-slayt" data-i="${i}">${f}</div>`).join('');
   const kucuk = fotolar.map((f, i) => `<button type="button" class="ur-kucuk${i === 0 ? ' on' : ''}" data-i="${i}" aria-label="${esc(E.foto)} ${i + 1}">${f}</button>`).join('');
   const renkler = u.renkler.map((r, i) => `<label class="ur-renk"><input type="radio" name="renk" value="${esc(SOZ.renk[r][dil])}"${i === 0 ? ' checked' : ''}><i style="background:${SOZ.renk[r].hex}"></i><span>${esc(SOZ.renk[r][dil])}</span></label>`).join('');
-  const bedenler = u.bedenler.map(b => `<label class="ur-beden"><input type="radio" name="beden" value="${esc(b)}"><span>${esc(b)}</span></label>`).join('');
+  const bedenler = u.bedenler.map(b => `<label class="ur-beden"><input type="radio" name="beden" value="${esc(b)}"><span>${esc(b)}</span></label>`).join('') + `<label class="ur-beden ur-bilmiyorum"><input type="radio" name="beden" value="${esc(t.bedenSor)}"><span>${esc(t.bedenSor)}</span></label>`;
   const detay = [
     [E.urunKodu, u.kod],
     [E.boy, SOZ.boy[u.boy][dil]],
@@ -100,7 +106,8 @@ module.exports = function (ctx, dil, u, urunler) {
         <button type="button" class="ur-ok ur-geri" aria-label="${esc(t.onceki)}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
         <button type="button" class="ur-ok ur-ileri" aria-label="${esc(t.sonraki)}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
         <span class="ur-sayac" id="ur-sayac">1 / ${fotolar.length}</span>
-        <span class="kt-rozetler">${u.kategoriler.includes('firsat') ? `<b class="kt-rozet kt-r-firsat">${esc(E.firsat)}</b>` : ''}${u.ornek ? `<b class="kt-rozet kt-r-ornek">${esc(E.ornek)}</b>` : ''}</span>
+        <span class="ur-noktalar" id="ur-noktalar">${fotolar.map((f, i) => `<i${i === 0 ? ' class="on"' : ''}></i>`).join('')}</span>
+        <span class="kt-rozetler ur-rozetler">${u.kategoriler.includes('firsat') ? `<b class="kt-rozet kt-r-firsat">${esc(t.firsatUrun)}</b>` : ''}${u.ornek ? `<b class="kt-rozet kt-r-ornek">${esc(E.ornek)}</b>` : ''}</span>
       </div>
     </div>
     <div class="ur-bilgi">
@@ -108,7 +115,7 @@ module.exports = function (ctx, dil, u, urunler) {
       <p class="ur-kod">${esc(E.urunKodu)}: <b>${esc(u.kod)}</b></p>
       <form class="ur-form" id="ur-form" data-ad="${esc(ad)}" data-kod="${esc(u.kod)}" data-wa="${esc(A.whatsapp)}" data-mesaj="${esc(t.mesaj)}" data-secilmedi="${esc(t.secilmedi)}">
         <fieldset><legend>${esc(t.renkSec)}: <b id="ur-renk-ad">${esc(SOZ.renk[u.renkler[0]][dil])}</b></legend><div class="ur-renkler">${renkler}</div></fieldset>
-        <fieldset><legend>${esc(t.bedenSec)}<a href="${href(dil, site.sayfalar.beden[dil].slug)}">${esc(t.bedenTablo)}</a></legend><div class="ur-bedenler">${bedenler}</div></fieldset>
+        <fieldset id="ur-beden-alan" data-uyari="${esc(t.bedenUyari)}"><legend>${esc(t.bedenSec)}<a href="${href(dil, site.sayfalar.beden[dil].slug)}">${esc(t.bedenTablo)}</a></legend><div class="ur-bedenler">${bedenler}</div></fieldset>
         <a class="aa-wp-btn aa-genis ur-wp" id="ur-wp" href="${wa(t.mesaj.replace('{ad}', ad).replace('{kod}', u.kod).replace('{renk}', SOZ.renk[u.renkler[0]][dil]).replace('{beden}', t.secilmedi))}" target="_blank" rel="noopener" data-olay="whatsapp_siparis" data-konum="urun" data-urun="${esc(u.kod)}">${IK.wp}<span>${esc(t.wpBtn)}</span></a>
         <p class="ur-wp-alt">${esc(t.wpAlt)}</p>
         <button type="button" class="ur-fav kt-fav" data-fav="${esc(u.kod)}" aria-pressed="false" data-ekle="${esc(t.favEkle)}" data-favli="${esc(t.favli)}"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 20.2s-7.4-4.4-7.4-10.1A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.4 2.5c0 5.7-7.4 10.1-7.4 10.1z"/></svg><span>${esc(t.favEkle)}</span></button>
@@ -121,12 +128,14 @@ module.exports = function (ctx, dil, u, urunler) {
     </div>
   </div>
 </section>
+<div class="ur-sabit" id="ur-sabit"><div><b>${esc(u.kod)}</b><span id="ur-sabit-secim">${esc(SOZ.renk[u.renkler[0]][dil])}</span></div><a class="aa-wp-btn ur-sabit-btn" href="#" data-olay="whatsapp_siparis" data-konum="urun_sabit" data-urun="${esc(u.kod)}" target="_blank" rel="noopener">${IK.wp}<span>${esc(t.wpBtn)}</span></a></div>
 ${benzer.length ? `<section class="as-bolum ur-benzer"><div class="as-baslik"><div><h2>${esc(t.benzer)}</h2></div></div><ul class="kt-liste kt-liste-4">${benzer.map((x, i) => kart(ctx, dil, x, i)).join('')}</ul></section>` : ''}`;
   return {
     baslik: t.baslik.replace('{ad}', ad).replace('{kod}', u.kod),
     aciklama: t.aciklama.replace('{ad}', ad).replace('{kod}', u.kod).replace('{renkler}', u.renkler.map(r => SOZ.renk[r][dil]).join(', ')).replace('{bedenler}', `${u.bedenler[0]}–${u.bedenler[u.bedenler.length - 1]}`),
     govde,
     ek: `<script type="application/ld+json">${JSON.stringify(schema)}</script>`,
-    js: ['urun.js']
+    js: ['urun.js'],
+    sinif: 'ur-sayfa'
   };
 };

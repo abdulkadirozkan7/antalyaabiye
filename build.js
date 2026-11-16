@@ -212,7 +212,7 @@ function footer(dil, slugs) {
 </nav>`;
 }
 
-function sayfa({ dil, slugs, baslik, aciklama, govde, ek = '', js = [] }) {
+function sayfa({ dil, slugs, baslik, aciklama, govde, ek = '', js = [], sinif = '' }) {
   const taban = A.alanadi ? 'https://' + A.alanadi.replace(/^https?:\/\//, '').replace(/\/$/, '') + '/' : '';
   const alt = taban ? DILLER.map(d => `<link rel="alternate" hreflang="${d}" href="${taban}${dosya(d, slugs[d]).replace(/index\.html$/, '')}">`).join('\n') + `\n<link rel="alternate" hreflang="x-default" href="${taban}${dosya('tr', slugs.tr).replace(/index\.html$/, '')}">\n<link rel="canonical" href="${taban}${dosya(dil, slugs[dil]).replace(/index\.html$/, '')}">` : '';
   const gtm = A.gtm ? `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${esc(A.gtm)}');</script>` : '';
@@ -233,7 +233,7 @@ ${alt}
 ${ek}
 ${gtm}
 </head>
-<body>
+<body${sinif ? ` class="${sinif}"` : ''}>
 ${gtmNs}
 ${header(dil, slugs)}
 <main id="icerik">${govde}</main>

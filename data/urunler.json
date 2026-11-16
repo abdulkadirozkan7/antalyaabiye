@@ -515,6 +515,2697 @@
         ""
       ],
       "stok": true
+    },
+    {
+      "kod": "AA-T01",
+      "ornek": true,
+      "kategoriler": [
+        "tesettur",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Pullu Tesettür Abiye",
+        "slug": "pullu-tesettur-abiye-aa-t01",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Sequin Hijab Evening Dress",
+        "slug": "sequin-hijab-evening-dress-aa-t01",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Закрытое Платье С Пайетками",
+        "slug": "sequin-hijab-evening-dress-aa-t01",
+        "aciklama": ""
+      },
+      "renkler": [
+        "lacivert",
+        "murdum",
+        "zumrut"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "nisan",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-T02",
+      "ornek": true,
+      "kategoriler": [
+        "tesettur",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Dantelli Tesettür Abiye",
+        "slug": "dantelli-tesettur-abiye-aa-t02",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Lace Hijab Evening Dress",
+        "slug": "lace-hijab-evening-dress-aa-t02",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Закрытое Кружевное Платье",
+        "slug": "lace-hijab-evening-dress-aa-t02",
+        "aciklama": ""
+      },
+      "renkler": [
+        "bordo",
+        "lacivert"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "nisan",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-T03",
+      "ornek": true,
+      "kategoriler": [
+        "tesettur",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Saten Tesettür Abiye",
+        "slug": "saten-tesettur-abiye-aa-t03",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Satin Hijab Evening Dress",
+        "slug": "satin-hijab-evening-dress-aa-t03",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Закрытое Атласное Платье",
+        "slug": "satin-hijab-evening-dress-aa-t03",
+        "aciklama": ""
+      },
+      "renkler": [
+        "gumus",
+        "murdum"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "nisan",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-T04",
+      "ornek": true,
+      "kategoriler": [
+        "tesettur",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Kemerli Tesettür Abiye",
+        "slug": "kemerli-tesettur-abiye-aa-t04",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Belted Hijab Evening Dress",
+        "slug": "belted-hijab-evening-dress-aa-t04",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Закрытое Платье С Поясом",
+        "slug": "belted-hijab-evening-dress-aa-t04",
+        "aciklama": ""
+      },
+      "renkler": [
+        "gumus",
+        "lacivert"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "nisan",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-T05",
+      "ornek": true,
+      "kategoriler": [
+        "tesettur",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Taşlı Tesettür Abiye",
+        "slug": "tasli-tesettur-abiye-aa-t05",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Embellished Hijab Evening Dress",
+        "slug": "embellished-hijab-evening-dress-aa-t05",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Закрытое Платье С Камнями",
+        "slug": "embellished-hijab-evening-dress-aa-t05",
+        "aciklama": ""
+      },
+      "renkler": [
+        "zumrut",
+        "lila"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "nisan",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-T06",
+      "ornek": true,
+      "kategoriler": [
+        "tesettur",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Kadife Tesettür Abiye",
+        "slug": "kadife-tesettur-abiye-aa-t06",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Velvet Hijab Evening Dress",
+        "slug": "velvet-hijab-evening-dress-aa-t06",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Закрытое Бархатное Платье",
+        "slug": "velvet-hijab-evening-dress-aa-t06",
+        "aciklama": ""
+      },
+      "renkler": [
+        "zumrut",
+        "siyah"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "nisan",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-T07",
+      "ornek": true,
+      "kategoriler": [
+        "tesettur",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Tül Detaylı Tesettür Abiye",
+        "slug": "tul-detayli-tesettur-abiye-aa-t07",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Tulle Detail Hijab Dress",
+        "slug": "tulle-detail-hijab-dress-aa-t07",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Закрытое Платье С Фатином",
+        "slug": "tulle-detail-hijab-dress-aa-t07",
+        "aciklama": ""
+      },
+      "renkler": [
+        "siyah",
+        "bej"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "nisan",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-T08",
+      "ornek": true,
+      "kategoriler": [
+        "tesettur",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Krep Tesettür Abiye",
+        "slug": "krep-tesettur-abiye-aa-t08",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Crepe Hijab Evening Dress",
+        "slug": "crepe-hijab-evening-dress-aa-t08",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Закрытое Креповое Платье",
+        "slug": "crepe-hijab-evening-dress-aa-t08",
+        "aciklama": ""
+      },
+      "renkler": [
+        "zumrut",
+        "siyah"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "nisan",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-P01",
+      "ornek": true,
+      "kategoriler": [
+        "prenses",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Kabarık Tül Prenses Abiye",
+        "slug": "kabarik-tul-prenses-abiye-aa-p01",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Tulle Ball Gown",
+        "slug": "tulle-ball-gown-aa-p01",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Пышное Платье Из Фатина",
+        "slug": "tulle-ball-gown-aa-p01",
+        "aciklama": ""
+      },
+      "renkler": [
+        "murdum",
+        "zumrut",
+        "kirmizi"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "askili",
+      "kullanim": [
+        "nisan",
+        "mezuniyet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-P02",
+      "ornek": true,
+      "kategoriler": [
+        "prenses",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Korseli Prenses Abiye",
+        "slug": "korseli-prenses-abiye-aa-p02",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Corset Princess Gown",
+        "slug": "corset-princess-gown-aa-p02",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье Принцессы С Корсетом",
+        "slug": "corset-princess-gown-aa-p02",
+        "aciklama": ""
+      },
+      "renkler": [
+        "bej",
+        "pembe"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "askili",
+      "kullanim": [
+        "nisan",
+        "mezuniyet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-P03",
+      "ornek": true,
+      "kategoriler": [
+        "prenses",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Simli Prenses Abiye",
+        "slug": "simli-prenses-abiye-aa-p03",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Glitter Princess Gown",
+        "slug": "glitter-princess-gown-aa-p03",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Блестящее Платье Принцессы",
+        "slug": "glitter-princess-gown-aa-p03",
+        "aciklama": ""
+      },
+      "renkler": [
+        "bej",
+        "gumus"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "askili",
+      "kullanim": [
+        "nisan",
+        "mezuniyet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-P04",
+      "ornek": true,
+      "kategoriler": [
+        "prenses",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Straplez Prenses Abiye",
+        "slug": "straplez-prenses-abiye-aa-p04",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Strapless Princess Gown",
+        "slug": "strapless-princess-gown-aa-p04",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье Принцессы Без Бретелей",
+        "slug": "strapless-princess-gown-aa-p04",
+        "aciklama": ""
+      },
+      "renkler": [
+        "lila",
+        "lacivert",
+        "gumus"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "kolsuz",
+      "kullanim": [
+        "nisan",
+        "mezuniyet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-P05",
+      "ornek": true,
+      "kategoriler": [
+        "prenses",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Çiçek İşlemeli Prenses Abiye",
+        "slug": "cicek-islemeli-prenses-abiye-aa-p05",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Floral Embroidered Princess Gown",
+        "slug": "floral-embroidered-princess-gown-aa-p05",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье Принцессы С Вышивкой",
+        "slug": "floral-embroidered-princess-gown-aa-p05",
+        "aciklama": ""
+      },
+      "renkler": [
+        "pudra",
+        "kirmizi",
+        "lacivert"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "askili",
+      "kullanim": [
+        "nisan",
+        "mezuniyet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-P06",
+      "ornek": true,
+      "kategoriler": [
+        "prenses",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Kayık Yaka Prenses Abiye",
+        "slug": "kayik-yaka-prenses-abiye-aa-p06",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Off Shoulder Princess Gown",
+        "slug": "off-shoulder-princess-gown-aa-p06",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье Принцессы С Открытыми Плечами",
+        "slug": "off-shoulder-princess-gown-aa-p06",
+        "aciklama": ""
+      },
+      "renkler": [
+        "gumus",
+        "zumrut"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "kolsuz",
+      "kullanim": [
+        "nisan",
+        "mezuniyet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-P07",
+      "ornek": true,
+      "kategoriler": [
+        "prenses",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Pullu Prenses Abiye",
+        "slug": "pullu-prenses-abiye-aa-p07",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Sequin Princess Gown",
+        "slug": "sequin-princess-gown-aa-p07",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье Принцессы С Пайетками",
+        "slug": "sequin-princess-gown-aa-p07",
+        "aciklama": ""
+      },
+      "renkler": [
+        "gumus",
+        "pembe",
+        "lila"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "askili",
+      "kullanim": [
+        "nisan",
+        "mezuniyet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-P08",
+      "ornek": true,
+      "kategoriler": [
+        "prenses",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Kuyruklu Prenses Abiye",
+        "slug": "kuyruklu-prenses-abiye-aa-p08",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Princess Gown With Train",
+        "slug": "princess-gown-with-train-aa-p08",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье Принцессы Со Шлейфом",
+        "slug": "princess-gown-with-train-aa-p08",
+        "aciklama": ""
+      },
+      "renkler": [
+        "bej",
+        "siyah"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "askili",
+      "kullanim": [
+        "nisan",
+        "mezuniyet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-N01",
+      "ornek": true,
+      "kategoriler": [
+        "nisan",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Taşlı Nişan Abiyesi",
+        "slug": "tasli-nisan-abiyesi-aa-n01",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Embellished Engagement Dress",
+        "slug": "embellished-engagement-dress-aa-n01",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье На Помолвку С Камнями",
+        "slug": "embellished-engagement-dress-aa-n01",
+        "aciklama": ""
+      },
+      "renkler": [
+        "siyah",
+        "murdum"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "balik",
+      "kol": "kolsuz",
+      "kullanim": [
+        "nisan",
+        "soz"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-N02",
+      "ornek": true,
+      "kategoriler": [
+        "nisan",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Pelerinli Nişan Abiyesi",
+        "slug": "pelerinli-nisan-abiyesi-aa-n02",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Engagement Dress With Cape",
+        "slug": "engagement-dress-with-cape-aa-n02",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье На Помолвку С Накидкой",
+        "slug": "engagement-dress-with-cape-aa-n02",
+        "aciklama": ""
+      },
+      "renkler": [
+        "lila",
+        "gumus",
+        "kirmizi"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "uzun",
+      "kesim": "balik",
+      "kol": "kolsuz",
+      "kullanim": [
+        "nisan",
+        "soz"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-N03",
+      "ornek": true,
+      "kategoriler": [
+        "nisan",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Saten Nişan Abiyesi",
+        "slug": "saten-nisan-abiyesi-aa-n03",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Satin Engagement Dress",
+        "slug": "satin-engagement-dress-aa-n03",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Атласное Платье На Помолвку",
+        "slug": "satin-engagement-dress-aa-n03",
+        "aciklama": ""
+      },
+      "renkler": [
+        "pudra",
+        "gumus",
+        "pembe"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "balik",
+      "kol": "kolsuz",
+      "kullanim": [
+        "nisan",
+        "soz"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-N04",
+      "ornek": true,
+      "kategoriler": [
+        "nisan",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Dantelli Nişan Abiyesi",
+        "slug": "dantelli-nisan-abiyesi-aa-n04",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Lace Engagement Dress",
+        "slug": "lace-engagement-dress-aa-n04",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Кружевное Платье На Помолвку",
+        "slug": "lace-engagement-dress-aa-n04",
+        "aciklama": ""
+      },
+      "renkler": [
+        "lila",
+        "gumus"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "balik",
+      "kol": "kolsuz",
+      "kullanim": [
+        "nisan",
+        "soz"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-N05",
+      "ornek": true,
+      "kategoriler": [
+        "nisan",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Balık Nişan Abiyesi",
+        "slug": "balik-nisan-abiyesi-aa-n05",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Mermaid Engagement Dress",
+        "slug": "mermaid-engagement-dress-aa-n05",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье Русалка На Помолвку",
+        "slug": "mermaid-engagement-dress-aa-n05",
+        "aciklama": ""
+      },
+      "renkler": [
+        "gumus",
+        "siyah"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "balik",
+      "kol": "kolsuz",
+      "kullanim": [
+        "nisan",
+        "soz"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-N06",
+      "ornek": true,
+      "kategoriler": [
+        "nisan",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Pullu Nişan Abiyesi",
+        "slug": "pullu-nisan-abiyesi-aa-n06",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Sequin Engagement Dress",
+        "slug": "sequin-engagement-dress-aa-n06",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье На Помолвку С Пайетками",
+        "slug": "sequin-engagement-dress-aa-n06",
+        "aciklama": ""
+      },
+      "renkler": [
+        "murdum",
+        "bordo",
+        "lacivert"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "balik",
+      "kol": "kolsuz",
+      "kullanim": [
+        "nisan",
+        "soz"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-N07",
+      "ornek": true,
+      "kategoriler": [
+        "nisan",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Tül Kollu Nişan Abiyesi",
+        "slug": "tul-kollu-nisan-abiyesi-aa-n07",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Tulle Sleeve Engagement Dress",
+        "slug": "tulle-sleeve-engagement-dress-aa-n07",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье На Помолвку С Фатиновыми Рукавами",
+        "slug": "tulle-sleeve-engagement-dress-aa-n07",
+        "aciklama": ""
+      },
+      "renkler": [
+        "lacivert",
+        "kirmizi",
+        "bordo"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "balik",
+      "kol": "kolsuz",
+      "kullanim": [
+        "nisan",
+        "soz"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-K01",
+      "ornek": true,
+      "kategoriler": [
+        "kina",
+        "prenses",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Bindallı Kına Abiyesi",
+        "slug": "bindalli-kina-abiyesi-aa-k01",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Embroidered Velvet Henna Dress",
+        "slug": "embroidered-velvet-henna-dress-aa-k01",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Бархатное Платье С Вышивкой На Ночь Хны",
+        "slug": "embroidered-velvet-henna-dress-aa-k01",
+        "aciklama": ""
+      },
+      "renkler": [
+        "gumus",
+        "lila",
+        "zumrut"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "kina"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-K02",
+      "ornek": true,
+      "kategoriler": [
+        "kina",
+        "prenses",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Kırmızı Kadife Kına Elbisesi",
+        "slug": "kirmizi-kadife-kina-elbisesi-aa-k02",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Red Velvet Henna Dress",
+        "slug": "red-velvet-henna-dress-aa-k02",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Красное Бархатное Платье На Ночь Хны",
+        "slug": "red-velvet-henna-dress-aa-k02",
+        "aciklama": ""
+      },
+      "renkler": [
+        "pembe",
+        "zumrut"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "kina"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-K03",
+      "ornek": true,
+      "kategoriler": [
+        "kina",
+        "prenses",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Pelerinli Kına Abiyesi",
+        "slug": "pelerinli-kina-abiyesi-aa-k03",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Henna Dress With Cape",
+        "slug": "henna-dress-with-cape-aa-k03",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье На Ночь Хны С Накидкой",
+        "slug": "henna-dress-with-cape-aa-k03",
+        "aciklama": ""
+      },
+      "renkler": [
+        "kirmizi",
+        "bordo"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "kina"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-K04",
+      "ornek": true,
+      "kategoriler": [
+        "kina",
+        "prenses",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Simli Kına Abiyesi",
+        "slug": "simli-kina-abiyesi-aa-k04",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Glitter Henna Dress",
+        "slug": "glitter-henna-dress-aa-k04",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Блестящее Платье На Ночь Хны",
+        "slug": "glitter-henna-dress-aa-k04",
+        "aciklama": ""
+      },
+      "renkler": [
+        "siyah",
+        "bordo"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "kina"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-K05",
+      "ornek": true,
+      "kategoriler": [
+        "kina",
+        "prenses",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Taşlı Kına Abiyesi",
+        "slug": "tasli-kina-abiyesi-aa-k05",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Embellished Henna Dress",
+        "slug": "embellished-henna-dress-aa-k05",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье На Ночь Хны С Камнями",
+        "slug": "embellished-henna-dress-aa-k05",
+        "aciklama": ""
+      },
+      "renkler": [
+        "pembe",
+        "siyah",
+        "pudra"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "kina"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-K06",
+      "ornek": true,
+      "kategoriler": [
+        "kina",
+        "prenses",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Kaftan Kına Abiyesi",
+        "slug": "kaftan-kina-abiyesi-aa-k06",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Kaftan Henna Dress",
+        "slug": "kaftan-henna-dress-aa-k06",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье-Кафтан На Ночь Хны",
+        "slug": "kaftan-henna-dress-aa-k06",
+        "aciklama": ""
+      },
+      "renkler": [
+        "gumus",
+        "bej",
+        "zumrut"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "kina"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-K07",
+      "ornek": true,
+      "kategoriler": [
+        "kina",
+        "prenses",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Uzun Kollu Kına Abiyesi",
+        "slug": "uzun-kollu-kina-abiyesi-aa-k07",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Long Sleeve Henna Dress",
+        "slug": "long-sleeve-henna-dress-aa-k07",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье На Ночь Хны С Длинным Рукавом",
+        "slug": "long-sleeve-henna-dress-aa-k07",
+        "aciklama": ""
+      },
+      "renkler": [
+        "siyah",
+        "zumrut"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "prenses",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "kina"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-M01",
+      "ornek": true,
+      "kategoriler": [
+        "mezuniyet",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Yırtmaçlı Mezuniyet Abiyesi",
+        "slug": "yirtmacli-mezuniyet-abiyesi-aa-m01",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Slit Prom Dress",
+        "slug": "slit-prom-dress-aa-m01",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Выпускное Платье С Разрезом",
+        "slug": "slit-prom-dress-aa-m01",
+        "aciklama": ""
+      },
+      "renkler": [
+        "zumrut",
+        "murdum",
+        "bordo"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "uzun",
+      "kesim": "duz",
+      "kol": "askili",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-M02",
+      "ornek": true,
+      "kategoriler": [
+        "mezuniyet",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Pullu Mezuniyet Abiyesi",
+        "slug": "pullu-mezuniyet-abiyesi-aa-m02",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Sequin Prom Dress",
+        "slug": "sequin-prom-dress-aa-m02",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Выпускное Платье С Пайетками",
+        "slug": "sequin-prom-dress-aa-m02",
+        "aciklama": ""
+      },
+      "renkler": [
+        "zumrut",
+        "bordo",
+        "lila"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "duz",
+      "kol": "askili",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-M03",
+      "ornek": true,
+      "kategoriler": [
+        "mezuniyet",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Saten Mezuniyet Abiyesi",
+        "slug": "saten-mezuniyet-abiyesi-aa-m03",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Satin Prom Dress",
+        "slug": "satin-prom-dress-aa-m03",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Атласное Выпускное Платье",
+        "slug": "satin-prom-dress-aa-m03",
+        "aciklama": ""
+      },
+      "renkler": [
+        "pembe",
+        "kirmizi"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "uzun",
+      "kesim": "duz",
+      "kol": "askili",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-M04",
+      "ornek": true,
+      "kategoriler": [
+        "mezuniyet",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Tek Omuz Mezuniyet Abiyesi",
+        "slug": "tek-omuz-mezuniyet-abiyesi-aa-m04",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "One Shoulder Prom Dress",
+        "slug": "one-shoulder-prom-dress-aa-m04",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Выпускное Платье На Одно Плечо",
+        "slug": "one-shoulder-prom-dress-aa-m04",
+        "aciklama": ""
+      },
+      "renkler": [
+        "kirmizi",
+        "bordo"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "uzun",
+      "kesim": "duz",
+      "kol": "tek-omuz",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-M05",
+      "ornek": true,
+      "kategoriler": [
+        "mezuniyet",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Kısa Tül Mezuniyet Abiyesi",
+        "slug": "kisa-tul-mezuniyet-abiyesi-aa-m05",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Short Tulle Prom Dress",
+        "slug": "short-tulle-prom-dress-aa-m05",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Короткое Выпускное Платье Из Фатина",
+        "slug": "short-tulle-prom-dress-aa-m05",
+        "aciklama": ""
+      },
+      "renkler": [
+        "bej",
+        "lila"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "duz",
+      "kol": "askili",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-M06",
+      "ornek": true,
+      "kategoriler": [
+        "mezuniyet",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Askılı Mezuniyet Abiyesi",
+        "slug": "askili-mezuniyet-abiyesi-aa-m06",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Strappy Prom Dress",
+        "slug": "strappy-prom-dress-aa-m06",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Выпускное Платье На Бретелях",
+        "slug": "strappy-prom-dress-aa-m06",
+        "aciklama": ""
+      },
+      "renkler": [
+        "lila",
+        "siyah"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "uzun",
+      "kesim": "duz",
+      "kol": "askili",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-M07",
+      "ornek": true,
+      "kategoriler": [
+        "mezuniyet",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Korseli Mezuniyet Abiyesi",
+        "slug": "korseli-mezuniyet-abiyesi-aa-m07",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Corset Prom Dress",
+        "slug": "corset-prom-dress-aa-m07",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Выпускное Платье С Корсетом",
+        "slug": "corset-prom-dress-aa-m07",
+        "aciklama": ""
+      },
+      "renkler": [
+        "siyah",
+        "lacivert"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "uzun",
+      "kesim": "duz",
+      "kol": "askili",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-B01",
+      "ornek": true,
+      "kategoriler": [
+        "buyuk-beden",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Büyük Beden Saten Abiye",
+        "slug": "buyuk-beden-saten-abiye-aa-b01",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Plus Size Satin Dress",
+        "slug": "plus-size-satin-dress-aa-b01",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Атласное Платье Большого Размера",
+        "slug": "plus-size-satin-dress-aa-b01",
+        "aciklama": ""
+      },
+      "renkler": [
+        "lila",
+        "pembe"
+      ],
+      "bedenler": [
+        "44",
+        "46",
+        "48",
+        "50",
+        "52",
+        "54",
+        "56"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-B02",
+      "ornek": true,
+      "kategoriler": [
+        "buyuk-beden",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Büyük Beden Pullu Abiye",
+        "slug": "buyuk-beden-pullu-abiye-aa-b02",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Plus Size Sequin Dress",
+        "slug": "plus-size-sequin-dress-aa-b02",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье С Пайетками Большого Размера",
+        "slug": "plus-size-sequin-dress-aa-b02",
+        "aciklama": ""
+      },
+      "renkler": [
+        "zumrut",
+        "murdum",
+        "pembe"
+      ],
+      "bedenler": [
+        "44",
+        "46",
+        "48",
+        "50",
+        "52",
+        "54",
+        "56"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-B03",
+      "ornek": true,
+      "kategoriler": [
+        "buyuk-beden",
+        "uzun"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Büyük Beden Dantelli Abiye",
+        "slug": "buyuk-beden-dantelli-abiye-aa-b03",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Plus Size Lace Dress",
+        "slug": "plus-size-lace-dress-aa-b03",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Кружевное Платье Большого Размера",
+        "slug": "plus-size-lace-dress-aa-b03",
+        "aciklama": ""
+      },
+      "renkler": [
+        "gumus",
+        "bordo"
+      ],
+      "bedenler": [
+        "44",
+        "46",
+        "48",
+        "50",
+        "52",
+        "54",
+        "56"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-B04",
+      "ornek": true,
+      "kategoriler": [
+        "buyuk-beden",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Büyük Beden Şifon Abiye",
+        "slug": "buyuk-beden-sifon-abiye-aa-b04",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Plus Size Chiffon Dress",
+        "slug": "plus-size-chiffon-dress-aa-b04",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Шифоновое Платье Большого Размера",
+        "slug": "plus-size-chiffon-dress-aa-b04",
+        "aciklama": ""
+      },
+      "renkler": [
+        "murdum",
+        "lacivert"
+      ],
+      "bedenler": [
+        "44",
+        "46",
+        "48",
+        "50",
+        "52",
+        "54",
+        "56"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-B05",
+      "ornek": true,
+      "kategoriler": [
+        "buyuk-beden",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Büyük Beden Kadife Abiye",
+        "slug": "buyuk-beden-kadife-abiye-aa-b05",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Plus Size Velvet Dress",
+        "slug": "plus-size-velvet-dress-aa-b05",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Бархатное Платье Большого Размера",
+        "slug": "plus-size-velvet-dress-aa-b05",
+        "aciklama": ""
+      },
+      "renkler": [
+        "pembe",
+        "kirmizi"
+      ],
+      "bedenler": [
+        "44",
+        "46",
+        "48",
+        "50",
+        "52",
+        "54",
+        "56"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-B06",
+      "ornek": true,
+      "kategoriler": [
+        "buyuk-beden",
+        "tesettur",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Büyük Beden Tesettür Abiye",
+        "slug": "buyuk-beden-tesettur-abiye-aa-b06",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Plus Size Hijab Dress",
+        "slug": "plus-size-hijab-dress-aa-b06",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Закрытое Платье Большого Размера",
+        "slug": "plus-size-hijab-dress-aa-b06",
+        "aciklama": ""
+      },
+      "renkler": [
+        "siyah",
+        "gumus"
+      ],
+      "bedenler": [
+        "44",
+        "46",
+        "48",
+        "50",
+        "52",
+        "54",
+        "56"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-B07",
+      "ornek": true,
+      "kategoriler": [
+        "buyuk-beden",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Büyük Beden Kruvaze Abiye",
+        "slug": "buyuk-beden-kruvaze-abiye-aa-b07",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Plus Size Wrap Dress",
+        "slug": "plus-size-wrap-dress-aa-b07",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье С Запахом Большого Размера",
+        "slug": "plus-size-wrap-dress-aa-b07",
+        "aciklama": ""
+      },
+      "renkler": [
+        "lila",
+        "murdum",
+        "kirmizi"
+      ],
+      "bedenler": [
+        "44",
+        "46",
+        "48",
+        "50",
+        "52",
+        "54",
+        "56"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-B08",
+      "ornek": true,
+      "kategoriler": [
+        "buyuk-beden",
+        "uzun"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Büyük Beden Taşlı Abiye",
+        "slug": "buyuk-beden-tasli-abiye-aa-b08",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Plus Size Embellished Dress",
+        "slug": "plus-size-embellished-dress-aa-b08",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье С Камнями Большого Размера",
+        "slug": "plus-size-embellished-dress-aa-b08",
+        "aciklama": ""
+      },
+      "renkler": [
+        "siyah",
+        "bordo"
+      ],
+      "bedenler": [
+        "44",
+        "46",
+        "48",
+        "50",
+        "52",
+        "54",
+        "56"
+      ],
+      "boy": "uzun",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-B09",
+      "ornek": true,
+      "kategoriler": [
+        "buyuk-beden",
+        "kisa"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Büyük Beden Midi Abiye",
+        "slug": "buyuk-beden-midi-abiye-aa-b09",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Plus Size Midi Dress",
+        "slug": "plus-size-midi-dress-aa-b09",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Платье Миди Большого Размера",
+        "slug": "plus-size-midi-dress-aa-b09",
+        "aciklama": ""
+      },
+      "renkler": [
+        "pudra",
+        "lacivert",
+        "bordo"
+      ],
+      "bedenler": [
+        "44",
+        "46",
+        "48",
+        "50",
+        "52",
+        "54",
+        "56"
+      ],
+      "boy": "midi",
+      "kesim": "a-kesim",
+      "kol": "uzun-kol",
+      "kullanim": [
+        "dugun",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-S01",
+      "ornek": true,
+      "kategoriler": [
+        "kisa"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Pullu Kısa Abiye",
+        "slug": "pullu-kisa-abiye-aa-s01",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Short Sequin Dress",
+        "slug": "short-sequin-dress-aa-s01",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Короткое Платье С Пайетками",
+        "slug": "short-sequin-dress-aa-s01",
+        "aciklama": ""
+      },
+      "renkler": [
+        "bordo",
+        "murdum",
+        "pudra"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "kisa",
+      "kesim": "a-kesim",
+      "kol": "kolsuz",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-S02",
+      "ornek": true,
+      "kategoriler": [
+        "kisa"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Saten Kısa Abiye",
+        "slug": "saten-kisa-abiye-aa-s02",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Short Satin Dress",
+        "slug": "short-satin-dress-aa-s02",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Короткое Атласное Платье",
+        "slug": "short-satin-dress-aa-s02",
+        "aciklama": ""
+      },
+      "renkler": [
+        "zumrut",
+        "siyah"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "boy": "midi",
+      "kesim": "a-kesim",
+      "kol": "kolsuz",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-S03",
+      "ornek": true,
+      "kategoriler": [
+        "kisa"
+      ],
+      "yeni": true,
+      "tr": {
+        "ad": "Tüvit Kısa Abiye",
+        "slug": "tuvit-kisa-abiye-aa-s03",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Short Tweed Dress",
+        "slug": "short-tweed-dress-aa-s03",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Короткое Твидовое Платье",
+        "slug": "short-tweed-dress-aa-s03",
+        "aciklama": ""
+      },
+      "renkler": [
+        "pembe",
+        "siyah",
+        "zumrut"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "kisa",
+      "kesim": "a-kesim",
+      "kol": "kolsuz",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-S04",
+      "ornek": true,
+      "kategoriler": [
+        "kisa"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Kadife Kısa Abiye",
+        "slug": "kadife-kisa-abiye-aa-s04",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Short Velvet Dress",
+        "slug": "short-velvet-dress-aa-s04",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Короткое Бархатное Платье",
+        "slug": "short-velvet-dress-aa-s04",
+        "aciklama": ""
+      },
+      "renkler": [
+        "murdum",
+        "gumus"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "boy": "midi",
+      "kesim": "a-kesim",
+      "kol": "kolsuz",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-S05",
+      "ornek": true,
+      "kategoriler": [
+        "kisa"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Fiyonklu Kısa Abiye",
+        "slug": "fiyonklu-kisa-abiye-aa-s05",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Short Bow Dress",
+        "slug": "short-bow-dress-aa-s05",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Короткое Платье С Бантом",
+        "slug": "short-bow-dress-aa-s05",
+        "aciklama": ""
+      },
+      "renkler": [
+        "bordo",
+        "gumus",
+        "zumrut"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "kisa",
+      "kesim": "a-kesim",
+      "kol": "kolsuz",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-S06",
+      "ornek": true,
+      "kategoriler": [
+        "kisa"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Tül Kısa Abiye",
+        "slug": "tul-kisa-abiye-aa-s06",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Short Tulle Dress",
+        "slug": "short-tulle-dress-aa-s06",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Короткое Платье Из Фатина",
+        "slug": "short-tulle-dress-aa-s06",
+        "aciklama": ""
+      },
+      "renkler": [
+        "siyah",
+        "bordo",
+        "pudra"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "midi",
+      "kesim": "a-kesim",
+      "kol": "kolsuz",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
+    },
+    {
+      "kod": "AA-S07",
+      "ornek": true,
+      "kategoriler": [
+        "kisa"
+      ],
+      "yeni": false,
+      "tr": {
+        "ad": "Straplez Kısa Abiye",
+        "slug": "straplez-kisa-abiye-aa-s07",
+        "aciklama": ""
+      },
+      "en": {
+        "ad": "Short Strapless Dress",
+        "slug": "short-strapless-dress-aa-s07",
+        "aciklama": ""
+      },
+      "ru": {
+        "ad": "Короткое Платье Без Бретелей",
+        "slug": "short-strapless-dress-aa-s07",
+        "aciklama": ""
+      },
+      "renkler": [
+        "gumus",
+        "lila",
+        "siyah"
+      ],
+      "bedenler": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "boy": "kisa",
+      "kesim": "a-kesim",
+      "kol": "kolsuz",
+      "kullanim": [
+        "mezuniyet",
+        "davet"
+      ],
+      "fotograflar": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "stok": true
     }
   ]
 }
