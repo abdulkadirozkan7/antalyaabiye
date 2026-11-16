@@ -5,7 +5,8 @@
   var liste = d.getElementById('kt-liste');
   var kartlar = [].slice.call(liste.children);
   var bos = d.getElementById('kt-bos');
-  var sayi = d.querySelector('.kt-sayi');
+  var sayilar = [].slice.call(d.querySelectorAll('.kt-sayi'));
+  var hizlilar = [].slice.call(d.querySelectorAll('.kt-hizli button'));
   var etiketler = d.getElementById('kt-etiketler');
   var temizle = d.querySelector('.kt-temizle');
   var seciliRozet = d.querySelector('.kt-secili');
@@ -31,7 +32,14 @@
       k.hidden = !uy;
       if (uy) n++;
     });
-    sayi.textContent = sayi.getAttribute('data-kalip').replace('{n}', n);
+    sayilar.forEach(function (x) { x.textContent = x.getAttribute('data-kalip').replace('{n}', n); });
+    hizlilar.forEach(function (b) {
+      var on;
+      if (b.hasAttribute('data-bedenler')) on = b.getAttribute('data-bedenler').split(' ').every(function (v) { var i = form.querySelector('input[name="bedenler"][value="' + v + '"]'); return i && i.checked; });
+      else { var i = form.querySelector('input[name="' + b.getAttribute('data-ad') + '"][value="' + b.getAttribute('data-deger') + '"]'); on = !!(i && i.checked); }
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on);
+    });
     bos.hidden = n > 0;
     var html = '';
     Object.keys(s).forEach(function (ad) {
@@ -75,6 +83,17 @@
     if (i) { i.checked = false; uygula(); }
   });
   temizle.addEventListener('click', function () { form.reset(); uygula(); });
+  hizlilar.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var girdiler = b.hasAttribute('data-bedenler')
+        ? b.getAttribute('data-bedenler').split(' ').map(function (v) { return form.querySelector('input[name="bedenler"][value="' + v + '"]'); })
+        : [form.querySelector('input[name="' + b.getAttribute('data-ad') + '"][value="' + b.getAttribute('data-deger') + '"]')];
+      girdiler = girdiler.filter(Boolean);
+      var hepsi = girdiler.every(function (i) { return i.checked; });
+      girdiler.forEach(function (i) { i.checked = !hepsi; });
+      uygula();
+    });
+  });
 
   var ac = function (on) {
     filtre.classList.toggle('on', on);
