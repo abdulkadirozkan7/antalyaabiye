@@ -39,3 +39,29 @@ Kod güncellenirse: **Dağıt → Dağıtımları yönet → Düzenle → Yeni s
 - 5 hatalı girişten sonra o kullanıcı 15 dakika kilitlenir. Oturum 12 saat sürer.
 - Panel fotoğrafları tarayıcıda WebP'ye çevirir ve küçültür (ürün 1800 px, banner 1920 px). Videolar en fazla 20 MB.
 - Çark numaraları E-Tablodaki **Çark Kayıtları** sayfasına düşer. SMS göndermeden önce numaraların İYS'ye yüklenmesi gerekir.
+
+## Hosting'e Otomatik Yükleme (FTP)
+
+Panelde yapılan her kayıttan sonra site GitHub'da derlenir ve FTP ile hostinge yüklenir.
+
+1. Hosting panelinden (cPanel → FTP Hesapları) bir FTP hesabı aç. Kök klasörü `public_html` olsun.
+2. github.com → depo → **Settings → Secrets and variables → Actions → New repository secret** ile şunları ekle:
+   - `FTP_SUNUCU`: FTP sunucu adı (hostingin verdiği sunucu adı, örn. `srv123.hosting.com.tr`)
+   - `FTP_KULLANICI`: FTP kullanıcı adı
+   - `FTP_SIFRE`: FTP şifresi
+   - İsteğe bağlı `FTP_KLASOR`: varsayılan `./public_html/`
+   - İsteğe bağlı `FTP_PROTOKOL`: varsayılan `ftps` (hosting desteklemiyorsa `ftp`)
+3. **Actions** sekmesinden son çalışmayı **Re-run** yap. İlk yükleme birkaç dakika sürer.
+
+`FTP_SUNUCU` boşken bu adım atlanır, GitHub Pages yayını etkilenmez.
+
+## Alan Adı
+
+Alan adı belli olunca panel → **Ayarlar → Alan Adı** alanına yaz (örn. `antalyaabiye.com`) ve kaydet. Canonical, hreflang, site haritası ve paylaşım linkleri bu adrese göre oluşur.
+
+## Güvenlik Notları
+
+- Hosting paketindeki `.htaccess` dosyası HTTPS'e yönlendirir, güvenlik başlıklarını ekler, klasör listelemeyi ve gizli dosyalara erişimi kapatır. Alan adına SSL (AutoSSL / Let's Encrypt) kurulmadan siteyi açma.
+- Panel `/yonetim/` arama motorlarına kapalıdır. Şifre değiştirilince (`sifreBelirle`) açık oturumların hepsi düşer.
+- GitHub anahtarını sadece bu depo ve **Contents: Read and write** izniyle oluştur, son kullanma tarihi ver.
+- Çark ödülünü sunucu belirler. İndirim kodunu kabul etmeden önce telefon numarasını e-tablodan kontrol et ve kullanılınca **Kullanıldı Mı** sütununu işaretle.

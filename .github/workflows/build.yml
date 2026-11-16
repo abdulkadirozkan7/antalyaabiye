@@ -7,12 +7,12 @@ permissions:
   contents: read
   pages: write
   id-token: write
-concurrency:
-  group: pages
-  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: true
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
@@ -27,3 +27,28 @@ jobs:
           path: dist
       - id: deploy
         uses: actions/deploy-pages@v4
+  hosting:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: hosting
+      cancel-in-progress: false
+    env:
+      FTP_SUNUCU: ${{ secrets.FTP_SUNUCU }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: HEDEF=hosting node build.js
+      - if: env.FTP_SUNUCU != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SUNUCU }}
+          username: ${{ secrets.FTP_KULLANICI }}
+          password: ${{ secrets.FTP_SIFRE }}
+          protocol: ${{ secrets.FTP_PROTOKOL || 'ftps' }}
+          local-dir: ./dist-hosting/
+          server-dir: ${{ secrets.FTP_KLASOR || './public_html/' }}
+          exclude: |
+            **/.git*
+            **/.git*/**

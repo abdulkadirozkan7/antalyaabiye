@@ -148,7 +148,7 @@ ${benzer.length ? `<section class="as-bolum ur-benzer"><div class="as-baslik"><d
     baslik: t.baslik.replace('{ad}', ad).replace('{kod}', u.kod),
     aciklama: t.aciklama.replace('{ad}', ad).replace('{kod}', u.kod).replace('{renkler}', u.renkler.map(r => SOZ.renk[r][dil]).join(', ')).replace('{bedenler}', `${u.bedenler[0]}–${u.bedenler[u.bedenler.length - 1]}`),
     govde,
-    ek: `<script type="application/ld+json">${JSON.stringify(schema)}</script>`,
+    ek: `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`,
     gorsel: tumFotolar[0] || '',
     gorseller: tumFotolar,
     js: ['urun.js'],

@@ -1,5 +1,5 @@
 const SOZ = {
-  renk: require('../data/renkler.json').renkler,
+  renk: require('./guvenlik.js').renkler(require('../data/renkler.json').renkler),
   boy: {
     kisa: { tr: 'Kısa', en: 'Short', ru: 'Короткое' },
     midi: { tr: 'Midi', en: 'Midi', ru: 'Миди' },

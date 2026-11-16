@@ -156,7 +156,7 @@ module.exports = function (ctx, dil) {
     baslik: t.baslik,
     aciklama: t.aciklama,
     govde,
-    ek: `<script type="application/ld+json">${JSON.stringify(schema)}</script>`,
+    ek: `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`,
     js: ['iletisim.js']
   };
 };

@@ -25,12 +25,29 @@ function sifreBelirle() {
   const YENI_SIFRE = '';
   if (YENI_SIFRE.length < 10) throw new Error('YENI_SIFRE en az 10 karakter olmalı.');
   OZ.setProperty('YONETICI_SIFRE_HASH', hash_(YENI_SIFRE));
+  OZ.setProperty('OTURUM_SURUM', String(Number(OZ.getProperty('OTURUM_SURUM') || 0) + 1));
   Logger.log('Şifre kaydedildi. Güvenlik için YENI_SIFRE satırını tekrar boşaltın.');
 }
 
 function hash_(s) {
-  const b = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, OZ.getProperty('YONETICI_TUZ') + '|' + s, Utilities.Charset.UTF_8);
+  const tuz = Utilities.newBlob(OZ.getProperty('YONETICI_TUZ')).getBytes();
+  let b = Utilities.computeHmacSha256Signature(Utilities.newBlob(String(s)).getBytes(), tuz);
+  for (let i = 0; i < 2000; i++) b = Utilities.computeHmacSha256Signature(b, tuz);
   return Utilities.base64Encode(b);
+}
+
+function esit_(a, b) {
+  a = String(a || ''); b = String(b || '');
+  let f = a.length ^ b.length;
+  for (let i = 0; i < Math.max(a.length, b.length); i++) f |= (a.charCodeAt(i) || 0) ^ (b.charCodeAt(i) || 0);
+  return f === 0;
+}
+
+function sayac_(anahtar, sure) {
+  const c = CacheService.getScriptCache();
+  const n = Number(c.get(anahtar) || 0) + 1;
+  c.put(anahtar, String(n), sure);
+  return n;
 }
 
 function imza_(s) {
@@ -38,16 +55,17 @@ function imza_(s) {
 }
 
 function tokenUret_(kullanici) {
-  const govde = Utilities.base64EncodeWebSafe(JSON.stringify({ k: kullanici, s: Date.now() + OTURUM_SAAT * 3600000 }));
+  const govde = Utilities.base64EncodeWebSafe(JSON.stringify({ k: kullanici, s: Date.now() + OTURUM_SAAT * 3600000, v: OZ.getProperty('OTURUM_SURUM') || '0' }));
   return govde + '.' + imza_(govde);
 }
 
 function tokenKontrol_(t) {
   if (!t || t.indexOf('.') < 0) return false;
   const p = t.split('.');
-  if (imza_(p[0]) !== p[1]) return false;
-  const v = JSON.parse(Utilities.newBlob(Utilities.base64DecodeWebSafe(p[0])).getDataAsString());
-  return v.s > Date.now();
+  if (p.length !== 2 || !esit_(imza_(p[0]), p[1])) return false;
+  let v;
+  try { v = JSON.parse(Utilities.newBlob(Utilities.base64DecodeWebSafe(p[0])).getDataAsString()); } catch (e) { return false; }
+  return v.s > Date.now() && String(v.v) === String(OZ.getProperty('OTURUM_SURUM') || '0');
 }
 
 function cevap_(o) {
@@ -88,11 +106,15 @@ function girisDene_(v) {
   const onbellek = CacheService.getScriptCache();
   const anahtar = 'giris_' + String(v.kullanici || '').toLowerCase();
   const deneme = Number(onbellek.get(anahtar) || 0);
-  if (deneme >= 5) return { hata: 'Çok fazla hatalı deneme. 15 dakika sonra tekrar deneyin.' };
-  const dogru = String(v.kullanici || '').toLowerCase() === String(OZ.getProperty('YONETICI_KULLANICI')).toLowerCase()
-    && OZ.getProperty('YONETICI_SIFRE_HASH') && hash_(String(v.sifre || '')) === OZ.getProperty('YONETICI_SIFRE_HASH');
+  const toplam = Number(onbellek.get('giris_toplam') || 0);
+  if (deneme >= 5 || toplam >= 25) return { hata: 'Çok fazla hatalı deneme. 15 dakika sonra tekrar deneyin.' };
+  if (String(v.sifre || '').length > 200) return { hata: 'Kullanıcı adı veya şifre hatalı.' };
+  const kayitli = OZ.getProperty('YONETICI_SIFRE_HASH');
+  const dogru = !!kayitli && esit_(String(v.kullanici || '').toLowerCase(), String(OZ.getProperty('YONETICI_KULLANICI')).toLowerCase())
+    && esit_(hash_(String(v.sifre || '')), kayitli);
   if (!dogru) {
     onbellek.put(anahtar, String(deneme + 1), 900);
+    sayac_('giris_toplam', 900);
     return { hata: 'Kullanıcı adı veya şifre hatalı.' };
   }
   onbellek.remove(anahtar);
@@ -131,9 +153,16 @@ function doPost(e) {
     if (v.islem === 'yukle') {
       const uzanti = { 'image/webp': 'webp', 'video/mp4': 'mp4', 'image/jpeg': 'jpg', 'image/png': 'png' }[v.tur];
       if (!uzanti) return cevap_({ hata: 'Desteklenmeyen dosya türü.' });
+      const b64 = String(v.base64 || '');
+      const sinir = uzanti === 'mp4' ? 20 * 1024 * 1024 : 5 * 1024 * 1024;
+      if (!b64 || b64.length * 0.75 > sinir) return cevap_({ hata: 'Dosya çok büyük.' });
+      const bas = Utilities.base64Decode(b64.slice(0, 24)).map(x => (x + 256) % 256);
+      const metin = (a, b) => String.fromCharCode.apply(null, bas.slice(a, b));
+      const gecerli = { webp: metin(0, 4) === 'RIFF' && metin(8, 12) === 'WEBP', mp4: metin(4, 8) === 'ftyp', jpg: bas[0] === 0xFF && bas[1] === 0xD8 && bas[2] === 0xFF, png: bas[0] === 0x89 && metin(1, 4) === 'PNG' }[uzanti];
+      if (!gecerli) return cevap_({ hata: 'Dosya içeriği türüyle uyuşmuyor.' });
       const t = new Date();
       const yol = 'assets/uploads/' + t.getFullYear() + '/' + ('0' + (t.getMonth() + 1)).slice(-2) + '/' + temizAd_(v.ad) + '-' + Utilities.getUuid().slice(0, 6) + '.' + uzanti;
-      dosyaYaz_(yol, v.base64, 'Panel: görsel yüklendi');
+      dosyaYaz_(yol, b64, 'Panel: görsel yüklendi');
       return cevap_({ yol: yol });
     }
     if (v.islem === 'durum') {
@@ -143,7 +172,8 @@ function doPost(e) {
     }
     return cevap_({ hata: 'Bilinmeyen işlem.' });
   } catch (x) {
-    return cevap_({ hata: String(x.message || x) });
+    console.error(x);
+    return cevap_({ hata: tokenKontrol_(v && v.token) ? String(x.message || x).slice(0, 200) : 'İşlem yapılamadı.' });
   }
 }
 
@@ -177,20 +207,67 @@ function temizTel_(v) {
   return /^05\d{9}$/.test(s) ? s : '';
 }
 
+function dilimler_() {
+  const c = CacheService.getScriptCache();
+  const ham = c.get('cark_dilimler');
+  if (ham) return JSON.parse(ham);
+  const url = 'https://raw.githubusercontent.com/' + OZ.getProperty('GITHUB_REPO') + '/' + OZ.getProperty('GITHUB_DAL') + '/data/site.json';
+  const site = JSON.parse(UrlFetchApp.fetch(url, { muteHttpExceptions: true }).getContentText());
+  const d = ((site.cark || {}).dilimler || []).map(x => ({ tutar: Math.max(0, Math.floor(Number(x.tutar) || 0)), olasilik: Math.max(0, Number(x.olasilik) || 0) }));
+  if (!d.length || !(site.cark || {}).aktif) throw new Error('cark kapali');
+  c.put('cark_dilimler', JSON.stringify(d), 600);
+  return d;
+}
+
+function anahtarUret_(tel) {
+  const g = tel + '|' + (Date.now() + 10 * 60000);
+  return Utilities.base64EncodeWebSafe(g) + '.' + imza_('cark|' + g);
+}
+
+function anahtarKontrol_(a, tel) {
+  if (!a || String(a).indexOf('.') < 0) return false;
+  const p = String(a).split('.');
+  let g;
+  try { g = Utilities.newBlob(Utilities.base64DecodeWebSafe(p[0])).getDataAsString(); } catch (e) { return false; }
+  const q = g.split('|');
+  return esit_(imza_('cark|' + g), p[1]) && q[0] === tel && Number(q[1]) > Date.now();
+}
+
 function cark_(v) {
   const tel = temizTel_(v.telefon);
   if (!tel) return { hata: 'telefon' };
+  if (sayac_('cark_dk_' + Math.floor(Date.now() / 60000), 120) > 60) return { hata: 'yogun' };
+  if (v.islem === 'kontrol') {
+    const sh = carkSayfa_();
+    const son = sh.getLastRow();
+    const kayitlar = son > 1 ? sh.getRange(2, 2, son - 1, 1).getValues().map(r => String(r[0])) : [];
+    const kullanildi = kayitlar.indexOf(tel) > -1;
+    return kullanildi ? { kullanildi: true } : { kullanildi: false, anahtar: anahtarUret_(tel) };
+  }
+  if (v.web) return { hata: 'gecersiz' };
+  if (!v.ticariIleti || !v.kvkk) return { hata: 'onay' };
+  if (!anahtarKontrol_(v.anahtar, tel)) return { hata: 'anahtar' };
+  if (sayac_('cark_saat_' + Math.floor(Date.now() / 3600000), 7200) > 300) return { hata: 'yogun' };
+  const cihaz = String(v.cihaz || '').replace(/[^a-z0-9]/gi, '').slice(0, 40);
+  const onbellek = CacheService.getScriptCache();
+  if (cihaz && onbellek.get('cark_cihaz_' + cihaz)) return { kullanildi: true };
+  const d = dilimler_();
+  const top = d.reduce((a, x) => a + x.olasilik, 0);
+  let r = Math.random() * (top || 1), i = 0;
+  for (; i < d.length; i++) { r -= d[i].olasilik; if (r < 0) break; }
+  if (i >= d.length) i = 0;
+  const kod = 'KOD' + d[i].tutar + 'TL';
   const kilit = LockService.getScriptLock();
   kilit.waitLock(10000);
   try {
     const sh = carkSayfa_();
     const son = sh.getLastRow();
-    const kayitlar = son > 1 ? sh.getRange(2, 2, son - 1, 1).getValues().map(r => String(r[0])) : [];
-    const kullanildi = kayitlar.indexOf(tel) > -1;
-    if (v.islem === 'kontrol' || kullanildi) return { kullanildi: kullanildi };
-    sh.appendRow([new Date(), tel, String(v.kod || ''), Number(v.tutar) || '', String(v.dil || ''), String(v.sayfa || ''), v.ticariIleti ? 'Evet' : 'Hayır', v.kvkk ? 'Evet' : 'Hayır', String(v.cihaz || ''), '']);
-    return { ok: true };
+    const kayitlar = son > 1 ? sh.getRange(2, 2, son - 1, 1).getValues().map(x => String(x[0])) : [];
+    if (kayitlar.indexOf(tel) > -1) return { kullanildi: true };
+    sh.appendRow([new Date(), tel, kod, d[i].tutar, String(v.dil || '').slice(0, 5), String(v.sayfa || '').slice(0, 200), 'Evet', 'Evet', cihaz, '']);
   } finally {
     kilit.releaseLock();
   }
+  if (cihaz) onbellek.put('cark_cihaz_' + cihaz, '1', 21600);
+  return { ok: true, i: i, tutar: d[i].tutar, kod: kod };
 }

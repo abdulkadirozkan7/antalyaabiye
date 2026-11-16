@@ -81,7 +81,8 @@
       "kapat": "Kapat",
       "tl": "TL",
       "kullanildi": "Bu telefon numarasıyla çark daha önce çevrildi. Her numara çarkı bir kez çevirebilir.",
-      "kontrol": "Kontrol ediliyor..."
+      "kontrol": "Kontrol ediliyor...",
+      "baglanti": "Şu an çark çevrilemiyor. Biraz sonra tekrar dene ya da WhatsApp'tan bize yaz."
     },
     "sepet": {
       "ad": "Sepetim",
@@ -196,7 +197,8 @@
       "kapat": "Close",
       "tl": "TL",
       "kullanildi": "This phone number has already been used to spin the wheel. Each number can spin once.",
-      "kontrol": "Checking..."
+      "kontrol": "Checking...",
+      "baglanti": "The wheel is unavailable right now. Please try again shortly or message us on WhatsApp."
     },
     "sepet": {
       "ad": "My Bag",
@@ -311,7 +313,8 @@
       "kapat": "Закрыть",
       "tl": "TL",
       "kullanildi": "С этого номера колесо уже крутили. Каждый номер может крутить колесо один раз.",
-      "kontrol": "Проверяем..."
+      "kontrol": "Проверяем...",
+      "baglanti": "Колесо сейчас недоступно. Попробуйте позже или напишите нам в WhatsApp."
     },
     "sepet": {
       "ad": "Корзина",

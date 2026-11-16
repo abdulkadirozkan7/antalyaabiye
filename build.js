@@ -2,8 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = __dirname;
-const OUT = path.join(ROOT, 'dist');
-const site = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/site.json'), 'utf8'));
+const HEDEF = process.env.HEDEF === 'hosting' ? 'hosting' : 'pages';
+const OUT = path.join(ROOT, HEDEF === 'hosting' ? 'dist-hosting' : 'dist');
+const GUVENLIK = require('./sayfalar/guvenlik.js');
+const site = GUVENLIK.site(JSON.parse(fs.readFileSync(path.join(ROOT, 'data/site.json'), 'utf8')));
 const i18n = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/i18n.json'), 'utf8'));
 const A = site.ayarlar;
 A.saatler = (A.saatler || []).map(r => (r && r[0] ? r : ['', '']));
@@ -11,7 +13,7 @@ const DILLER = ['tr', 'en', 'ru'];
 const SURUM = Date.now().toString(36);
 const HTMLLANG = { tr: 'tr', en: 'en', ru: 'ru' };
 const OGLOC = { tr: 'tr_TR', en: 'en_GB', ru: 'ru_RU' };
-const TABAN = A.alanadi ? 'https://' + A.alanadi.replace(/^https?:\/\//, '').replace(/\/$/, '') + '/' : (A.yayinUrl || '');
+const TABAN = A.alanadi ? 'https://' + A.alanadi.replace(/^https?:\/\//, '').replace(/\/$/, '') + '/' : (HEDEF === 'hosting' ? '' : (A.yayinUrl || ''));
 const URL_LISTE = [];
 const tamUrl = (dil, slug) => TABAN + dosya(dil, slug).replace(/index\.html$/, '');
 
@@ -265,7 +267,7 @@ function carkHtml(dil) {
   }).join('');
   const lambalar = Array.from({ length: n * 3 }, (_, i) => { const [x, y] = nokta(i * 360 / (n * 3), 142); return `<circle cx="${x}" cy="${y}" r="3.2" fill="${i % 2 ? '#fdba74' : '#fff'}"/>`; }).join('');
   const carkSvg = `<svg viewBox="0 0 300 300" aria-hidden="true"><circle cx="150" cy="150" r="148" fill="#24122b"/>${lambalar}<g class="ck-teker" id="ck-teker">${dilimler}</g><circle cx="150" cy="150" r="40" fill="#fff" stroke="#24122b" stroke-width="4"/><image href="${'{{KOK}}'}assets/img/logo.webp" x="118" y="122" width="64" height="55"/></svg><span class="ck-ok" aria-hidden="true"></span>`;
-  const veri = { dilimler: C.dilimler, kayitUrl: C.kayitUrl || A.yonetimApi || '', wa: A.whatsapp, t: { mesaj: t.mesaj, kazandin: t.kazandin, hata: t.hata, kopyalandi: t.kopyalandi, kopyala: t.kopyala, donuyor: t.donuyor, cevir: t.cevir, kullanildi: t.kullanildi, kontrol: t.kontrol } };
+  const veri = { dilimler: C.dilimler, kayitUrl: C.kayitUrl || A.yonetimApi || '', wa: A.whatsapp, t: { mesaj: t.mesaj, kazandin: t.kazandin, hata: t.hata, kopyalandi: t.kopyalandi, kopyala: t.kopyala, donuyor: t.donuyor, cevir: t.cevir, kullanildi: t.kullanildi, kontrol: t.kontrol, baglanti: t.baglanti } };
   return `
 <button type="button" class="ck-ac" id="ck-ac"><span class="ck-ac-ikon" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#24122b"/><path d="M20 20L20 3A17 17 0 0 1 36.2 15Z" fill="#d52878"/><path d="M20 20L36.2 15A17 17 0 0 1 30 33.8Z" fill="#fff"/><path d="M20 20L30 33.8A17 17 0 0 1 10 33.8Z" fill="#7a49c9"/><path d="M20 20L10 33.8A17 17 0 0 1 3.8 15Z" fill="#fff"/><path d="M20 20L3.8 15A17 17 0 0 1 20 3Z" fill="#fd8c2c"/><circle cx="20" cy="20" r="5" fill="#fff"/></svg></span><span>${esc(t.buton)}</span></button>
 <div class="ck" id="ck" role="dialog" aria-modal="true" aria-labelledby="ck-baslik" hidden>
@@ -280,9 +282,10 @@ function carkHtml(dil) {
         <h2 id="ck-baslik">${esc(t.baslik)}</h2>
         <p>${esc(t.metin)}</p>
         <input type="tel" name="tel" inputmode="tel" autocomplete="tel" placeholder="${esc(t.telefon)}" maxlength="18" required>
+        <input type="text" name="web" class="ck-tuzak" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="ck-hata" hidden>${esc(t.hata)}</p>
         <label><input type="checkbox" name="ticari" required><span>${esc(t.ticari)} *</span></label>
-        <label><input type="checkbox" name="kvkk" required><span>${esc(t.kvkk).replace('KVKK', `<a href="${href(dil, S.kvkk[dil].slug)}" target="_blank">KVKK</a>`)} *</span></label>
+        <label><input type="checkbox" name="kvkk" required><span>${esc(t.kvkk).replace('KVKK', `<a href="${href(dil, S.kvkk[dil].slug)}" target="_blank" rel="noopener">KVKK</a>`)} *</span></label>
         <button type="submit" class="ck-cevir" disabled>${esc(t.cevir)}</button>
       </form>
       <div class="ck-sonuc" id="ck-sonuc" hidden>
@@ -404,8 +407,8 @@ fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 fs.copyFileSync(path.join(ROOT, 'assets/img/favicon.ico'), path.join(OUT, 'favicon.ico'));
 
 const ctx = { avantajlar, esc, wa, href, kok, IK, A, site, i18n, telGoster, telHref, saatOzet, GUN, GUNK, DILLER, ROOT };
-const URUNLER = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/urunler.json'), 'utf8')).urunler;
-const RENKLER = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/renkler.json'), 'utf8')).renkler;
+const URUNLER = GUVENLIK.urunler(JSON.parse(fs.readFileSync(path.join(ROOT, 'data/urunler.json'), 'utf8')).urunler);
+const RENKLER = GUVENLIK.renkler(JSON.parse(fs.readFileSync(path.join(ROOT, 'data/renkler.json'), 'utf8')).renkler);
 for (const u of URUNLER) {
   u.renkler = (u.renkler || []).filter(r => RENKLER[r]);
   if (!u.renkler.length) u.renkler = [Object.keys(RENKLER)[0]];
@@ -420,7 +423,7 @@ for (const u of URUNLER) {
   }
 }
 ctx.URUNLER = URUNLER;
-ctx.BLOG = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/blog.json'), 'utf8')).yazilar;
+ctx.BLOG = GUVENLIK.blog(JSON.parse(fs.readFileSync(path.join(ROOT, 'data/blog.json'), 'utf8')).yazilar);
 ctx.tabanUrl = TABAN;
 const blog = require('./sayfalar/blog.js');
 const kategoriSayfa = require('./sayfalar/kategori.js');
@@ -465,7 +468,69 @@ for (const dil of DILLER) {
   }
 }
 
-yaz('404.html', sayfa({ dil: 'tr', slugs: { tr: '', en: '', ru: '' }, ...require('./sayfalar/bulunamadi.js')(ctx), taban: A.taban || '/' }));
+yaz('404.html', sayfa({ dil: 'tr', slugs: { tr: '', en: '', ru: '' }, ...require('./sayfalar/bulunamadi.js')(ctx), taban: HEDEF === 'hosting' ? '/' : (A.taban || '/') }));
+
+if (HEDEF === 'hosting') {
+  const CSP_ZORUNLU = "frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests";
+  const CSP_RAPOR = [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://analytics.tiktok.com",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "font-src 'self' data: https://fonts.gstatic.com",
+    "img-src 'self' data: blob: https:",
+    "media-src 'self' blob:",
+    "connect-src 'self' https://script.google.com https://script.googleusercontent.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.facebook.com https://*.facebook.net https://*.tiktok.com https://*.tiktokw.us",
+    "frame-src https://www.google.com https://www.googletagmanager.com https://*.facebook.com",
+    "object-src 'none'", "base-uri 'self'", "frame-ancestors 'self'"
+  ].join('; ');
+  fs.writeFileSync(path.join(OUT, '.htaccess'), `Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+AddDefaultCharset utf-8
+AddType image/webp .webp
+AddType video/mp4 .mp4
+AddType application/manifest+json .webmanifest
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule (^|/)\. - [F,L]
+RewriteRule \.(md|gs|sh|log|bak|old|orig|sql|env|ini|yml|yaml|lock)$ - [F,L,NC]
+</IfModule>
+
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+Header always set Strict-Transport-Security "max-age=31536000"
+Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+Header always set Content-Security-Policy "${CSP_ZORUNLU}"
+Header always set Content-Security-Policy-Report-Only "${CSP_RAPOR}"
+Header unset X-Powered-By
+<FilesMatch "\.(css|js|webp|png|jpe?g|svg|ico|woff2?|mp4)$">
+Header set Cache-Control "public, max-age=2592000"
+</FilesMatch>
+<FilesMatch "\.(html|json|xml|txt)$">
+Header set Cache-Control "no-cache"
+</FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/xml application/xml text/plain
+</IfModule>
+`);
+  fs.writeFileSync(path.join(OUT, 'yonetim', '.htaccess'), `<IfModule mod_headers.c>
+Header always set X-Robots-Tag "noindex, nofollow"
+Header always set X-Frame-Options "DENY"
+Header always set Cache-Control "no-store"
+</IfModule>
+`);
+  if (!TABAN) fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nAllow: /\nDisallow: /yonetim/\n');
+}
 
 if (TABAN) {
   const bugun = new Date().toISOString().slice(0, 10);
@@ -478,4 +543,4 @@ ${URL_LISTE.map(u => `<url><loc>${u.loc}</loc><lastmod>${bugun}</lastmod>${u.alt
   fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /yonetim/\n\nSitemap: ${TABAN}sitemap.xml\n`);
 }
 
-console.log('dist hazır');
+console.log(HEDEF === 'hosting' ? 'dist-hosting hazır' : 'dist hazır');

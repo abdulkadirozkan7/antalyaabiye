@@ -19,6 +19,7 @@
 
   var oku = function () { try { return JSON.parse(localStorage.getItem(ANAHTAR) || '[]'); } catch (e) { return []; } };
   var yaz = function (l) { try { localStorage.setItem(ANAHTAR, JSON.stringify(l)); } catch (e) {} ciz(); };
+  var yolTemiz = function (y) { y = String(y || ''); return /^[A-Za-z0-9/_.%-]+$/.test(y) && y.indexOf('..') < 0 ? y : ''; };
   var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   var toplam = function (l) { return l.reduce(function (a, x) { return a + (x.adet || 1); }, 0); };
 
@@ -43,6 +44,7 @@
     bos.hidden = l.length > 0;
     alt.hidden = !l.length;
     liste.innerHTML = l.map(function (x, i) {
+      x.url = yolTemiz(x.url); x.foto = yolTemiz(x.foto);
       return '<li class="sp-oge" data-i="' + i + '">' +
         '<a class="sp-gorsel" href="' + esc(kok + x.url) + '">' + (x.foto ? '<img src="' + esc(kok + x.foto) + '" alt="" width="76" height="114">' : '<span>' + esc(x.kod) + '</span>') + '</a>' +
         '<div class="sp-bilgi"><a class="sp-ad" href="' + esc(kok + x.url) + '">' + esc(x.ad) + '</a>' +
