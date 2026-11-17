@@ -357,7 +357,7 @@ ${kirinti}
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Ysabeau:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${kok(dil)}assets/css/site.css?v=${SURUM}">
 ${ek}
-${dogrula}
+${dogrula}${process.env.DENEME && HEDEF === 'hosting' ? '\n<meta name="robots" content="noindex, nofollow">' : ''}
 ${gtm}
 ${ga4}
 ${fb}
@@ -512,7 +512,7 @@ Header always set Strict-Transport-Security "max-age=31536000"
 Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
 Header always set Content-Security-Policy "${CSP_ZORUNLU}"
 Header always set Content-Security-Policy-Report-Only "${CSP_RAPOR}"
-Header unset X-Powered-By
+Header unset X-Powered-By${process.env.DENEME ? '\nHeader always set X-Robots-Tag "noindex, nofollow"' : ''}
 <FilesMatch "\.(css|js|webp|png|jpe?g|svg|ico|woff2?|mp4)$">
 Header set Cache-Control "public, max-age=2592000"
 </FilesMatch>
@@ -531,7 +531,8 @@ Header always set X-Frame-Options "DENY"
 Header always set Cache-Control "no-store"
 </IfModule>
 `);
-  if (!TABAN) fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nAllow: /\nDisallow: /yonetim/\n');
+  if (process.env.DENEME) fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nAllow: /\n');
+  else if (!TABAN) fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nAllow: /\nDisallow: /yonetim/\n');
 }
 
 if (TABAN) {
