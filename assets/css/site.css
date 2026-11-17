@@ -1112,3 +1112,8 @@ a,button,label,summary{-webkit-tap-highlight-color:transparent}
 .ck-ac.ck-kucuk span:last-child{max-width:0;opacity:0}
 @media (hover:hover){.ck-ac.ck-kucuk:hover{padding:0 20px 0 7px;gap:10px}.ck-ac.ck-kucuk:hover span:last-child{max-width:240px;opacity:1}}
 @media (max-width:1180px){.ck-ac.ck-kucuk{padding:0 5px}}
+.yz-giris{margin:0 0 6px;padding:18px 20px;border-radius:12px;background:var(--ten);font-size:15.5px;line-height:1.7}
+.yz-satici{list-style:none;padding:0!important;gap:0!important}
+.yz-satici li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--cizgi)}
+.yz-satici span{color:var(--soluk)}
+.yz-satici b{font-weight:500;color:var(--murekkep);text-align:right}

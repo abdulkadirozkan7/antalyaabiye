@@ -54,7 +54,11 @@
     "yayinUrl": "https://abdulkadirozkan7.github.io/antalyaabiye/",
     "hakkimizdaHazir": true,
     "magazaGorsel": "",
-    "yonetimApi": ""
+    "yonetimApi": "",
+    "unvan": "",
+    "vergiDairesi": "",
+    "vergiNo": "",
+    "eposta": ""
   },
   "kategoriler": [
     {
@@ -383,6 +387,34 @@
       "ru": {
         "ad": "Конфиденциальность",
         "slug": "konfidentsialnost"
+      }
+    },
+    "iade": {
+      "tr": {
+        "ad": "İade Ve Değişim",
+        "slug": "iade-ve-degisim"
+      },
+      "en": {
+        "ad": "Returns And Exchanges",
+        "slug": "returns-and-exchanges"
+      },
+      "ru": {
+        "ad": "Возврат И Обмен",
+        "slug": "vozvrat-i-obmen"
+      }
+    },
+    "mesafeli": {
+      "tr": {
+        "ad": "Mesafeli Satış Sözleşmesi",
+        "slug": "mesafeli-satis-sozlesmesi"
+      },
+      "en": {
+        "ad": "Distance Sales Agreement",
+        "slug": "distance-sales-agreement"
+      },
+      "ru": {
+        "ad": "Договор Дистанционной Продажи",
+        "slug": "dogovor-distantsionnoy-prodazhi"
       }
     }
   },

@@ -32,6 +32,8 @@ function ayarlar(A) {
   A.alanadi = kalip(String(A.alanadi || '').replace(/^https?:\/\//, '').replace(/\/+$/, ''), /^[a-z0-9.-]+\.[a-z]{2,}$/i);
   A.yayinUrl = https(A.yayinUrl);
   A.magazaGorsel = medya(A.magazaGorsel);
+  A.eposta = kalip(A.eposta, /^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i);
+  ['unvan', 'vergiDairesi', 'vergiNo'].forEach(k => { A[k] = String(A[k] || '').slice(0, 160); });
   A.googleYorum = Number(A.googleYorum) || 0;
   A.instagramTakipci = Number(A.instagramTakipci) || 0;
   A.googlePuan = kalip(String(A.googlePuan || ''), /^[0-5]([.,]\d)?$/);

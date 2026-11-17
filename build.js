@@ -171,7 +171,7 @@ function footer(dil, slugs) {
   const sl = (k) => `<li><a href="${href(dil, k[dil].slug)}">${esc(k[dil].ad)}</a></li>`;
   const kategoriler = site.kategoriler.filter(k => k.id !== 'yeni').map(sl).join('');
   const kurumsal = [A.hakkimizdaHazir ? S.hakkimizda : null, S.blog, S.iletisim].filter(Boolean).map(sl).join('');
-  const yardim = [S.siparis, S.beden, S.sss, S.kvkk, S.gizlilik].map(sl).join('');
+  const yardim = [S.siparis, S.iade, S.beden, S.sss, S.mesafeli, S.kvkk, S.gizlilik].map(sl).join('');
   const tel = A.telefon || A.whatsapp;
   const waLink = wa(t.wpMesaj);
   const igLink = A.instagram ? `https://www.instagram.com/${esc(A.instagram)}/` : '';
@@ -433,6 +433,8 @@ const SAYFALAR = [
   ['iletisim', require('./sayfalar/iletisim.js')],
   ['hakkimizda', require('./sayfalar/hakkimizda.js')],
   ['kvkk', require('./sayfalar/kvkk.js')],
+  ['iade', require('./sayfalar/yasal.js').iade],
+  ['mesafeli', require('./sayfalar/yasal.js').mesafeli],
   ['sss', require('./sayfalar/yardim.js').sss],
   ['siparis', require('./sayfalar/yardim.js').siparis],
   ['gizlilik', require('./sayfalar/yardim.js').gizlilik],
