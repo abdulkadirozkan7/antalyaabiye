@@ -94,7 +94,19 @@
     if (i > -1) f.splice(i, 1); else { f.push(k); window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'favori_ekle', urun: k }); }
     try { localStorage.setItem('aa_fav', JSON.stringify(f)); } catch (x) {}
     favYaz(); favBtnYaz();
+    b.classList.remove('pop'); void b.offsetWidth; if (i < 0) b.classList.add('pop');
+    favBildir(i < 0);
   });
+  var favBildir = function (eklendi) {
+    var t = d.getElementById('aa-bildirim');
+    if (!t) { t = d.createElement('div'); t.id = 'aa-bildirim'; t.className = 'aa-bildirim'; t.setAttribute('role', 'status'); d.body.appendChild(t); }
+    var dil = d.documentElement.lang;
+    var M = { tr: ['Favorilere eklendi', 'Favorilerden çıkarıldı'], en: ['Added to favourites', 'Removed from favourites'], ru: ['Добавлено в избранное', 'Удалено из избранного'] }[dil] || ['', ''];
+    t.textContent = eklendi ? M[0] : M[1];
+    t.classList.add('on');
+    clearTimeout(favBildir.z);
+    favBildir.z = setTimeout(function () { t.classList.remove('on'); }, 1800);
+  };
   window.addEventListener('storage', favYaz);
   d.addEventListener('aa:fav', favYaz);
 

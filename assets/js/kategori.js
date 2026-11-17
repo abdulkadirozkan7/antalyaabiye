@@ -95,14 +95,38 @@
     });
   });
 
+  var sp = d.getElementById('kt-sp');
+  var spSecili = d.getElementById('kt-sp-secili');
+  var spAc = function (on) {
+    if (!sp) return;
+    sp.classList.toggle('on', on);
+    sp.setAttribute('aria-hidden', on ? 'false' : 'true');
+    perde.hidden = !on;
+    d.body.classList.toggle('aa-kilit', on);
+  };
   var ac = function (on) {
     filtre.classList.toggle('on', on);
     perde.hidden = !on;
     d.body.classList.toggle('aa-kilit', on);
   };
+  if (window.matchMedia('(max-width:1180px)').matches) [].forEach.call(form.querySelectorAll('details.kt-grup'), function (g) { g.open = false; });
+  var spBtn = d.querySelector('.kt-sirala-btn');
+  if (spBtn) spBtn.addEventListener('click', function () { spAc(true); });
+  if (sp) {
+    sp.querySelector('.kt-sp-kapat').addEventListener('click', function () { spAc(false); });
+    sp.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-sira]');
+      if (!b) return;
+      [].forEach.call(sp.querySelectorAll('[data-sira]'), function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
+      spSecili.textContent = b.textContent;
+      sirala.value = b.getAttribute('data-sira');
+      sirayla();
+      setTimeout(function () { spAc(false); }, 180);
+    });
+  }
   d.querySelector('.kt-filtre-btn').addEventListener('click', function () { ac(true); });
   d.querySelector('.kt-kapat').addEventListener('click', function () { ac(false); });
   d.querySelector('.kt-goster').addEventListener('click', function () { ac(false); });
-  perde.addEventListener('click', function () { ac(false); });
-  d.addEventListener('keydown', function (e) { if (e.key === 'Escape') ac(false); });
+  perde.addEventListener('click', function () { ac(false); spAc(false); });
+  d.addEventListener('keydown', function (e) { if (e.key === 'Escape') { ac(false); spAc(false); } });
 })();

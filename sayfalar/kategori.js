@@ -14,7 +14,7 @@ const T = {
     veUstu: '{b} Ve Üstü',
     filtrele: 'Filtrele',
     temizle: 'Temizle',
-    sonuclar: 'Sonuçları Göster',
+    sonuclar: 'Filtreleri Uygula',
     sirala: 'Sırala',
     stokta: 'Stoktakiler',
     sutun: 'Sütun',
@@ -40,7 +40,7 @@ const T = {
     veUstu: '{b} And Up',
     filtrele: 'Filter',
     temizle: 'Clear',
-    sonuclar: 'Show Results',
+    sonuclar: 'Apply Filters',
     sirala: 'Sort',
     stokta: 'In Stock',
     sutun: 'Columns',
@@ -66,7 +66,7 @@ const T = {
     veUstu: '{b} И Больше',
     filtrele: 'Фильтры',
     temizle: 'Сбросить',
-    sonuclar: 'Показать',
+    sonuclar: 'Применить',
     sirala: 'Сортировка',
     stokta: 'В Наличии',
     sutun: 'Колонки',
@@ -140,7 +140,7 @@ ${liste.length && (hizli.length || bedenGrup.length > 1) ? `<div class="kt-hizli
 <section class="kt" id="kt">
   ${liste.length ? `
   <aside class="kt-filtre" id="kt-filtre" aria-label="${esc(t.filtrele)}">
-    <div class="kt-filtre-bas"><strong>${esc(t.filtreleme)}</strong><button type="button" class="kt-temizle" hidden>${esc(t.temizle)}</button><button type="button" class="aa-ikon kt-kapat" aria-label="${esc(t.kapat)}">${IK.x}</button></div>
+    <div class="kt-filtre-bas"><button type="button" class="aa-ikon kt-kapat" aria-label="${esc(t.kapat)}">${IK.x}</button><strong>${esc(t.filtreleme)}</strong><button type="button" class="kt-temizle" hidden>${esc(t.temizle)}</button></div>
     <form class="kt-form" id="kt-form">
       <label class="kt-stok"><input type="checkbox" id="kt-stok"><span>${esc(t.stokta)}</span></label>
       ${[grup(E.beden, 'beden', beden, true), grup(E.renk, 'renk', renk, true), grup(E.boy, 'boy', boy, true), grup(E.kullanim, 'kullanim', kul, true), grup(E.kesim, 'kesim', kesim, false), grup(E.kol, 'kol', kol, false)].join('')}
@@ -152,6 +152,7 @@ ${liste.length && (hizli.length || bedenGrup.length > 1) ? `<div class="kt-hizli
       <p class="kt-sayi kt-sayi-ust" data-kalip="${esc(t.urun)}">${esc(t.urun.replace('{n}', liste.length))}</p>
       <button type="button" class="kt-filtre-btn">${filtreIk}<span>${esc(t.filtreleme)}</span><b class="kt-secili" hidden></b></button>
       <label class="kt-sirala">${siraIk}<span>${esc(t.siralama)}</span>${sirala}</label>
+      <button type="button" class="kt-sirala-btn" aria-controls="kt-sp">${siraIk}<span>${esc(t.siralama)}</span></button>
       <div class="kt-sutun" role="group" aria-label="${esc(t.sutun)}"><button type="button" data-sutun="3" aria-label="3">${izgara(3)}</button><button type="button" data-sutun="4" class="on" aria-label="4">${izgara(4)}</button></div>
     </div>
     <div class="kt-etiketler" id="kt-etiketler"></div>
@@ -160,6 +161,11 @@ ${liste.length && (hizli.length || bedenGrup.length > 1) ? `<div class="kt-hizli
   </div>` : `<div class="kt-bos kt-bos-kat"><p>${esc(t.bosKategori)}</p>${bosWp}</div>`}
 </section>
 <section class="kt-seo"><p>${esc(t.seo.replace('{ad}', ad))}</p>${rehber}</section>
+${liste.length ? `<aside class="kt-sp" id="kt-sp" aria-label="${esc(t.siralama)}" aria-hidden="true">
+  <div class="kt-filtre-bas"><button type="button" class="aa-ikon kt-sp-kapat" aria-label="${esc(t.kapat)}">${IK.x}</button><strong>${esc(t.siralama)}</strong></div>
+  <p class="kt-sp-secili" id="kt-sp-secili">${esc(t.siralar[0][1])}</p>
+  <ul class="kt-sp-liste">${t.siralar.map((x, i) => `<li><button type="button" data-sira="${x[0]}"${i === 0 ? ' class="on" aria-pressed="true"' : ' aria-pressed="false"'}>${esc(x[1])}<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button></li>`).join('')}</ul>
+</aside>` : ''}
 <div class="kt-perde" hidden></div>`;
   return {
     baslik: t.baslik.replace('{ad}', ad),
