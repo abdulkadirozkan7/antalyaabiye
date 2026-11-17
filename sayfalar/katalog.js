@@ -66,7 +66,7 @@ function kart(ctx, dil, u, i) {
     : fotoYer(dil, 1);
   return `<li class="kt-kart" data-renk="${u.renkler.join(' ')}" data-beden="${u.bedenler.join(' ')}" data-boy="${u.boy}" data-kesim="${u.kesim}" data-kol="${u.kol}" data-kullanim="${u.kullanim.join(' ')}" data-stok="${u.stok === false ? 0 : 1}" data-sira="${i}">
   <a class="kt-gorsel" href="${href(dil, u[dil].slug)}">${foto}
-    ${u.renkler.length > 1 ? `<span class="kt-renk-say" title="${esc(u.renkler.map(r => SOZ.renk[r][dil]).join(', '))}"><i aria-hidden="true"></i>${u.renkler.length}</span>` : ''}<span class="kt-rozetler">${u.cokSatan ? `<b class="kt-rozet kt-r-cok">${esc(E.cokSatan)}</b>` : ''}${u.yeni ? `<b class="kt-rozet kt-r-yeni">${esc(E.yeni)}</b>` : ''}${u.kategoriler.includes('firsat') ? `<b class="kt-rozet kt-r-firsat">${esc(E.firsat)}</b>` : ''}${u.ornek ? `<b class="kt-rozet kt-r-ornek">${esc(E.ornek)}</b>` : ''}</span>
+    ${u.renkler.length > 1 ? `<span class="kt-renk-say" title="${esc(u.renkler.map(r => SOZ.renk[r][dil]).join(', '))}"><i aria-hidden="true"></i>${u.renkler.length}</span>` : ''}<span class="kt-rozetler">${u.kategoriler.includes('firsat') ? `<b class="kt-rozet kt-r-firsat">${esc(E.firsat)}</b>` : u.cokSatan ? `<b class="kt-rozet kt-r-cok">${esc(E.cokSatan)}</b>` : u.yeni ? `<b class="kt-rozet kt-r-yeni">${esc(E.yeni)}</b>` : ''}</span>
   </a>
   <button type="button" class="kt-fav" data-fav="${esc(u.kod)}" aria-label="${esc(E.favori)}" aria-pressed="false"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 20.2s-7.4-4.4-7.4-10.1A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.4 2.5c0 5.7-7.4 10.1-7.4 10.1z"/></svg></button>
   <div class="kt-bilgi">

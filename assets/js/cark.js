@@ -26,6 +26,9 @@
     }
   };
   acBtn.addEventListener('click', function () { ac(true); });
+  var kucult = function () { acBtn.classList.toggle('ck-kucuk', (window.scrollY || 0) > 320); };
+  window.addEventListener('scroll', kucult, { passive: true });
+  kucult();
   kutu.querySelector('.ck-kapat').addEventListener('click', function () { ac(false); });
   kutu.addEventListener('click', function (e) { if (e.target === kutu) ac(false); });
   d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !kutu.hidden) ac(false); });

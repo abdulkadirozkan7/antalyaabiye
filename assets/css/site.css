@@ -1107,3 +1107,8 @@ main .as-alt{padding-bottom:0}
   .kt-sp-liste button.on svg{opacity:1}
 }
 a,button,label,summary{-webkit-tap-highlight-color:transparent}
+.ck-ac span:last-child{max-width:240px;overflow:hidden;white-space:nowrap;transition:max-width .3s ease,opacity .2s}
+.ck-ac.ck-kucuk{padding:0 7px;gap:0}
+.ck-ac.ck-kucuk span:last-child{max-width:0;opacity:0}
+@media (hover:hover){.ck-ac.ck-kucuk:hover{padding:0 20px 0 7px;gap:10px}.ck-ac.ck-kucuk:hover span:last-child{max-width:240px;opacity:1}}
+@media (max-width:1180px){.ck-ac.ck-kucuk{padding:0 5px}}
