@@ -64,8 +64,24 @@
       r.scrollBy({ left: yon * w * 2, behavior: 'smooth' });
     };
     var g = kutu.querySelector('.as-u-geri'), i2 = kutu.querySelector('.as-u-ileri');
-    if (g) g.addEventListener('click', function () { kay(-1); });
-    if (i2) i2.addEventListener('click', function () { kay(1); });
+    if (g) g.addEventListener('click', function () { kay(-1); dur(); });
+    if (i2) i2.addEventListener('click', function () { kay(1); dur(); });
+    var durdu = false, gorunur = false, ustunde = false;
+    var dur = function () { durdu = true; };
+    ['touchstart', 'pointerdown', 'wheel'].forEach(function (ev) { kutu.addEventListener(ev, dur, { passive: true }); });
+    kutu.addEventListener('mouseenter', function () { ustunde = true; });
+    kutu.addEventListener('mouseleave', function () { ustunde = false; });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (g2) { gorunur = g2[0].isIntersecting; }, { threshold: 0.4 }).observe(kutu);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    setInterval(function () {
+      if (durdu || !gorunur || ustunde || d.hidden) return;
+      var r = [].filter.call(kutu.querySelectorAll('.as-u-ray'), function (x) { return !x.hidden; })[0];
+      if (!r) return;
+      var k = r.querySelector('.kt-kart');
+      var w = k ? k.getBoundingClientRect().width + 18 : 300;
+      if (r.scrollLeft + r.clientWidth >= r.scrollWidth - 8) r.scrollTo({ left: 0, behavior: 'smooth' });
+      else r.scrollBy({ left: w, behavior: 'smooth' });
+    }, 15000);
   });
 
   var videolar = [].slice.call(d.querySelectorAll('.ig-video'));

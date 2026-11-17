@@ -15,12 +15,13 @@ const HTMLLANG = { tr: 'tr', en: 'en', ru: 'ru' };
 const OGLOC = { tr: 'tr_TR', en: 'en_GB', ru: 'ru_RU' };
 const TABAN = A.alanadi ? 'https://' + A.alanadi.replace(/^https?:\/\//, '').replace(/\/$/, '') + '/' : (HEDEF === 'hosting' ? '' : (A.yayinUrl || ''));
 const URL_LISTE = [];
-const tamUrl = (dil, slug) => TABAN + dosya(dil, slug).replace(/index\.html$/, '');
+const temiz = p => p.replace(/index\.html$/, '').replace(/\.html$/, '');
+const tamUrl = (dil, slug) => TABAN + temiz(dosya(dil, slug));
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const kok = dil => (dil === 'tr' ? '' : '../');
 const dosya = (dil, slug) => (dil === 'tr' ? '' : dil + '/') + (slug ? slug + '.html' : 'index.html');
-const href = (dil, slug) => (slug ? slug + '.html' : dil === 'tr' ? './' : './');
+const href = (dil, slug) => (slug ? slug : './');
 const wa = (mesaj) => 'https://wa.me/' + A.whatsapp + '?text=' + encodeURIComponent(mesaj);
 const telGoster = n => {
   const d = String(n).replace(/\D/g, '');
@@ -56,7 +57,7 @@ const DILAD = { tr: 'Türkçe', en: 'English', ru: 'Русский' };
 
 function dilSecici(dil, slugs, sinif) {
   return `<div class="${sinif}" role="group" aria-label="${esc(i18n[dil].dil)}">` + DILLER.map(d => {
-    const hedef = kok(dil) + dosya(d, slugs[d]).replace(/index\.html$/, '');
+    const hedef = kok(dil) + temiz(dosya(d, slugs[d]));
     const ic = `${BAYRAK[d]}<span>${d.toUpperCase()}</span>`;
     return d === dil ? `<span class="aa-dil-on" aria-current="true" title="${DILAD[d]}">${ic}</span>` : `<a href="${hedef || './'}" hreflang="${d}" lang="${d}" title="${DILAD[d]}">${ic}</a>`;
   }).join('') + '</div>';
@@ -64,7 +65,7 @@ function dilSecici(dil, slugs, sinif) {
 
 function dilAcilir(dil, slugs) {
   const digerleri = DILLER.filter(d => d !== dil).map(d => {
-    const hedef = kok(dil) + dosya(d, slugs[d]).replace(/index\.html$/, '');
+    const hedef = kok(dil) + temiz(dosya(d, slugs[d]));
     return `<a href="${hedef || './'}" hreflang="${d}" lang="${d}">${BAYRAK[d]}<span>${DILAD[d]}</span></a>`;
   }).join('');
   return `<details class="aa-dil-ac"><summary aria-label="${esc(i18n[dil].dil)}">${BAYRAK[dil]}<span>${dil.toUpperCase()}</span>${IK.ok}</summary><div><span class="aa-dil-secili">${BAYRAK[dil]}<span>${DILAD[dil]}</span></span>${digerleri}</div></details>`;
@@ -500,6 +501,14 @@ RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteRule (^|/)\\. - [F,L]
+RewriteCond %{THE_REQUEST} \\s/+(.*?)index\\.html[\\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+RewriteCond %{THE_REQUEST} \\s/+(.+?)\\.html[\\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
 RewriteRule \\.(md|gs|sh|log|bak|old|orig|sql|env|ini|yml|yaml|lock)$ - [F,L,NC]
 </IfModule>
 

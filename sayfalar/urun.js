@@ -106,7 +106,7 @@ module.exports = function (ctx, dil, u, urunler) {
     color: u.renkler.map(r => SOZ.renk[r][dil]).join(', '),
     image: tumFotolar.map(p => ctx.tabanUrl + p),
     description: u[dil].aciklama || undefined,
-    url: ctx.tabanUrl + (dil === 'tr' ? '' : dil + '/') + u[dil].slug + '.html'
+    url: ctx.tabanUrl + (dil === 'tr' ? '' : dil + '/') + u[dil].slug
   };
   const govde = `
 <section class="ur">

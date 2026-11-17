@@ -144,7 +144,7 @@ function yazi(ctx, dil, y) {
 </div>
 ${ilgili.length ? `<section class="bl bl-ilgili"><h2>${esc(t.ilgili)}</h2><ul class="bl-liste">${ilgili.map(x => kart(ctx, dil, x)).join('')}</ul></section>` : ''}`;
   const taban = ctx.tabanUrl;
-  const url = taban + (dil === 'tr' ? '' : dil + '/') + v.slug + '.html';
+  const url = taban + (dil === 'tr' ? '' : dil + '/') + v.slug;
   const sema = [{
     '@context': 'https://schema.org', '@type': 'BlogPosting',
     headline: v.h1, description: v.aciklama, inLanguage: dil,
