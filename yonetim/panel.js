@@ -59,10 +59,10 @@
 
   function yukle(anahtar) {
     if (S.demo) return fetch('../' + DOSYA[anahtar] + '?t=' + Date.now()).then(function (r) { return r.json(); });
-    return istek({ islem: 'oku', token: S.token, dosya: DOSYA[anahtar] }).then(function (r) {
-      if (r.icerik) return JSON.parse(r.icerik);
-      return fetch('../' + DOSYA[anahtar]).then(function (x) { return x.json(); });
-    });
+    var yerel = function () { return fetch('../' + DOSYA[anahtar] + '?t=' + Date.now()).then(function (x) { return x.json(); }); };
+    return istek({ islem: 'oku', token: S.token, dosya: DOSYA[anahtar] })
+      .then(function (r) { return r.icerik ? JSON.parse(r.icerik) : yerel(); })
+      .catch(function (e) { if (S.token) return yerel(); throw e; });
   }
 
   function kaydet(anahtar, mesaj) {
@@ -70,7 +70,7 @@
     bildir('Kaydediliyor...');
     return istek({ islem: 'yaz', token: S.token, dosya: DOSYA[anahtar], icerik: JSON.stringify(S.veri[anahtar], null, 2) + '\n', mesaj: mesaj })
       .then(function () { bildir('Kaydedildi. Site 1-2 dakika içinde güncellenir.', 'ok'); durumTakip(); return true; })
-      .catch(function (e) { bildir('Kaydedilemedi: ' + e.message, 'hata'); return false; });
+      .catch(function (e) { bildir(/GitHub (401|403)/.test(e.message) ? 'Kaydetme henüz aktif değil. Kurulum tamamlanınca çalışacak.' : 'Kaydedilemedi: ' + e.message, 'hata'); return false; });
   }
 
   function durumTakip() {
