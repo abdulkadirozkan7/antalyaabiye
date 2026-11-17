@@ -11,6 +11,8 @@ function kurulum() {
   Object.keys(v).forEach(k => { if (!OZ.getProperty(k)) OZ.setProperty(k, v[k]); });
   if (!OZ.getProperty('OTURUM_ANAHTARI')) OZ.setProperty('OTURUM_ANAHTARI', Utilities.getUuid() + Utilities.getUuid());
   if (!OZ.getProperty('YONETICI_TUZ')) OZ.setProperty('YONETICI_TUZ', Utilities.getUuid());
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  if (ss) OZ.setProperty('CARK_TABLO_ID', ss.getId());
   Logger.log('Kurulum tamam. Şimdi GITHUB_TOKEN ekleyin ve sifreBelirle() çalıştırın.');
 }
 
