@@ -499,8 +499,8 @@ RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-RewriteRule (^|/)\. - [F,L]
-RewriteRule \.(md|gs|sh|log|bak|old|orig|sql|env|ini|yml|yaml|lock)$ - [F,L,NC]
+RewriteRule (^|/)\\. - [F,L]
+RewriteRule \\.(md|gs|sh|log|bak|old|orig|sql|env|ini|yml|yaml|lock)$ - [F,L,NC]
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -513,10 +513,10 @@ Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
 Header always set Content-Security-Policy "${CSP_ZORUNLU}"
 Header always set Content-Security-Policy-Report-Only "${CSP_RAPOR}"
 Header unset X-Powered-By${process.env.DENEME ? '\nHeader always set X-Robots-Tag "noindex, nofollow"' : ''}
-<FilesMatch "\.(css|js|webp|png|jpe?g|svg|ico|woff2?|mp4)$">
+<FilesMatch "\\.(css|js|webp|png|jpe?g|svg|ico|woff2?|mp4)$">
 Header set Cache-Control "public, max-age=2592000"
 </FilesMatch>
-<FilesMatch "\.(html|json|xml|txt)$">
+<FilesMatch "\\.(html|json|xml|txt)$">
 Header set Cache-Control "no-cache"
 </FilesMatch>
 </IfModule>
